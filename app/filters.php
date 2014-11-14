@@ -22,6 +22,16 @@ App::after(function($request, $response)
 	//
 });
 
+
+
+Route::filter('old', function()
+{
+    if (Input::get('age') < 200)
+    {
+        return Redirect::to('about');
+    }
+});
+
 /*
 |--------------------------------------------------------------------------
 | Authentication Filters

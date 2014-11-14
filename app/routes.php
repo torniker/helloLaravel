@@ -11,7 +11,18 @@
 |
 */
 
+Route::pattern('id', '[0-9]+');
+
 Route::get('/', function()
 {
 	return View::make('hello');
 });
+
+Route::any('about', function(){
+	return 'about page';
+});
+
+Route::get('user', array('before' => 'old', function()
+{
+    return 'You are over 200 years old!';
+}));

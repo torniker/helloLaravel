@@ -1,6 +1,6 @@
 <?php
 
-class HomeController extends BaseController {
+class ContactController extends BaseController {
 
 	/*
 	|--------------------------------------------------------------------------
@@ -16,11 +16,12 @@ class HomeController extends BaseController {
 	*/
 
 
-	public function index()
+
+	public function getIndex()
 	{
-		$users = User::with('skills')->get();
-		debug($users[0]);
-		return View::make('home.index')->with('users', $users);
+		$this->layout->content = View::make('contact/index');
 	}
+
+	
 
 }

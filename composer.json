@@ -5,7 +5,14 @@
 	"license": "MIT",
 	"type": "project",
 	"require": {
-		"laravel/framework": "4.2.*"
+		"laravel/framework": "4.2.*",
+		"atticmedia/anvard": "dev-master"
+	},
+	"require-dev": {
+		"barryvdh/laravel-ide-helper": "~1.11",
+    	"way/generators": "~2.0",
+    	"fzaninotto/faker": "v1.3.0",
+    	"barryvdh/laravel-debugbar": "1.8.*@dev"
 	},
 	"autoload": {
 		"classmap": [
@@ -24,6 +31,7 @@
 		],
 		"post-update-cmd": [
 			"php artisan clear-compiled",
+			"php artisan ide-helper:generate",
 			"php artisan optimize"
 		],
 		"post-create-project-cmd": [

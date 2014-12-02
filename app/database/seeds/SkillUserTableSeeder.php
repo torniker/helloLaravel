@@ -21,5 +21,4 @@ class SkillUserTableSeeder extends Seeder {
 			$user->skills()->attach($sk);
 		}
 	}
-
 }

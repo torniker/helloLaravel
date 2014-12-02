@@ -7,9 +7,13 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 	<link rel="icon" href="../../favicon.ico">
-	<title>Students</title>
-	<link href="{{ URL::asset('res/css/bootstrap.css') }}" rel="stylesheet">
-	<link href="{{ URL::asset('res/css/bootstrap-theme.css') }}" rel="stylesheet">
+	<title>SkillHub</title>
+	 <link rel="stylesheet" href="http://getbootstrap.com/dist/css/bootstrap.min.css">
+	 <link rel="stylesheet" href="http://student.itdc.ge/g.xomeriki/Laravel/laravelTest_1/CSS/tagbar.css">
+	 <link rel="stylesheet" href="http://getbootstrap.com/examples/starter-template/starter-template.css">
+	 
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 </head>
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -21,7 +25,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">Project name</a>
+				<a class="navbar-brand" href="{{ URL::to('home') }}">SkillHub</a>
 			</div>
 			<div id="navbar" class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
@@ -38,7 +42,7 @@
 	</div><!-- /.container -->
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<script src="res/js/bootstrap.min.js"></script>
+	<script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
 
 </body>
 </html>

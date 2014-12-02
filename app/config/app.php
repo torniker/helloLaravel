@@ -125,7 +125,7 @@ return array(
 		'Atticmedia\Anvard\AnvardServiceProvider',
 		'Way\Generators\GeneratorsServiceProvider',
 		'Barryvdh\Debugbar\ServiceProvider',
-
+		'Krucas\Notification\NotificationServiceProvider'
 	),
 
 	/*
@@ -193,6 +193,7 @@ return array(
 		'Validator'         => 'Illuminate\Support\Facades\Validator',
 		'View'              => 'Illuminate\Support\Facades\View',
 		'Debugbar' => 'Barryvdh\Debugbar\Facade',
+		'Notification' => 'Krucas\Notification\Facades\Notification'
 
 	),
 

@@ -1,7 +1,7 @@
 <?php
 
 class Skill extends \Eloquent {
-	protected $fillable = [];
+	protected $fillable = ['name'];
 
 	public function users()
     {

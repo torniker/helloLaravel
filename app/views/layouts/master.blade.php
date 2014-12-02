@@ -39,6 +39,9 @@
 	</nav>
 
 	<div class="container">
+		<div class='notifications'>
+			{{ Notification::showAll() }}
+		</div>
 		@yield('content')
 	</div><!-- /.container -->
 

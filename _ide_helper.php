@@ -13723,5 +13723,180 @@ if ( ! function_exists('with'))
     }
 
 
+    class Notification extends \Krucas\Notification\Facades\Notification{
+        
+        /**
+         * Return name of default container.
+         *
+         * @return string 
+         * @static 
+         */
+        public static function getDefaultContainerName(){
+            return \Krucas\Notification\Notification::getDefaultContainerName();
+        }
+        
+        /**
+         * Set types for a container.
+         *
+         * @param $container
+         * @param array $types
+         * @return \Krucas\Notification\Notification 
+         * @static 
+         */
+        public static function setContainerTypes($container, $types = array()){
+            return \Krucas\Notification\Notification::setContainerTypes($container, $types);
+        }
+        
+        /**
+         * Return types for a container.
+         *
+         * @param $container
+         * @return array 
+         * @static 
+         */
+        public static function getContainerTypes($container){
+            return \Krucas\Notification\Notification::getContainerTypes($container);
+        }
+        
+        /**
+         * Set format for a container.
+         *
+         * @param $container
+         * @param null $format
+         * @return \Krucas\Notification\Notification 
+         * @static 
+         */
+        public static function setContainerFormat($container, $format = null){
+            return \Krucas\Notification\Notification::setContainerFormat($container, $format);
+        }
+        
+        /**
+         * Return format for a container.
+         *
+         * @param $container
+         * @return string|null 
+         * @static 
+         */
+        public static function getContainerFormat($container){
+            return \Krucas\Notification\Notification::getContainerFormat($container);
+        }
+        
+        /**
+         * Set formats for a container.
+         *
+         * @param $container
+         * @param array $formats
+         * @return \Krucas\Notification\Notification 
+         * @static 
+         */
+        public static function setContainerFormats($container, $formats = array()){
+            return \Krucas\Notification\Notification::setContainerFormats($container, $formats);
+        }
+        
+        /**
+         * Return formats for a container.
+         *
+         * @param $container
+         * @return array 
+         * @static 
+         */
+        public static function getContainerFormats($container){
+            return \Krucas\Notification\Notification::getContainerFormats($container);
+        }
+        
+        /**
+         * Add new container.
+         *
+         * @param $container
+         * @param array $types
+         * @param null $defaultFormat
+         * @param array $formats
+         * @return \Krucas\Notification\Notification 
+         * @static 
+         */
+        public static function addContainer($container, $types = array(), $defaultFormat = null, $formats = array()){
+            return \Krucas\Notification\Notification::addContainer($container, $types, $defaultFormat, $formats);
+        }
+        
+        /**
+         * Return array of available containers.
+         *
+         * @return array 
+         * @static 
+         */
+        public static function getContainers(){
+            return \Krucas\Notification\Notification::getContainers();
+        }
+        
+        /**
+         * Returns container instance.
+         *
+         * @param null $container
+         * @param callable $callback
+         * @return mixed 
+         * @static 
+         */
+        public static function container($container = null, $callback = null){
+            return \Krucas\Notification\Notification::container($container, $callback);
+        }
+        
+        /**
+         * Create new message instance.
+         *
+         * @param null $message
+         * @return \Krucas\Notification\Message 
+         * @static 
+         */
+        public static function message($message = null){
+            return \Krucas\Notification\Notification::message($message);
+        }
+        
+        /**
+         * Fire given event.
+         *
+         * @param $event
+         * @param \Krucas\Notification\NotificationsBag $notificationBag
+         * @param \Krucas\Notification\Message $message
+         * @return array|bool|null 
+         * @static 
+         */
+        public static function fire($event, $notificationBag, $message){
+            return \Krucas\Notification\Notification::fire($event, $notificationBag, $message);
+        }
+        
+        /**
+         * Get the event dispatcher instance.
+         *
+         * @return \Illuminate\Events\Dispatcher 
+         * @static 
+         */
+        public static function getEventDispatcher(){
+            return \Krucas\Notification\Notification::getEventDispatcher();
+        }
+        
+        /**
+         * Set the event dispatcher instance.
+         *
+         * @param \Illuminate\Events\Dispatcher $dispatcher
+         * @return void 
+         * @static 
+         */
+        public static function setEventDispatcher($dispatcher){
+            \Krucas\Notification\Notification::setEventDispatcher($dispatcher);
+        }
+        
+        /**
+         * Unset the event dispatcher for models.
+         *
+         * @return void 
+         * @static 
+         */
+        public static function unsetEventDispatcher(){
+            \Krucas\Notification\Notification::unsetEventDispatcher();
+        }
+        
+    }
+
+
 }
 

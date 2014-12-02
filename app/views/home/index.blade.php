@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.skilltemp')
 @section('content')
 
 <div class="tag_bar">
@@ -51,7 +51,14 @@
 		<td>{{ $user->gender }}</td>
 		<td>
 			@foreach($user->skills as $skill)
-				<a href="{{ URL::to('tag/'.$skill->name) }}" class="label label-default">{{ $skill->name }}</a>
+				<?php $lvl = null; $seletced_skill = 'default'; $color_shade = null;  $s = null;?>
+				@if(in_array($skill->name, $tagname))
+				<?php 
+					$lvl = $skill->pivot->level; $seletced_skill = 'info'; $s = ', LVL:';
+					$color_shade = 'style="background-color:hsl(120,40%,'.(100-$lvl).'%)"';
+				?>
+				@endif
+				<a href="{{ URL::to('tag/'.$skill->name) }}" class="label label-{{ $seletced_skill }}" {{ $color_shade }}>{{ $skill->name.$s.$lvl }}</a>
 			@endforeach
 		</td>
 	</tr>

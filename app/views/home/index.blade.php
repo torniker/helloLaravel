@@ -1,4 +1,4 @@
-@extends('layouts.skilltemp')
+@extends('layouts.master')
 @section('content')
 
 <div class="tag_bar">

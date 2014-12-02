@@ -1,20 +1,6 @@
 <?php
 
-class HomeController extends BaseController {
-
-	/*
-	|--------------------------------------------------------------------------
-	| Default Home Controller
-	|--------------------------------------------------------------------------
-	|
-	| You may wish to use controllers instead of, or in addition to, Closure
-	| based routes. That's great! Here is an example controller method to
-	| get you started. To route to this controller, just add the route:
-	|
-	|	Route::get('/', 'HomeController@showWelcome');
-	|
-	*/
-
+class UsersController extends BaseController {
 
 	public function index()
 	{	
@@ -54,6 +40,7 @@ class HomeController extends BaseController {
 				}
 
 			} 
+
 			if(!$userIds && count($skills)>0){
 				return Response::json(array()); 
 			}

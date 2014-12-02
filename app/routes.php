@@ -1,4 +1,5 @@
 <?php
 
 
-Route::get('/', 'HomeController@index');
+Route::resource('/','UsersController'); 
+Route::resource('/skills','SkillsController');

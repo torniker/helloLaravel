@@ -11,7 +11,7 @@
 	@foreach($users as $user)
 	<tr>
 		<td>{{ $user->firstname }} {{ $user->lastname }}</td>
-		<td>{{ $user->gender }}</td>
+		<td>{{ $user->getGender() }}</td>
 		<td>
 			@foreach($user->skills as $skill)
 				<span class="label label-default">{{ $skill->name }}</span>

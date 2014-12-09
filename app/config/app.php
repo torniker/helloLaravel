@@ -125,6 +125,7 @@ return array(
 		'Atticmedia\Anvard\AnvardServiceProvider',
 		'Way\Generators\GeneratorsServiceProvider',
 		'Barryvdh\Debugbar\ServiceProvider',
+		'pro\Repositories\RepositoryServiceProvider',
 
 	),
 

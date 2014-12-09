@@ -51,6 +51,15 @@ App::error(function(Exception $exception, $code)
 	Log::error($exception);
 });
 
+App::error(function(Watson\Validating\ValidationException $e)
+{
+	$errors = $e->getErrors();
+
+    return Redirect::back()
+        ->withErrors($errors)
+        ->withInput();
+});
+
 /*
 |--------------------------------------------------------------------------
 | Maintenance Mode Handler

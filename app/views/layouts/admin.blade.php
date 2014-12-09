@@ -10,6 +10,8 @@
 	<title>Students</title>
 	<link href="{{ URL::asset('res/css/bootstrap.css') }}" rel="stylesheet">
 	<link href="{{ URL::asset('res/css/bootstrap-theme.css') }}" rel="stylesheet">
+	<script type="text/javascript" src="{{ URL::asset('res/js/jquery.js') }}"></script>
+	<script src="{{ URL::asset('res/js/bootstrap.min.js') }}"></script>
 </head>
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -25,8 +27,8 @@
 			</div>
 			<div id="navbar" class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">Users</a></li>
-					<li><a href="#about">Skils</a></li>
+					<li><a href="{{ URL::to('admin/user/') }}">Users</a></li>
+					<li><a href="{{ URL::to('admin/skill/') }}">Skills</a></li>
 				</ul>
 			</div><!--/.nav-collapse -->
 		</div>
@@ -36,8 +38,8 @@
 		@yield('content')
 	</div><!-- /.container -->
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<script src="res/js/bootstrap.min.js"></script>
+	
+	
 
 </body>
 </html>

@@ -10,6 +10,8 @@
 	<title>Students</title>
 	<link href="{{ URL::asset('res/css/bootstrap.css') }}" rel="stylesheet">
 	<link href="{{ URL::asset('res/css/bootstrap-theme.css') }}" rel="stylesheet">
+	<link href="{{ URL::asset('res/css/global.css') }}" rel="stylesheet">
+	<link href="{{ URL::asset('res/css/fonts.css') }}" rel="stylesheet">
 	<script type="text/javascript" src="{{ URL::asset('res/js/jquery.js') }}"></script>
 	<script src="{{ URL::asset('res/js/bootstrap.min.js') }}"></script>
 </head>
@@ -17,18 +19,16 @@
 	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 		<div class="container">
 			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#">Project name</a>
+				<a class="navbar-brand nino" href="#">პროექტის სახელი</a>
 			</div>
 			<div id="navbar" class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
-					<li><a href="{{ URL::to('admin/user/') }}">Users</a></li>
-					<li><a href="{{ URL::to('admin/skill/') }}">Skills</a></li>
+					<li><a href="{{ URL::to('admin/user/') }}" class="nino">
+						მომხმარებლები
+					</a></li>
+					<li><a href="{{ URL::to('admin/skill/') }}" class="nino">
+						სკილები
+					</a></li>
 				</ul>
 			</div><!--/.nav-collapse -->
 		</div>

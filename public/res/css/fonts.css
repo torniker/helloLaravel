@@ -1,0 +1,18 @@
+@font-face {
+    font-family: 'Nino Bold';
+    src: url('../fonts/bpg_nino_mtavruli_bold.eot');
+    src: url('../fonts/bpg_nino_mtavruli_bold.eot') format('embedded-opentype'),
+         url('../fonts/bpg_nino_mtavruli_bold.woff') format('woff'),
+         url('../fonts/bpg_nino_mtavruli_bold.ttf') format('truetype'),
+         url('../fonts/bpg_nino_mtavruli_bold.svg#BPGNinoMtavruliBold') format('svg');
+
+   }
+@font-face {
+    font-family: 'BPG';
+    src: url('../fonts/bpg_glaho.eot');
+    src: url('../fonts/bpg_glaho.eot') format('embedded-opentype'),
+         url('../fonts/bpg_glaho.woff') format('woff'),
+         url('../fonts/bpg_glaho.ttf') format('truetype'),
+         url('../fonts/bpg_glaho.svg#BPGGlaho') format('svg');
+
+   }

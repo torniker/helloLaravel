@@ -10,35 +10,33 @@
 	<title>Students</title>
 	<link href="{{ URL::asset('res/css/bootstrap.css') }}" rel="stylesheet">
 	<link href="{{ URL::asset('res/css/bootstrap-theme.css') }}" rel="stylesheet">
+	<link href="{{ URL::asset('res/css/global.css') }}" rel="stylesheet">
+	<link href="{{ URL::asset('res/css/fonts.css') }}" rel="stylesheet">
+	<link href="{{ URL::asset('res/pretty/skins/all.css') }}" rel="stylesheet">
+	<script src="{{ URL::asset('res/js/jquery.js') }}"></script>
+	<script src="{{ URL::asset('res/pretty/icheck.js') }}"></script>
+	<script src="{{ URL::asset('res/js/bootstrap.min.js') }}"></script>
 </head>
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 		<div class="container">
 			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#">Project name</a>
+				<a class="navbar-brand nino" href="#">პროექტის სახელი</a>
 			</div>
 			<div id="navbar" class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">Home</a></li>
-					<li><a href="#about">About</a></li>
-					<li><a href="#contact">Contact</a></li>
+					<li><a href="#" class="nino">მთავარი</a></li>
+					<li><a href="#about" class="nino">ჩვენს შესახებ</a></li>
+					<li><a href="#contact" class="nino">კონტაქტი</a></li>
+					<li><a href="login" class="nino">შესვლა</a></li>
 				</ul>
 			</div><!--/.nav-collapse -->
 		</div>
 	</nav>
 
-	<div class="container">
+	<div class="container content">
 		@yield('content')
 	</div><!-- /.container -->
-
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<script src="res/js/bootstrap.min.js"></script>
 
 </body>
 </html>

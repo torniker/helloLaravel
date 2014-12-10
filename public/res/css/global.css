@@ -1,0 +1,68 @@
+body{
+	padding-top: 100px;
+	font-family: Nino Bold;
+}
+.nino{
+	font-family: Nino Bold;
+}
+.navbar-nav > li > a,.navbar-brand{
+	padding: 30px 25px;
+}
+
+form{
+
+}
+input[type="text"],input[type="password"]{
+	width: 200px !important;
+}
+.form-horizontal .control-label{
+	text-align: left;
+}
+
+.hello{
+	margin-bottom: 30px;
+}
+.mon{
+	font-weight: bold;
+	text-transform: uppercase;
+	color: #E04836;
+}
+.before{
+	display: inline-block;
+	width: 140px;
+	margin-right: 30px;
+}
+.item{
+	margin-bottom: 15px;
+}
+.center{
+	width: 650px;
+	margin: 0 auto;
+	margin-top: 40px;
+}
+.logout{
+	color: #5696BC;
+}
+.radio label, .checkbox label{
+	padding-left: 0;
+}
+.icheckbox_square-red{
+	margin-top: -4px !important;
+}
+.add{
+	color: green !important;
+}
+ul li a{
+	display: block !important;
+	padding: 30px !important;
+}
+.loginform{
+	width: 400px;
+	margin: 0 auto;
+	margin-top: 40px;
+}
+.login_heading{
+	font-size: 22px;
+	margin-bottom: 40px;
+	color: #E04836;
+}

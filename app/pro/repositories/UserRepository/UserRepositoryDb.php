@@ -3,8 +3,6 @@
 use User;
 use Hash;
 class UserRepositoryDb implements UserRepositoryInterface {
-
-
 	public function all() {
 		return User::get();
 	}

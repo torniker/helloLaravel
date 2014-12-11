@@ -21,8 +21,6 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
         'lastname'   => 'required'
     ];
 
-	
-
 	public function phones()
 	{
 		return $this->hasMany('Phone');
@@ -30,7 +28,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 	public function skills()
 	{
-		return $this->belongsToMany('Skill');
+		return $this->belongsToMany('Skill')->withPivot('level');
 	}
 
 	public function getGender() {

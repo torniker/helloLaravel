@@ -1,28 +1,18 @@
 <?php
 
+use pro\gateways\LoginGateway;
+
 class LoginController extends BaseController {
 
-	public function dashBoard(){
-		if (Auth::check()){
-			$user=Auth::user();
-			return View::make('users.dashboard')
-			->with('user', $user);
-		}
-		else{
-			return Redirect::to('/');
-		}
+	public function __construct(LoginGateway $gateway) {
+		$this->gateway = $gateway;
 	}
 
 	public function showLogin()
 	{
-		if (Auth::check())
-		{
-    		return Redirect::to('dashboard');
+		if (Auth::check()){
+			return Redirect::to('dashboard');
 		}
-		/*if (Auth::viaRemember())
-		{
-    		var_dump(Auth::user());
-		}*/
 		return View::make('users.login');
 	}
 
@@ -62,5 +52,9 @@ class LoginController extends BaseController {
 	public function logOut(){
 		Auth::logout();
 		return Redirect::to('/');
+	}
+
+	public function dashBoard(){
+		return Redirect::to('admin/user');
 	}
 }

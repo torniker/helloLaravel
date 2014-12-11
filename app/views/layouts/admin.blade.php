@@ -29,6 +29,9 @@
 					<li><a href="{{ URL::to('admin/skill/') }}" class="nino">
 						სკილები
 					</a></li>
+					<li><a href="{{ URL::to('logout') }}" class="nino">
+						გამოსვლა
+					</a></li>
 				</ul>
 			</div><!--/.nav-collapse -->
 		</div>

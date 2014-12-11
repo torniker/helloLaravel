@@ -28,8 +28,3 @@ Route::get('editprofile', array('uses' => 'HomeController@editProfile'));
 Route::post('doedit', array('uses' => 'HomeController@doEdit'));
 
 Route::get('/', 'HomeController@index');
-
-Route::group(['prefix' => 'admin', 'before'=>'auth.basic'], function()
-{
-	Route::controller('user', 'UserController');
-});

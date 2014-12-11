@@ -27,21 +27,29 @@
 </div>
 
 <div class="form-group">
-<h4>skills</h4>
-	
-@foreach($skills as $skill)
-	{{$checked = false}}
+	<h4>skills</h4>
+	<?php
+		
+	?>
+	@foreach($skills as $skill)
+
+	{{$checked = false; $disabled='disabled'; $sklevel='';}}
 	@foreach($user->skills as $user_skill)
-		@if($skill->id==$user_skill->id)
-			<?php $checked = true ?> 
-		@endif
+	@if($skill->id==$user_skill->id)
+	<?php 
+		$checked = true; 
+		$disabled='';
+		$sklevel = $user_skill->pivot->level; 
+	 ?> 
+	@endif
 	@endforeach
 	<div class="col-md-4">
-	{{ Form::checkbox('skill[]',$skill->id,$checked,array('id' => $skill->id)) }}
-	{{ Form::label($skill->id,$skill->name , ['class'=>'control-label']) }}
-	{{ Form::input('text', 'level['.$skill->id.']', '', ['class'=>'form-control'] ) }}
+		{{ Form::checkbox('skill[]',$skill->id,$checked,array('id' => $skill->id)) }}
+		{{ Form::label($skill->id,$skill->name , ['class'=>'control-label']) }}
+		{{ Form::input('text', 'level['.$skill->id.']', $sklevel, 
+		['class'=>'form-control','id' => 'for_'.$skill->id, $disabled] ) }}
 	</div>
-@endforeach
+	@endforeach
 </div>
 
 
@@ -50,7 +58,15 @@
 {{ Form::close(); }}
 
 <script type="text/javascript">
-	
+	$('input[type="checkbox"]').change(function() {
+		var inpId = 'for_'+this.id;
+		if(this.checked) {
+			$("#"+inpId).prop('disabled', false);
+		}
+		else{
+			$("#"+inpId).prop('disabled', true);
+		}
+	});
 </script>
 
 

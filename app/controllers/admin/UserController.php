@@ -7,11 +7,15 @@ class UserController extends BaseController {
 	private $gateway;
 
 	public function __construct(UserGateway $gateway) {
+		$this->beforeFilter(function(){
+			if (!Auth::check()){
+				return Redirect::to('/');
+			}
+		});
 		$this->gateway = $gateway;
 	}
 
-	public function index()
-	{
+	public function index(){
 		$users = $this->gateway->all();
 		return View::make('admin.users.index')->with('users', $users);
 	}
@@ -29,8 +33,8 @@ class UserController extends BaseController {
 		$input = Input::all();
 		$this->gateway->create($input);
 		return Redirect::to('admin/user')
-			->with('message_type','success')
-			->with('message', 'User added successfully');
+		->with('message_type','success')
+		->with('message', 'User added successfully');
 	}
 
 	public function edit($id) {
@@ -44,25 +48,12 @@ class UserController extends BaseController {
 	}
 
 	public function update($id) {
+		$input=Input::all();
+		$this->gateway->update($id,$input);
 
-		print_r($_POST);
-		die();
-
-		$user = User::find($id);
-		if(is_null($user)) {
-			return Redirect::to('admin/user');
-		}
-
-		$input = Input::all();
-
-		$user->fill($input);
-		if($pass = Input::get('password')) {
-			$user->password = Hash::make($pass);
-		}
-		$user->save();
 		return Redirect::to('admin/user')
-			->with('message_type','success')
-			->with('message', 'User updated successfully');
+		->with('message_type','success')
+		->with('message', 'User updated successfully');
 	}
 
 	public function destroy($id) {
@@ -73,8 +64,8 @@ class UserController extends BaseController {
 
 		$user->delete();
 		return Redirect::to('admin/user')
-			->with('message_type','success')
-			->with('message', 'User deleted successfully');
+		->with('message_type','success')
+		->with('message', 'User deleted successfully');
 	}
 
 }

@@ -16,3 +16,10 @@
          url('../fonts/bpg_glaho.svg#BPGGlaho') format('svg');
 
    }
+@font-face {
+    font-family: 'Dosis';
+    src: url('../fonts/Dosis-Medium.eot');
+    src: url('../fonts/Dosis-Medium.eot') format('embedded-opentype'),
+         url('../fonts/Dosis-Medium.woff') format('woff'),
+         url('../fonts/Dosis-Medium.ttf') format('truetype'),
+   }

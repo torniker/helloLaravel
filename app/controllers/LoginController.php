@@ -33,7 +33,8 @@ class LoginController extends BaseController {
 		} else {
 			$userdata = array(
 				'username' 	=> Input::get('username'),
-				'password' 	=> Input::get('password')
+				'password' 	=> Input::get('password'),
+				'type' => 4
 				);
 			$check = Input::get('remember');
 			if (isset($check)) {

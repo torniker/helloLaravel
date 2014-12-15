@@ -66,3 +66,17 @@ ul li a{
 	margin-bottom: 40px;
 	color: #E04836;
 }
+select#gender,select#typeselector{
+	width: 200px;
+}
+.wrapper{
+	width: 400px;
+	margin: 0 auto;
+	margin-top: 40px;
+}
+.myhidden{
+	display: none;
+}
+.red{
+	color: red;
+}

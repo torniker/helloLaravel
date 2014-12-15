@@ -10,7 +10,7 @@ class UserTableSeeder extends Seeder {
 		$faker = Faker::create();
 		User::truncate();
 
-		foreach(range(1, 10) as $index)
+		foreach(range(1, 30) as $index)
 		{
 			$name = $faker->userName;
 			$type = $faker->numberBetween(1,4);

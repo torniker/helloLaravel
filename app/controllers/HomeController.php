@@ -3,7 +3,7 @@
 class HomeController extends BaseController {
 	public function index()
 	{
-		$users = User::with('skills')->get();
+		$users = User::where('type', '=', '1')->with('skills')->with('trainings')->get();
 		return View::make('home.index')->with('users', $users);
 	}
 	public function editProfile(){

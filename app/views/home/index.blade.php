@@ -3,18 +3,24 @@
 
 <table class="table table-bordered table-hover table-striped">
 	<thead>
-		<th>Firstname/Lastname</th>
-		<th>Gender</th>
-		<th>Skills</th>
+		<th>სახელი/გვარი</th>
+		<th>სქესი</th>
+		<th>სკილები</th>
+		<th>ტრენინგები</th>
 	</thead>
 	<tbody>
 	@foreach($users as $user)
 	<tr>
 		<td>{{ $user->firstname }} {{ $user->lastname }}</td>
 		<td>{{ $user->getGender() }}</td>
-		<td>
+		<td style="width:400px">
 			@foreach($user->skills as $skill)
 				<span class="label label-default">{{ $skill->name }}</span>
+			@endforeach
+		</td>
+		<td style="width:400px">
+			@foreach($user->trainings as $training)
+				<span class="label label-default">{{ $training->name }}</span>
 			@endforeach
 		</td>
 	</tr>

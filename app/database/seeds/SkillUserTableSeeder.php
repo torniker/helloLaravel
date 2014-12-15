@@ -12,13 +12,15 @@ class SkillUserTableSeeder extends Seeder {
 		$skill_num = Skill::all()->count();
 		DB::table('skill_user')->truncate();
 		foreach($users as $user) {
-			$num = $faker->numberBetween(0, $skill_num);
-			$skills = Skill::orderByRaw('RAND()')->limit($num)->get();
-			$sk = [];
-			foreach($skills as $skill) {
-				$sk[$skill->id] = ['level' => $faker->numberBetween(1, 100)];
+			if ($user->type==1) {
+				$num = $faker->numberBetween(0, $skill_num);
+				$skills = Skill::orderByRaw('RAND()')->limit($num)->get();
+				$sk = [];
+				foreach($skills as $skill) {
+					$sk[$skill->id] = ['level' => $faker->numberBetween(1, 100)];
+				}
+				$user->skills()->attach($sk);
 			}
-			$user->skills()->attach($sk);
 		}
 	}
 

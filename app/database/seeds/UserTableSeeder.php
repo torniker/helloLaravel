@@ -13,13 +13,25 @@ class UserTableSeeder extends Seeder {
 		foreach(range(1, 10) as $index)
 		{
 			$name = $faker->userName;
+			$type = $faker->numberBetween(1,4);
+			$company_name = -1;
+			$id_code = -1;
+
+			if ($type==3) {
+				$company_name = $faker->company;
+				$id_code = $faker->uuid;
+			}
+
 			User::create([
 				'username'=>$name,
 				'password' => Hash::make($name),
 				'firstname'=>$faker->firstName(),
 				'lastname'=>$faker->lastName(),
 				'email'=>$faker->email(),
-				'gender'=>$faker->numberBetween(0,1)
+				'gender'=>$faker->numberBetween(0,1),
+				'type'=>$type,
+				'company_name'=>$company_name,
+				'identification_code'=>$id_code
 			]);
 		}
 	}

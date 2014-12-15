@@ -12,13 +12,15 @@ class TrainingUserTableSeeder extends Seeder {
 		$training_num = Training::all()->count();
 		DB::table('training_user')->truncate();
 		foreach($users as $user) {
-			$num = $faker->numberBetween(0, $training_num);
-			$trainings = Training::orderByRaw('RAND()')->limit($num)->get();
-			$tr = [];
-			foreach($trainings as $training) {
-				$tr[] = $training->id;
+			if ($user->type==1) {
+				$num = $faker->numberBetween(0, $training_num);
+				$trainings = Training::orderByRaw('RAND()')->limit($num)->get();
+				$tr = [];
+				foreach($trainings as $training) {
+					$tr[] = $training->id;
+				}
+				$user->trainings()->attach($tr);
 			}
-			$user->trainings()->attach($tr);
 		}
 	}
 

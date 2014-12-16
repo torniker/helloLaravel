@@ -1,21 +1,20 @@
 @extends('layouts.admin')
 @section('content')
-@if($errors->any())
-<ul>
-	@foreach($errors->all() as $error)
-		<li>{{ $error }}</li>
-	@endforeach
-</ul>
-@endif
 <div class="wrapper"> 
 <div class="errors" style="margin-bottom:20px">
-	<div>{{ $errors->first('firstname') }}</div>
-	<div>{{ $errors->first('lastname') }}</div>
-	<div>{{ $errors->first('email') }}</div>
-	<div>{{ $errors->first('password') }}</div>
-	<div>{{ Session::get('message') }}</div>
+	@if($errors->any())
+		@foreach($errors->all() as $error)
+			<div class="erroritem">{{ $error }}</div>
+		@endforeach
+	@endif
 </div>
 {{ Form::open(array('route' => ['admin.user.store'], 'method' => 'POST')) }}
+
+<div class="form-group">
+	{{ Form::label('username', 'ნიკი', ['class'=>'control-label']); }}
+	{{ Form::input('text', 'username', Input::old("username"), ['class'=>'form-control', 'id'=>'username']) }}
+</div>
+
 <div class="form-group">
 	{{ Form::label('firstname', 'სახელი', ['class'=>'control-label']); }}
 	{{ Form::input('text', 'firstname', Input::old("firstname"), ['class'=>'form-control', 'id'=>'firstname']) }}
@@ -61,6 +60,12 @@
 {{ Form::close(); }}
 
 <script>
+	$( document ).ready(function() {
+    	var val = $( "#typeselector" ).val();
+    	if (val==3) {
+    		$(".myhidden").show();
+    	};
+	});
 	$('#typeselector').on('change', function() {
 		if(this.value==3){
 			$(".myhidden").show("slow");

@@ -13,12 +13,14 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 	protected $table = 'users';
 	protected $hidden = array('password', 'remember_token');
-	protected $fillable = ['firstname', 'lastname', 'email','gender','company_name','identification_code'];
+	protected $fillable = ['username','firstname', 'lastname', 'email','gender','company_name','identification_code'];
 	protected $throwValidationExceptions = true;
 	protected $rules = [
         'username'   => 'required',
         'firstname'  => 'required',
-        'lastname'   => 'required'
+        'lastname'   => 'required',
+        'email'   => 'required',
+        'password'   => 'required'
     ];
 
 	public function phones()
@@ -43,5 +45,8 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		return 'female';
 	}
 
+	public function addRule($rule){
+		$this->rules = array_merge($this->rules,$rule);
+	}
 
 }

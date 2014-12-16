@@ -4,6 +4,7 @@ use User;
 use Hash;
 use Skill;
 use DB;
+use URL;
 
 class UserRepositoryDb implements UserRepositoryInterface {
 	public function all() {
@@ -15,10 +16,21 @@ class UserRepositoryDb implements UserRepositoryInterface {
 	}
 
 	public function create($input) {
+		//file_put_contents('./text.txt', $input['type']);
 	    $user = new User;
+
+	    if ($input['type']==3) {
+	    	$rule=array(
+	    		'company_name'=>'required',
+	    		'identification_code'=>'required'
+	    		);
+	    	$user->addRule($rule);
+	    }
+
 		$user->fill($input);
-		$user->password = Hash::make($input['password']);
-		$user->username = $input['email'];
+		if (!empty($input['password'])) {
+			$user->password = Hash::make($input['password']);
+		}
 		$user = $user->save();
 		return $user;
 	}

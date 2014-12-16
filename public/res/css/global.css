@@ -80,3 +80,10 @@ select#gender,select#typeselector{
 .red{
 	color: red;
 }
+.small{
+	font-size: 12px;
+}
+.erroritem{
+	color:red;
+	margin-bottom: 10px;
+}

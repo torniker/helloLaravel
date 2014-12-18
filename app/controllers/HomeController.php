@@ -1,5 +1,4 @@
 <?php
-
 class HomeController extends BaseController {
 	public function index()
 	{
@@ -10,7 +9,6 @@ class HomeController extends BaseController {
 		$user=Auth::user();
 		return View::make('users.edit')->with('user', $user); 
 	}
-
 	public function doEdit(){
 		$rules = array(
 			'username'    => 'required|min:3', 
@@ -34,5 +32,4 @@ class HomeController extends BaseController {
 			->withInput(Input::except('password'));
 		}
 	}
-
 }

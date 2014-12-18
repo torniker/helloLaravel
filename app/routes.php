@@ -26,5 +26,3 @@ Route::get('dashboard', array('uses' => 'LoginController@dashBoard'));
 Route::get('editprofile', array('uses' => 'HomeController@editProfile'));
 
 Route::post('doedit', array('uses' => 'HomeController@doEdit'));
-
-Route::get('/', 'HomeController@index');

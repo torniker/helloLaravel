@@ -9,8 +9,6 @@ Route::group(['prefix' => 'admin'], function()
 });
 
 
-
-
 // როუტი ლოგინის ფორმისთვის
 Route::get('login', array('uses' => 'LoginController@showLogin'));
 
@@ -24,5 +22,10 @@ Route::get('logout', array('uses' => 'LoginController@logOut'));
 Route::get('dashboard', array('uses' => 'LoginController@dashBoard'));
 
 Route::get('editprofile', array('uses' => 'HomeController@editProfile'));
+Route::get('editprofile/{user}', array('uses' => 'HomeController@editProfile'));
 
 Route::post('doedit', array('uses' => 'HomeController@doEdit'));
+
+Route::get('register', array('uses' => 'ClientController@register'));
+Route::post('doregister', array('uses' => 'ClientController@doRegister'));
+Route::get('github', array('uses' => 'LoginController@github'));

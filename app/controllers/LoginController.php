@@ -34,7 +34,6 @@ class LoginController extends BaseController {
 			$userdata = array(
 				'username' 	=> Input::get('username'),
 				'password' 	=> Input::get('password'),
-				'type' => 4
 				);
 			$check = Input::get('remember');
 			if (isset($check)) {
@@ -56,6 +55,19 @@ class LoginController extends BaseController {
 	}
 
 	public function dashBoard(){
-		return Redirect::to('admin/user');
+		$user=Auth::user();
+		$type=$user->type;
+		if ($type==1) {
+			return View::make('users.dashboard')->with('user',$user);
+		}elseif($type==2||$type==3){
+			return Redirect::to('/');
+		}else{
+			return Redirect::to('admin/user');
+		}
+	}
+
+	public function github(){
+		session_start();
+		return Github::gitLogin();
 	}
 }

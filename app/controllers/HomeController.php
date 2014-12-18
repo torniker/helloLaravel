@@ -5,14 +5,13 @@ class HomeController extends BaseController {
 		$users = User::where('type', '=', '1')->with('skills')->with('trainings')->get();
 		return View::make('home.index')->with('users', $users);
 	}
-	public function editProfile(){
+	public function editProfile($gituser = NULL){
 		$user=Auth::user();
-		return View::make('users.edit')->with('user', $user); 
+		return View::make('users.edit')->with('user', $user)->with('gituser',$gituser); 
 	}
 	public function doEdit(){
 		$rules = array(
 			'username'    => 'required|min:3', 
-			'password' => 'required|min:3',
 			'firstname' => 'required|min:3|alpha',
 			'lastname' => 'required|min:3|alpha'
 			);
@@ -23,7 +22,9 @@ class HomeController extends BaseController {
 			$user = User::find($id);
 			$user->username=$data['username'];
 			$user->firstname=$data['firstname'];
-			$user->password=Hash::make($data['password']);
+			if (!empty($data['password'])) {
+				$user->password=Hash::make($data['password']);
+			}
 			$user->save();
 			return Redirect::to('dashboard');
 		}else{

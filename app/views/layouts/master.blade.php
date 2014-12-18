@@ -25,10 +25,17 @@
 			</div>
 			<div id="navbar" class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
-					<li><a href="#" class="nino">მთავარი</a></li>
+					<li><a href="<?=URL::to('/')?>" class="nino">მთავარი</a></li>
 					<li><a href="#about" class="nino">ჩვენს შესახებ</a></li>
 					<li><a href="#contact" class="nino">კონტაქტი</a></li>
+					@if(!Auth::check())
+					<li><a href="register" class="nino">რეგისტრაცია</a></li>
 					<li><a href="login" class="nino">შესვლა</a></li>
+					@endif
+					@if(Auth::check())
+					<li><a href="dashboard" class="nino">პროფილი</a></li>
+					<li><a href="logout" class="nino">გამოსვლა</a></li>
+					@endif
 				</ul>
 			</div><!--/.nav-collapse -->
 		</div>

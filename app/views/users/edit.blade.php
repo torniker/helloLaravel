@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
 <div class="center">
-	<form class="form-horizontal" role="form" method="post" action="doedit">
+	<form class="form-horizontal" role="form" method="post" action="{{URL::to('doedit')}}">
 		<div class="errors" style="margin-bottom:20px">
 			<div>{{ $errors->first('username') }}</div>
 			<div>{{ $errors->first('password') }}</div>
@@ -11,8 +11,13 @@
 		<div class="form-group">
 			<label for="inputEmail3" class="col-sm-3 control-label">ნიკი</label>
 			<div class="col-sm-9">
+				@if(empty($gituser))
 				<input type="text" class="form-control" id="username" 
 				name="username" value="{{$user->username}}">
+				@else
+				<input type="text" class="form-control orange" id="username" 
+				name="username" value="{{$gituser}}">
+				@endif
 			</div>
 		</div>
 		<div class="form-group">

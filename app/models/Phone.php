@@ -1,8 +1,7 @@
 <?php
 
 class Phone extends \Eloquent {
-	protected $fillable = [];
-
+	protected $fillable = ['phone,user_id'];
 
 	public function user()
     {

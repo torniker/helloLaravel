@@ -18,35 +18,8 @@ class LoginController extends BaseController {
 
 	public function doLogin()
 	{
-		$remember = false;
-
-		$rules = array(
-			'username'    => 'required', 
-			'password' => 'required|min:3'
-			);
-		$validator = Validator::make(Input::all(), $rules);
-
-		if ($validator->fails()) {
-			return Redirect::to('login')
-			->withErrors($validator)
-			->withInput(Input::except('password'));
-		} else {
-			$userdata = array(
-				'username' 	=> Input::get('username'),
-				'password' 	=> Input::get('password'),
-				);
-			$check = Input::get('remember');
-			if (isset($check)) {
-				$remember=true;
-			}
-			if (Auth::attempt($userdata,$remember)) {
-				return Redirect::to('dashboard');
-			} else {	 	
-				return Redirect::to('login')
-				->withInput(Input::except('password'))
-				->with('message', 'მონაცემები არასწორია');
-			}
-		}
+		$input = Input::all();
+		return $this->gateway->doLogin($input);
 	}
 
 	public function logOut(){

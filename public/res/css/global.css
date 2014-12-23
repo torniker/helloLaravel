@@ -134,3 +134,10 @@ select#gender,select#typeselector{
 .orange{
 	border:2px solid orange;
 }
+.alert{
+	color:green;
+}
+.leftfive{
+	margin-left: 5px;
+	cursor: pointer;
+}

@@ -26,6 +26,7 @@ Route::get('editprofile/{user}', array('uses' => 'HomeController@editProfile'));
 
 Route::post('doedit', array('uses' => 'HomeController@doEdit'));
 
-Route::get('register', array('uses' => 'ClientController@register'));
-Route::post('doregister', array('uses' => 'ClientController@doRegister'));
+Route::get('register', array('uses' => 'UserFrontendController@register'));
+Route::post('doregister', array('uses' => 'UserFrontendController@doRegister'));
+
 Route::get('github', array('uses' => 'LoginController@github'));

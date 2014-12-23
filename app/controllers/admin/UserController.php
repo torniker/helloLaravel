@@ -26,7 +26,13 @@ class UserController extends BaseController {
 	}
 
 	public function create() {
-		return View::make('admin.users.create');
+		$trainings = Training::get();
+		return View::make('admin.users.create')
+		->with(
+			[
+			'trainings'=>$trainings
+			]
+		);
 	}
 
 	public function store() {

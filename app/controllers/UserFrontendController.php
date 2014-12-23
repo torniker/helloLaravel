@@ -1,11 +1,11 @@
 <?php
-use pro\gateways\ClientGateway;
+use pro\gateways\UserFrontendGateway;
 
-class ClientController extends BaseController {
+class UserFrontendController extends BaseController {
 
 	private $gateway;
 
-	public function __construct(ClientGateway $gateway) {
+	public function __construct(UserFrontendGateway $gateway) {
 		$this->beforeFilter(function(){
 			if (Auth::check()){
 				return Redirect::to('/');
@@ -19,6 +19,6 @@ class ClientController extends BaseController {
 	}
 	public function doRegister(){
 		$input=Input::all();
-		$this->gateway->doRegister($input);
+		return $this->gateway->doRegister($input);
 	}
 }

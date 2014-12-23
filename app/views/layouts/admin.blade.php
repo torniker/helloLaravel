@@ -12,7 +12,9 @@
 	<link href="{{ URL::asset('res/css/bootstrap-theme.css') }}" rel="stylesheet">
 	<link href="{{ URL::asset('res/css/global.css') }}" rel="stylesheet">
 	<link href="{{ URL::asset('res/css/fonts.css') }}" rel="stylesheet">
-	<script type="text/javascript" src="{{ URL::asset('res/js/jquery.js') }}"></script>
+	<link href="{{ URL::asset('res/pretty/skins/all.css') }}" rel="stylesheet">
+	<script src="{{ URL::asset('res/js/jquery.js') }}"></script>
+	<script src="{{ URL::asset('res/pretty/icheck.js') }}"></script>
 	<script src="{{ URL::asset('res/js/bootstrap.min.js') }}"></script>
 </head>
 <body>

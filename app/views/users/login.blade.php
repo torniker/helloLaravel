@@ -1,6 +1,8 @@
 @extends('layouts.master')
 @section('content')
-
+<?php
+	$oldUser = Session::get('oldUser');
+?>
 <div class="loginform">
 	<div class="login_heading">ავტორიზაციის ფორმა</div>
 	<form class="form-horizontal" role="form" method="post" action="login">
@@ -13,7 +15,7 @@
 			<label for="inputEmail3" class="col-sm-3 control-label">ნიკი</label>
 			<div class="col-sm-9">
 				<input type="text" class="form-control" id="username" 
-				name="username" placeholder="ნიკი" value="{{Input::old('username')}}">
+				name="username" placeholder="ნიკი" value="{{$oldUser}}">
 			</div>
 		</div>
 		<div class="form-group">

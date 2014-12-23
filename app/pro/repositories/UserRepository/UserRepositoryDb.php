@@ -18,6 +18,7 @@ class UserRepositoryDb implements UserRepositoryInterface {
 	public function create($input) {
 		//file_put_contents('./text.txt', $input['type']);
 	    $user = new User;
+	    $trainings = $input['trainings'];
 
 	    if ($input['type']==3) {
 	    	$rule=array(
@@ -31,7 +32,9 @@ class UserRepositoryDb implements UserRepositoryInterface {
 		if (!empty($input['password'])) {
 			$user->password = Hash::make($input['password']);
 		}
-		$user = $user->save();
+		$user->save();
+		$user=$user->find($user->id);
+		$user->trainings()->attach($trainings);
 		return $user;
 	}
 

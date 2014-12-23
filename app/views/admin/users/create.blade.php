@@ -34,9 +34,15 @@
 	{{ Form::label('password', 'პაროლი', ['class'=>'control-label']); }}
 	{{ Form::input('password', 'password', '', ['class'=>'form-control', 'id'=>'password']) }}
 </div>
-<div class="form-group">
-	{{ Form::label('gender', 'სქესი', ['class'=>'control-label']); }}
-	{{ Form::select('gender', [0=>'ქალი', 1=>'კაცი'], Input::old("gender"), ['class'=>'form-control', 'id'=>'gender']); }}
+
+<div class="form-group" style="margin: 40px 0">
+	<h4>Trainings</h4>
+	@foreach($trainings as $training)
+	<div style="margin-top:5px">
+		{{ Form::checkbox('trainings[]',$training->id,false,array('id' => $training->id)) }}
+		{{ Form::label($training->id,$training->name, ['class'=>'control-label leftfive']) }}
+	</div>
+	@endforeach
 </div>
 <div class="form-group">
 	{{ Form::label('type', 'მომხმარებლის ტიპი', ['class'=>'control-label']); }}
@@ -65,6 +71,12 @@
     	if (val==3) {
     		$(".myhidden").show();
     	};
+
+    	$('input').iCheck({
+				checkboxClass: 'icheckbox_square-red',
+    			radioClass: 'iradio_square-red',
+    			increaseArea: '20%' // optional
+		});
 	});
 	$('#typeselector').on('change', function() {
 		if(this.value==3){

@@ -1,4 +1,4 @@
-<?php namespace pro\repositories\ClientRepository;
+<?php namespace pro\repositories;
 
 use Validator;
 use Auth;
@@ -7,16 +7,8 @@ use User;
 use Hash;
 use Phone;
 
-class ClientRepository {
-	public function doRegister($input){
-		$user = new User;
-	    if ($input['type']==3) {
-	    	$rule=array(
-	    		'company_name'=>'required',
-	    		'identification_code'=>'required'
-	    		);
-	    	$user->addRule($rule);
-	    }
+class UserFrontendRepository {
+	public function doRegister($input, $user){
 		$user->fill($input);
 		if (!empty($input['password'])) {
 			$user->password = Hash::make($input['password']);
@@ -31,6 +23,6 @@ class ClientRepository {
 				$user->phones()->save($newPhone);
 			}
 		}
-		return $user;
+		return Redirect::to("/")->with('message','თქვენ წარმატებით დარეგისტრირდით, ახლა შეგიძლიათ შეხვიდეთ სისტემაში');
 	}
 }

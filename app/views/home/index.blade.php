@@ -1,5 +1,10 @@
 @extends('layouts.master')
 @section('content')
+@if(Session::has('message'))
+    <div class="alert alert-{{ Session::get('message_type') }}">
+        {{ Session::get('message') }}
+    </div>
+@endif
 
 <table class="table table-bordered table-hover table-striped">
 	<thead>

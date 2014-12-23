@@ -11,6 +11,10 @@ class LoginGateway {
 	}
 
 	public function doLogin($input){
-		return $this->loginRepo->doLogin($input);
+		$rules = array(
+			'username'    => 'required', 
+			'password' => 'required|min:3'
+			);
+		return $this->loginRepo->doLogin($input,$rules);
 	}
 }

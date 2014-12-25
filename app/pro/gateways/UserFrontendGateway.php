@@ -13,13 +13,17 @@ class UserFrontendGateway {
 
 	public function doRegister($input) {
 		$user = new User;
-	    if ($input['type']==3) {
-	    	$rule=array(
-	    		'company_name'=>'required',
-	    		'identification_code'=>'required'
-	    		);
-	    	$user->addRule($rule);
-	    }
+		if ($input['type']==3) {
+			$rule=array(
+				'company_name'=>'required',
+				'identification_code'=>'required'
+				);
+			$user->addRule($rule);
+		}
 		return $this->clientRepo->doRegister($input,$user);
+	}
+
+	public function doEdit($input){
+		return $this->clientRepo->doEdit($input);
 	}
 }

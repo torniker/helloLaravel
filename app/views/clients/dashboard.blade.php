@@ -33,18 +33,8 @@
 					{{$user->email}}
 				</span>
 			</div>
-			<div class="item">
-				<span class="before">სქესი:</span>
-				<span class="mon">
-					{{$user->gender}}
-				</span>
-			</div>
-			<a class="mybtn" href="github">Github აუტენტიფიკაცია</a>
-			<?php 
-				session_start();
-				//session_destroy();
-				//var_dump($_SESSION); 
-			?>
+			
+			
 		</div>
 	</div>
 @stop

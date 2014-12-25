@@ -6,11 +6,6 @@ class UserFrontendController extends BaseController {
 	private $gateway;
 
 	public function __construct(UserFrontendGateway $gateway) {
-		$this->beforeFilter(function(){
-			if (Auth::check()){
-				return Redirect::to('/');
-			}
-		});
 		$this->gateway = $gateway;
 	}
 
@@ -20,5 +15,24 @@ class UserFrontendController extends BaseController {
 	public function doRegister(){
 		$input=Input::all();
 		return $this->gateway->doRegister($input);
+	}
+
+
+
+	
+	public function dashBoard(){
+		 if($this->checkClient()){
+		 	return View::make('clients.dashboard'); 
+		}
+	}
+
+	private function checkClient(){
+		if (Auth::user()->type==2 || Auth::user()->type==3){
+			return true;
+		}
+	}
+
+	public function doEdit(){
+		return $this->gateway->doEdit(Input::all());
 	}
 }

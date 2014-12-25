@@ -141,3 +141,10 @@ select#gender,select#typeselector{
 	margin-left: 5px;
 	cursor: pointer;
 }
+.myphone{
+	margin-left: 0;
+}
+.myphone ~ .myphone{
+	margin-left: 169px;
+	margin-top: 10px;
+}

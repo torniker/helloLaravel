@@ -24,9 +24,11 @@ Route::get('dashboard', array('uses' => 'LoginController@dashBoard'));
 Route::get('editprofile', array('uses' => 'HomeController@editProfile'));
 Route::get('editprofile/{user}', array('uses' => 'HomeController@editProfile'));
 
-Route::post('doedit', array('uses' => 'HomeController@doEdit'));
+Route::post('doedit', array('uses' => 'UserFrontendController@doEdit'));
 
 Route::get('register', array('uses' => 'UserFrontendController@register'));
 Route::post('doregister', array('uses' => 'UserFrontendController@doRegister'));
 
 Route::get('github', array('uses' => 'LoginController@github'));
+
+Route::get('clientprofile', array('uses' => 'ClientController@dashboard'));

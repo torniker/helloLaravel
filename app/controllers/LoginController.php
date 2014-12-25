@@ -29,11 +29,12 @@ class LoginController extends BaseController {
 
 	public function dashBoard(){
 		$user=Auth::user();
+		$user=User::with('phones')->find($user->id);
 		$type=$user->type;
 		if ($type==1) {
 			return View::make('users.dashboard')->with('user',$user);
 		}elseif($type==2||$type==3){
-			return Redirect::to('/');
+			return View::make('clients.dashboard')->with('user',$user);
 		}else{
 			return Redirect::to('admin/user');
 		}

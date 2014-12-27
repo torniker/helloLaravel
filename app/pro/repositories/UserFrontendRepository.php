@@ -6,6 +6,7 @@ use Redirect;
 use User;
 use Hash;
 use Phone;
+use DB;
 
 class UserFrontendRepository {
 	public function doRegister($input, $user){
@@ -35,24 +36,52 @@ class UserFrontendRepository {
 			$user->password=Hash::make($input['password']);
 		}
 		$user->save();
-
 		$hisphones = $input['phone'];
+		$this->update_phones($hisphones,$user,$id);
+		return Redirect::to('dashboard');
+	}
+
+
+
+	private function update_phones($hisphones,$user,$userid){
 		foreach ($hisphones as $id => $phone) {
-			$result = \Phone::find($id);
-			if (!empty($result)) {
-				$res_phone=$result->phone;
-				if ($phone!=$res_phone) {
-					$result->phone=$phone;
-					$result->save();
+			if (!empty($phone)) {
+				$result = \Phone::find($id);
+				if (!empty($result)) {
+					$res_phone=$result->phone;
+					if ($phone!=$res_phone) {
+						$result->phone=$phone;
+						$result->save();
+					}
+				}else{
+					$newPhone = new Phone;
+					$newPhone->phone=$phone;
+					$newPhone->user_id=$user->id;
+					$user->phones()->save($newPhone);
 				}
-			}else{
-				$newPhone = new Phone;
-				$newPhone->phone=$phone;
-				$newPhone->user_id=$user->id;
-				$user->phones()->save($newPhone);
 			}
 		}
 
-		return Redirect::to('dashboard');
+		$allPhones=Phone::get();
+		foreach ($allPhones as $basephone) {
+			if (!in_array($basephone->phone, $hisphones)) {
+				$result = DB::table('phones')
+				->where('user_id', $userid)
+				->where('phone', $basephone->phone)
+				->get();
+				if (!empty($result)) {
+					DB::table('phones')
+					->where('user_id', '=', $userid)
+					->where('phone', '=', $basephone->phone)
+					->delete();
+				}
+			}
+		}
+	}
+
+	private function pr($data){
+		echo "<pre>";
+		var_dump($data);
+		echo "</pre>";
 	}
 }

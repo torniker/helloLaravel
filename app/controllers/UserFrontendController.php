@@ -33,6 +33,7 @@ class UserFrontendController extends BaseController {
 	}
 
 	public function doEdit(){
-		return $this->gateway->doEdit(Input::all());
+		$input=Input::all();
+		return $this->gateway->doEdit($input);
 	}
 }

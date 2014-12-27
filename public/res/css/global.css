@@ -13,7 +13,7 @@ form{
 
 }
 input[type="text"],input[type="password"]{
-	width: 200px !important;
+	width: 200px;
 }
 .form-horizontal .control-label{
 	text-align: left;
@@ -147,4 +147,39 @@ select#gender,select#typeselector{
 .myphone ~ .myphone{
 	margin-left: 169px;
 	margin-top: 10px;
+}
+.filtration{
+	margin-bottom: 20px;
+	margin-top: 20px;
+}
+.filtration a{
+	color: #E04836;
+}
+#filterskills{
+	cursor: pointer;
+}
+.skills_wrapper{
+	margin-top: 30px;
+	border: 2px solid grey;
+	padding: 20px;
+	padding-bottom: 0;
+	display: none;
+}
+.filterlevel{
+	width: 90px !important;
+	font-size:12px;
+	visibility: hidden;
+	margin-top: 5px;
+}
+.clear{
+	clear: both;
+}
+.nopadding{
+	padding: 0;
+}
+.icheckbox_square-red, .iradio_square-red{
+	margin-right: 3px !important;
+}
+.columnwrap{
+	margin-bottom: 25px;
 }

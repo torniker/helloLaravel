@@ -71,12 +71,6 @@
 		</form>
 	</div>
 
-	<?php
-		foreach ($user->phones as $phone) {
-			echo $phone['phone']."<br>";
-		}
-	?>
-
 	<script>
 		var counter = 1000000;
 		$( document ).ready(function() {

@@ -7,17 +7,32 @@ class HomeController extends BaseController {
 			$skills = $input['skill'];
 			$levels = $input['level'];
 			$wanted_users = array();
-			// foreach ($skills as $skill) {
-			// 	$result = DB::table('skill_user')
-			// 		  ->where('skill_id', $skill)
-			// 		  ->where('level','>',$levels[$skill])
-			// 		  ->get();
-			// 	foreach ($result as $user) {
-			// 		if (!in_array($user->user_id,$wanted_users)) {
-			// 			$wanted_users[]=$user->user_id;
-			// 		}
-			// 	}
-			// }
+			
+			foreach ($skills as $skill) {
+				$requirements[$skill]=$levels[$skill];
+			}
+			$users = User::query();
+
+			foreach($requirements as $id => $value){
+				$users->whereHas('skills', function($q) use ($id, $value){
+					$q->where('skill_id', $id);
+					$q->where('level', '>', $value);
+				});
+			}
+
+			$users = $users->get();
+
+			foreach ($users as $user) {
+				$wanted_users[]=$user->id;
+			}
+			if (!empty($wanted_users)) {
+				$data = User::whereIn('id', $wanted_users)->get();
+				$skills = Skill::get();
+				return View::make('home.index')
+				->with('users', $data)
+				->with('skills', $skills);
+			}
+			
 		}else{
 			$users = User::where('type', '=', '1')->with('skills')->with('trainings')->get();
 			$skills = Skill::get();

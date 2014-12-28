@@ -1,6 +1,7 @@
 <?php
 
 Route::get('/', 'HomeController@index');
+Route::post('/', 'HomeController@index');
 
 Route::group(['prefix' => 'admin'], function()
 {

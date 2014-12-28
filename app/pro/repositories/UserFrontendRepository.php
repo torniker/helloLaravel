@@ -78,10 +78,4 @@ class UserFrontendRepository {
 			}
 		}
 	}
-
-	private function pr($data){
-		echo "<pre>";
-		var_dump($data);
-		echo "</pre>";
-	}
 }

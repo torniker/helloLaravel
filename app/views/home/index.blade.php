@@ -9,6 +9,7 @@
 <div class="filtration">
 	<a id="filterskills">ფილტრაცია სკილებით</a>
 	<div class="skills_wrapper">
+	<form method="POST" action="/">
 		@foreach($skills as $skill)
 		<div class="col-md-2 nopadding columnwrap">
 			{{ Form::checkbox('skill[]',$skill->id,false,array('id' => $skill->id)) }}
@@ -18,6 +19,8 @@
 		</div>
 		@endforeach
 		<div class="clear"></div>
+		{{ Form::submit('ფილტრაცია', ['class'=>'btn btn-primary'])}}
+	</form>
 	</div>
 </div>
 

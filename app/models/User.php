@@ -49,4 +49,10 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		$this->rules = array_merge($this->rules,$rule);
 	}
 
+	public static function pr($data){
+		echo "<pre>";
+		var_dump($data);
+		echo "</pre>";
+	}
+
 }

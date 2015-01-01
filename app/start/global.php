@@ -53,11 +53,16 @@ App::error(function(Exception $exception, $code)
 
 App::error(function(Watson\Validating\ValidationException $e)
 {
-	$errors = $e->getErrors();
-
-    return Redirect::back()
-        ->withErrors($errors)
-        ->withInput();
+	$exceptions = $e->getErrors()->toArray();
+	
+	$errors = array();
+	foreach ($exceptions as $key => $exc) {
+		foreach ($exc as $key => $error) {
+			$errors[] = $error;
+		}
+	}
+	Notification::error($errors);
+    return Redirect::back()->withInput();
 });
 
 /*

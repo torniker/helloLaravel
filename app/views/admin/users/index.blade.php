@@ -1,10 +1,5 @@
 @extends('layouts.admin')
 @section('content')
-@if(Session::has('message'))
-    <div class="alert alert-{{ Session::get('message_type') }}">
-        {{ Session::get('message') }}
-    </div>
-@endif
 <p class="text-right">
 	<a href="{{ URL::to('admin/user/create') }}" class="btn btn-success">
 		<i class="glyphicon glyphicon-plus"></i> Create User

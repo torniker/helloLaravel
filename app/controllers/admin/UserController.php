@@ -28,9 +28,10 @@ class UserController extends BaseController {
 	public function store() {
 		$input = Input::all();
 		$this->gateway->create($input);
-		return Redirect::to('admin/user')
-			->with('message_type','success')
-			->with('message', 'User added successfully');
+
+		Notification::success('User added successfully');
+
+		return Redirect::to('admin/user');
 	}
 
 	public function edit($id) {
@@ -60,9 +61,10 @@ class UserController extends BaseController {
 			$user->password = Hash::make($pass);
 		}
 		$user->save();
-		return Redirect::to('admin/user')
-			->with('message_type','success')
-			->with('message', 'User updated successfully');
+
+		Notification::success('User updated successfully');
+
+		return Redirect::to('admin/user');
 	}
 
 	public function destroy($id) {
@@ -72,9 +74,10 @@ class UserController extends BaseController {
 		}
 
 		$user->delete();
-		return Redirect::to('admin/user')
-			->with('message_type','success')
-			->with('message', 'User deleted successfully');
+
+		Notification::success('User deleted successfully');
+
+		return Redirect::to('admin/user');
 	}
 
 }

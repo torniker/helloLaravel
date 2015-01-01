@@ -7,10 +7,10 @@
 	"require": {
 		"laravel/framework": "4.2.*",
 		"atticmedia/anvard": "dev-master",
-		"watson/validating": "0.10.*@dev"
+		"watson/validating": "0.10.*@dev",
+		"edvinaskrucas/notification": "3.0.*"
 	},
 	"require-dev": {
-		"barryvdh/laravel-ide-helper": "~1.11",
     	"way/generators": "~2.0",
     	"fzaninotto/faker": "v1.3.0",
     	"barryvdh/laravel-debugbar": "1.8.*@dev"

@@ -1,12 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-@if($errors->any())
-<ul>
-	@foreach($errors->all() as $error)
-		<li>{{ $error }}</li>
-	@endforeach
-</ul>
-@endif
+
 {{ Form::open(array('route' => ['admin.user.store'], 'method' => 'POST')) }}
 <div class="form-group">
 	{{ Form::label('firstname', 'Firstname', ['class'=>'control-label']); }}

@@ -121,11 +121,9 @@ return array(
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
-		'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
 		'Atticmedia\Anvard\AnvardServiceProvider',
-		'Way\Generators\GeneratorsServiceProvider',
-		'Barryvdh\Debugbar\ServiceProvider',
 		'pro\Repositories\RepositoryServiceProvider',
+		'Krucas\Notification\NotificationServiceProvider'
 
 	),
 
@@ -193,7 +191,7 @@ return array(
 		'URL'               => 'Illuminate\Support\Facades\URL',
 		'Validator'         => 'Illuminate\Support\Facades\Validator',
 		'View'              => 'Illuminate\Support\Facades\View',
-		'Debugbar' => 'Barryvdh\Debugbar\Facade',
+		'Notification' 		=> 'Krucas\Notification\Facades\Notification' 
 
 	),
 

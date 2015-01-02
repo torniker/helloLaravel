@@ -16,15 +16,12 @@
 	<script src="{{ URL::asset('res/js/jquery.js') }}"></script>
 	<script src="{{ URL::asset('res/pretty/icheck.js') }}"></script>
 	<script src="{{ URL::asset('res/js/bootstrap.min.js') }}"></script>
+	<link href="{{ URL::asset('res/css/sb-admin-2.css') }}" rel="stylesheet">
 </head>
 <body>
-	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-		<div class="container">
-			<div class="navbar-header">
-				<a class="navbar-brand nino" href="<?=URL::to('/')?>">Pro ITDC</a>
-			</div>
-			<div id="navbar" class="collapse navbar-collapse">
-				<ul class="nav navbar-nav">
+	<div class="navbar-default sidebar" role="navigation">
+			<div class="sidebar-nav navbar-collapse">
+				<ul class="nav">
 					<li><a href="{{ URL::to('admin/user/') }}" class="nino">
 						მომხმარებლები
 					</a></li>
@@ -35,16 +32,15 @@
 						გამოსვლა
 					</a></li>
 				</ul>
-			</div><!--/.nav-collapse -->
+			</div>
+			<!-- /.sidebar-collapse -->
 		</div>
-	</nav>
-
-	<div class="container">
+		<!-- /.navbar-static-side -->
+	
+	<div class="content" style="margin-left:300px">
 		@yield('content')
 	</div><!-- /.container -->
 
-	
-	
 
 </body>
 </html>

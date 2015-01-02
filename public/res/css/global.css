@@ -1,6 +1,15 @@
 body{
-	padding-top: 100px;
+	padding-top: 40px;
 	font-family: Nino Bold;
+}
+.left{
+	float: left;
+}
+.right{
+	float: right;
+}
+.clear{
+	clear: both;
 }
 .nino{
 	font-family: Nino Bold;
@@ -151,6 +160,7 @@ select#gender,select#typeselector{
 .filtration{
 	margin-bottom: 20px;
 	margin-top: 20px;
+	margin-left: 50px;
 }
 .filtration a{
 	color: #E04836;
@@ -160,7 +170,6 @@ select#gender,select#typeselector{
 }
 .skills_wrapper{
 	margin-top: 30px;
-	border: 2px solid grey;
 	padding: 20px;
 	padding-bottom: 10px;
 	display: none;
@@ -182,4 +191,51 @@ select#gender,select#typeselector{
 }
 .columnwrap{
 	margin-bottom: 25px;
+}
+.content{
+	width: 1000px;
+	margin-left: 250px;
+	margin-top: 40px;
+}
+.profilewrapper{
+	margin-left: 50px;
+	margin-top: 20px;
+	margin-bottom: 40px;
+}
+.profilewrapper:last-child{
+	margin-bottom: 0;
+}
+.profileimage{
+	margin-right: 10px;
+	display: block;
+}
+.profileinfowrapper{
+
+}
+.profileinfowrapper a{
+	color: black;
+	font-size: 27px;
+	display: inline-block;
+	line-height: 27px;
+}
+.profileinfowrapper a:hover{
+	color: #E04836;
+	text-decoration: none;
+}
+.profileinfowrapper a:active{
+	text-decoration: none;
+}
+a:-webkit-any-link{
+	text-decoration: none;
+}
+
+.skilllist{
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+.skilllist span, .trainingslist span{
+	background: #7F46DD;
+	color: white;
+	padding: 5px;
+	border-radius: 5px;
 }

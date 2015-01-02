@@ -33,3 +33,7 @@ Route::post('doregister', array('uses' => 'UserFrontendController@doRegister'));
 Route::get('github', array('uses' => 'LoginController@github'));
 
 Route::get('clientprofile', array('uses' => 'ClientController@dashboard'));
+
+Route::any('form-submit', function(){
+ var_dump(Input::file('file')->getClientOriginalName());
+});

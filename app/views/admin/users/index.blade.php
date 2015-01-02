@@ -13,7 +13,7 @@
 <table class="table table-bordered table-hover table-striped">
 	<thead>
 		<th>Firstname/Lastname</th>
-		<th>Gender</th>
+		<th>type</th>
 		<th colspan="2" class="col-xs-1">Action</th>
 	</thead>
 	<tbody>
@@ -24,7 +24,7 @@
 				{{ $user->firstname }} {{ $user->lastname }}
 			</a>
 		</td>
-		<td>{{ $user->getGender() }}</td>
+		<td>{{ $user->type }}</td>
 		<td>
 			<a href="{{ URL::to('admin/user/'.$user->id.'/edit') }}" class="btn btn-primary btn-xs">
 				<i class="glyphicon glyphicon-pencil"></i>

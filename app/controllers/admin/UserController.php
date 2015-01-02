@@ -55,6 +55,14 @@ class UserController extends BaseController {
 
 	public function update($id) {
 		$input=Input::all();
+
+		if ( null !== Input::file('file') ) {
+			$hashedfilename=str_random(30).'.'.Input::file('file')->guessClientExtension();
+			Input::file('file')->move('./public/uploads',$hashedfilename);
+			$user=User::find($id);
+			$user->avatar=$hashedfilename;
+			$user->save();
+		}
 		$this->gateway->update($id,$input);
 
 		return Redirect::to('admin/user')

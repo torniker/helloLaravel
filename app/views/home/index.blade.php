@@ -24,33 +24,34 @@
 	</div>
 </div>
 
-<table class="table table-bordered table-hover table-striped">
-	<thead>
-		<th>სახელი/გვარი</th>
-		<th>სქესი</th>
-		<th>სკილები</th>
-		<th>ტრენინგები</th>
-	</thead>
-	<tbody>
-		@foreach($users as $user)
-		<tr>
-			<td>{{ $user->firstname }} {{ $user->lastname }}</td>
-			<td>{{ $user->getGender() }}</td>
-			<td style="width:400px">
-				@foreach($user->skills as $skill)
-				<span class="label label-default">{{ $skill->name }}</span>
-				@endforeach
-			</td>
-			<td style="width:400px">
-				@foreach($user->trainings as $training)
-				<span class="label label-default">{{ $training->name }}</span>
-				@endforeach
-			</td>
-		</tr>
-		@endforeach
-	</tbody>
-	
-</table>
+@foreach($users as $user)
+<div class="profilewrapper left">
+	<a class="profileimage left" href="show/{{$user->id}}">
+		@if(!empty($user->avatar))
+			<img src="{{URL::to('uploads/'.$user->avatar)}}" 
+			width="100px" height="100px">
+		@else
+			<img src="http://fc07.deviantart.net/fs71/f/2012/145/4/b/death_note_avatar__l_by_lartovio-d513nsb.jpg" width="100px" height="100px">
+		@endif
+	</a>
+	<div class="profileinfowrapper left">
+		<a href="show/{{$user->id}}">{{ $user->firstname." ".$user->lastname }}</a>
+		<div class="skilllist">
+			@foreach($user->skills as $skill)
+				<span>{{ $skill->name }}</span>
+			@endforeach
+		</div>
+		<div class="trainingslist">
+			@foreach($user->trainings as $training)
+				<span>{{ $training->name }}</span>
+			@endforeach
+		</div>
+	</div>
+	<div class="clear"></div>
+</div>
+<div class="clear"></div>
+@endforeach
+
 <script>
 	$( document ).ready(function() {
 		$('input').iCheck({

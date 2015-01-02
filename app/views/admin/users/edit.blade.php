@@ -1,29 +1,37 @@
 @extends('layouts.admin')
 @section('content')
-{{ Form::open(array('route' => array('admin.user.update', $user->id), 'method' => 'PUT')) }}
+{{ Form::open(array(
+		'route' => array('admin.user.update', $user->id),
+		'files'=>true,
+		'method' => 'PUT'
+	)) }}
 
 <div class="form-group">
-	{{ Form::label('firstname', 'Firstname', ['class'=>'control-label']); }}
+	{{ Form::label('firstname', 'სახელი', ['class'=>'control-label']); }}
 	{{ Form::input('text', 'firstname', $user->firstname, ['class'=>'form-control', 'id'=>'firstname']) }}
 </div>
 
 <div class="form-group">
-	{{ Form::label('lastname', 'Lastname', ['class'=>'control-label']); }}
+	{{ Form::label('lastname', 'გვარი', ['class'=>'control-label']); }}
 	{{ Form::input('text', 'lastname', $user->lastname, ['class'=>'form-control', 'id'=>'lastname']) }}
 </div>
 
 <div class="form-group">
-	{{ Form::label('email', 'E-mail', ['class'=>'control-label']); }}
+	{{ Form::label('email', 'ელ-ფოსტა', ['class'=>'control-label']); }}
 	{{ Form::input('text', 'email', $user->email, ['class'=>'form-control', 'id'=>'email']) }}
 </div>
 
 <div class="form-group">
-	{{ Form::label('password', 'Password', ['class'=>'control-label']); }}
+	{{ Form::label('password', 'პაროლი', ['class'=>'control-label']); }}
 	{{ Form::input('password', 'password', '', ['class'=>'form-control', 'id'=>'password']) }}
 </div>
 <div class="form-group">
-	{{ Form::label('gender', 'Gender', ['class'=>'control-label']); }}
+	{{ Form::label('gender', 'სქესი', ['class'=>'control-label']); }}
 	{{ Form::select('gender', [0=>'Female', 1=>'Male'], $user->gender, ['class'=>'form-control', 'id'=>'gender']); }}
+</div>
+<div class="form-group">
+	{{ Form::label('file', 'ავატარი', ['class'=>'control-label']); }}
+	{{ Form::file('file','',array('id'=>'','class'=>'')) }}
 </div>
 
 <div class="form-group">

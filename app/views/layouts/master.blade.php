@@ -16,32 +16,46 @@
 	<script src="{{ URL::asset('res/js/jquery.js') }}"></script>
 	<script src="{{ URL::asset('res/pretty/icheck.js') }}"></script>
 	<script src="{{ URL::asset('res/js/bootstrap.min.js') }}"></script>
+	<link href="{{ URL::asset('res/css/sb-admin-2.css') }}" rel="stylesheet">
 </head>
 <body>
-	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-		<div class="container">
-			<div class="navbar-header">
-				<a class="navbar-brand nino" href="<?=URL::to('/')?>">Pro ITDC</a>
-			</div>
-			<div id="navbar" class="collapse navbar-collapse">
-				<ul class="nav navbar-nav">
-					<li><a href="<?=URL::to('/')?>" class="nino">მთავარი</a></li>
-					<li><a href="#about" class="nino">ჩვენს შესახებ</a></li>
-					<li><a href="#contact" class="nino">კონტაქტი</a></li>
+		<div class="navbar-default sidebar" role="navigation">
+			<div class="sidebar-nav navbar-collapse">
+				<ul class="nav" id="side-menu">
+					<li>
+						<a href="<?=URL::to('/')?>">
+							მთავარი
+						</a>
+					</li>
 					@if(!Auth::check())
-					<li><a href="register" class="nino">რეგისტრაცია</a></li>
-					<li><a href="login" class="nino">შესვლა</a></li>
+					<li>
+						<a href="register">რეგისტრაცია</a>
+					</li>
+					<li>
+						<a href="login">შესვლა</a>
+					</li>
 					@endif
 					@if(Auth::check())
-					<li><a href="dashboard" class="nino">პროფილი</a></li>
-					<li><a href="logout" class="nino">გამოსვლა</a></li>
+					<li>
+						<a href="dashboard">პროფილი</a>
+					</li>
+					<li>
+						<a href="logout">გამოსვლა</a>
+					</li>
 					@endif
+					<li>
+						<a href="#">კონტაქტი</a>
+					</li>
+					<li>
+						<a href="#">ჩვენს შესახებ</a>
+					</li>
 				</ul>
-			</div><!--/.nav-collapse -->
+			</div>
+			<!-- /.sidebar-collapse -->
 		</div>
-	</nav>
-
-	<div class="container content">
+		<!-- /.navbar-static-side -->
+	
+	<div class="content">
 		@yield('content')
 	</div><!-- /.container -->
 

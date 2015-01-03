@@ -29,18 +29,18 @@
 					</li>
 					@if(!Auth::check())
 					<li>
-						<a href="register">რეგისტრაცია</a>
+						<a href="{{URL::to('register')}}">რეგისტრაცია</a>
 					</li>
 					<li>
-						<a href="login">შესვლა</a>
+						<a href="{{URL::to('login')}}">შესვლა</a>
 					</li>
 					@endif
 					@if(Auth::check())
 					<li>
-						<a href="dashboard">პროფილი</a>
+						<a href="{{URL::to('dashboard')}}">პროფილი</a>
 					</li>
 					<li>
-						<a href="logout">გამოსვლა</a>
+						<a href="{{URL::to('logout')}}">გამოსვლა</a>
 					</li>
 					@endif
 					<li>

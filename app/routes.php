@@ -37,3 +37,6 @@ Route::get('clientprofile', array('uses' => 'ClientController@dashboard'));
 Route::any('form-submit', function(){
  var_dump(Input::file('file')->getClientOriginalName());
 });
+
+Route::get('show', array('uses' => 'UserFrontendController@show'));
+Route::get('show/{id}', array('uses' => 'UserFrontendController@show'));

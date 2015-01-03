@@ -16,9 +16,6 @@ class UserFrontendController extends BaseController {
 		$input=Input::all();
 		return $this->gateway->doRegister($input);
 	}
-
-
-
 	
 	public function dashBoard(){
 		 if($this->checkClient()){
@@ -35,5 +32,11 @@ class UserFrontendController extends BaseController {
 	public function doEdit(){
 		$input=Input::all();
 		return $this->gateway->doEdit($input);
+	}
+
+	public function show($id){
+		$user = User::find($id);
+		return View::make('users.user')
+		->with('user',$user); 
 	}
 }

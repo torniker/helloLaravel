@@ -239,3 +239,50 @@ a:-webkit-any-link{
 	padding: 5px;
 	border-radius: 5px;
 }
+.skill_item{
+	margin-bottom: 15px;
+}
+.skill_name{
+	width: 80px;
+	text-align: center;
+	background: #7F46DD;
+	color: white;
+	padding: 5px;
+	border-radius: 5px;
+	margin-top: 2px;
+}
+.skill_level{
+	width: 40px;
+	text-align: center;
+	font-family: Comic Sans MS;
+	margin-left: 40px;
+	height: 35px;
+	padding-top: 5px;
+	font-size: 17px;
+	background: #E04836 !important;
+	border-radius: 62px !important;
+	color: white;
+}
+.trainingsonprofile{
+	margin-left: 40px;
+	margin-top: 20px;
+}
+.training_name{
+	width:200px;
+	margin-top: 20px;
+}
+.training_name:first-child{
+	margin-top: 0;
+}
+.phonesonprofile{
+	margin-left: 20px;
+	margin-top: 16px;
+}
+.phone_on_profile{
+	margin-top: 20px;
+	font-size: 25px;
+	letter-spacing: 5px;
+}
+.phone_on_profile:first-child{
+	margin-top: 0;
+}

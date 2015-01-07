@@ -9,6 +9,15 @@ class UserTableSeeder extends Seeder {
 	{
 		$faker = Faker::create();
 		User::truncate();
+		 
+		User::create([
+			'username'=>'admin',
+			'password' => Hash::make('admin'),
+			'firstname'=>$faker->firstName(),
+			'lastname'=>$faker->lastName(),
+			'email'=>$faker->email(),
+			'gender'=>$faker->numberBetween(0,1)
+		]);
 
 		foreach(range(1, 10) as $index)
 		{

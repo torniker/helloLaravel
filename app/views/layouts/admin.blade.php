@@ -30,6 +30,15 @@
 					<li><a href="{{ URL::to('admin/user/') }}">Users</a></li>
 					<li><a href="{{ URL::to('admin/skill/') }}">Skills</a></li>
 				</ul>
+				<ul class="nav navbar-nav pull-right">
+					<li class="">
+					  @if(Auth::check())
+					    <a href="{{ URL::to('logout') }}">Logout</a>
+					  @else
+					    <a href="{{ URL::to('login') }}">Login</a>
+					  @endif
+					</li>
+				</ul>
 			</div><!--/.nav-collapse -->
 		</div>
 	</nav>

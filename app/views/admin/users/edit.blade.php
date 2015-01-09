@@ -25,6 +25,12 @@
 	{{ Form::label('gender', 'Gender', ['class'=>'control-label']); }}
 	{{ Form::select('gender', [0=>'Female', 1=>'Male'], $user->gender, ['class'=>'form-control', 'id'=>'gender']); }}
 </div>
+@foreach($user->integrations as $integration)
+	<div class="form-group">
+		{{ Form::label($integration->service, $integration->service, ['class'=>'control-label']); }}
+		{{ Form::input($integration->service, $integration->service, $integration->username, ['class'=>'form-control', 'id'=>'github']) }}
+	</div>
+@endforeach
 
 <div class="form-group">
 <h4>skills</h4>

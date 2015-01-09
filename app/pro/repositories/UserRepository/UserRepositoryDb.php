@@ -1,7 +1,10 @@
-<?php namespace pro\repositories\UserRepository;
+<?php 
+
+namespace pro\repositories\UserRepository;
 
 use User;
 use Hash;
+
 class UserRepositoryDb implements UserRepositoryInterface {
 
 
@@ -10,7 +13,7 @@ class UserRepositoryDb implements UserRepositoryInterface {
 	}
 
 	public function byId($id) {
-		return User::with('phones')->find($id);
+		return User::with('phones')->with('skills')->with('integrations')->find($id);
 	}
 
 	public function create($input) {

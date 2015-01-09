@@ -12,4 +12,6 @@
 	<li class="list-group-item">{{ $phone->phone }}</li>
 	@endforeach
 </ul>
+
+{{ var_dump($github) }}
 @stop

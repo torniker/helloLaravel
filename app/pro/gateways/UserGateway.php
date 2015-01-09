@@ -1,4 +1,6 @@
-<?php namespace pro\gateways;
+<?php 
+
+namespace pro\gateways;
 
 use pro\repositories\UserRepository\UserRepositoryInterface;
 
@@ -21,5 +23,9 @@ class UserGateway {
 
 	public function create($input) {
 		return $this->userRepo->create($input);
+	}
+	
+	public function update($id,$input) {
+		return $this->userRepo->update($id,$input);
 	}
 }

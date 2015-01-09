@@ -21,7 +21,10 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
         'lastname'   => 'required'
     ];
 
-	
+	public function integrations()
+	{
+		return $this->hasMany('Integration');
+	}
 
 	public function phones()
 	{

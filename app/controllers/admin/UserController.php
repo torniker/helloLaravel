@@ -1,24 +1,35 @@
 <?php
 use pro\gateways\UserGateway;
+use pro\gateways\GithubGateway;
 
 class UserController extends BaseController {
 
 	protected $layout = 'layouts.admin';
-	private $gateway;
 
-	public function __construct(UserGateway $gateway) {
-		$this->gateway = $gateway;
+
+	public function __construct(UserGateway $Usergateway,GithubGateway $GithubGateway) {
+		$this->Usergateway = $Usergateway;
+		$this->GithubGateway = $GithubGateway;
 	}
 
 	public function index()
 	{
-		$users = $this->gateway->all();
+		$users = $this->Usergateway->all();
 		return View::make('admin.users.index')->with('users', $users);
 	}
 
 	public function show($id) {
-		$user = $this->gateway->byId($id);
-		return View::make('admin.users.show')->with('user', $user);
+		$user = $this->Usergateway->byId($id);
+		$githubData = false;
+
+		$githubIntegration = Integration::where('user_id',$user->id)->where('service','github')->get();
+		
+		if(!$githubIntegration->isEmpty()){
+			$githubUsername = $githubIntegration->first()->username;
+			$githubData = $this->GithubGateway->getUser($githubUsername);
+		}
+
+		return View::make('admin.users.show')->with(['user'=> $user,'github'=>$githubData]);
 	}
 
 	public function create() {
@@ -27,7 +38,7 @@ class UserController extends BaseController {
 
 	public function store() {
 		$input = Input::all();
-		$this->gateway->create($input);
+		$this->Usergateway->create($input);
 
 		Notification::success('User added successfully');
 
@@ -35,13 +46,13 @@ class UserController extends BaseController {
 	}
 
 	public function edit($id) {
-		$user = User::with('phones')->with('skills')->find($id);
+		$user = $this->Usergateway->byId($id);
 		$skills = Skill::get();
 
 		return View::make('admin.users.edit')->with(array(
 			'user'=> $user,
 			'skills'=> $skills
-			));
+		));
 	}
 
 	public function update($id) {

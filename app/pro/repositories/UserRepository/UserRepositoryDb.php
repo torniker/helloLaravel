@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace pro\repositories\UserRepository;
 
@@ -9,7 +9,8 @@ class UserRepositoryDb implements UserRepositoryInterface {
 
 
 	public function all() {
-		return User::get();
+		$users = User::paginate(8);
+		return $users;
 	}
 
 	public function byId($id) {

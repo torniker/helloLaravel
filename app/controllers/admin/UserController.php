@@ -8,6 +8,7 @@ class UserController extends BaseController {
 
 
 	public function __construct(UserGateway $Usergateway,GithubGateway $GithubGateway) {
+		$this->beforeFilter('auth', array('except' => 'getLogin'));
 		$this->Usergateway = $Usergateway;
 		$this->GithubGateway = $GithubGateway;
 	}
@@ -56,10 +57,6 @@ class UserController extends BaseController {
 	}
 
 	public function update($id) {
-
-		print_r($_POST);
-		die();
-
 		$user = User::find($id);
 		if(is_null($user)) {
 			return Redirect::to('admin/user');

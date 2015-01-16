@@ -1,10 +1,13 @@
 @extends('layouts.admin')
 @section('content')
-<p class="text-right">
-	<a href="{{ URL::to('admin/user/create') }}" class="btn btn-success">
+
+<div class="">
+	<?php echo $users->links(); ?>
+	<a href="{{ URL::to('admin/user/create') }}" class="btn btn-success pull-right">
 		<i class="glyphicon glyphicon-plus"></i> Create User
 	</a>
-</p>
+	<div style="clear:both"></div>
+</div>
 <table class="table table-bordered table-hover table-striped">
 	<thead>
 		<th>Firstname/Lastname</th>
@@ -35,6 +38,13 @@
 	</tr>
 	@endforeach
 	</tbody>
-	
 </table>
+
+<style>
+	.pagination {
+		margin:0;
+	}
+</style>
+
 @stop
+

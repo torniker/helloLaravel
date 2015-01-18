@@ -40,3 +40,14 @@ Route::any('form-submit', function(){
 
 Route::get('show', array('uses' => 'UserFrontendController@show'));
 Route::get('show/{id}', array('uses' => 'UserFrontendController@show'));
+
+Route::group(['prefix' => 'jobs'], function()
+{
+	Route::get('/', array('uses' => 'JobsController@index'));
+	Route::get('index', array('uses' => 'JobsController@index'));
+	Route::get('add', array('uses' => 'JobsController@add'));
+	Route::post('create', array('uses' => 'JobsController@create'));
+	Route::get('show', array('uses' => 'JobsController@show'));
+	Route::get('show/{id}', array('uses' => 'JobsController@show'));
+	Route::post('apply', array('uses' => 'JobsController@apply'));
+});

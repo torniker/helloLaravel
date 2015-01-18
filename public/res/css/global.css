@@ -286,3 +286,26 @@ a:-webkit-any-link{
 .phone_on_profile:first-child{
 	margin-top: 0;
 }
+.jobswrapper{
+	width:600px;
+	word-wrap: break-word;
+	margin-left: 100px;
+}
+.jobheading{
+	margin-bottom: 20px;
+	display: block;
+}
+.jobtext{
+	margin-bottom: 20px;
+}
+.jobprice{
+	margin-bottom: 20px;
+}
+.singlejobwrap{
+	margin-bottom: 60px;
+	border: 2px solid orange;
+	padding: 20px;
+}
+.jobauthor{
+	margin-bottom: 20px;
+}

@@ -52,7 +52,7 @@ class UserRepositoryDb implements UserRepositoryInterface {
 
 				$sklevel = !empty($levels[$skill])?$levels[$skill]:0;
 
-				if (empty($result) || $result[0]->level!=$sklevel) {
+				if (empty($result)) {
 					DB::table('skill_user')->insert(
 						array(
 							'user_id' 	=> $id, 
@@ -60,6 +60,11 @@ class UserRepositoryDb implements UserRepositoryInterface {
 							'level' 	=> $sklevel,
 							)
 						);
+				}elseif($result[0]->level!=$sklevel){
+					DB::table('skill_user')
+            			->where('user_id', $id)
+            			->where('skill_id', $skill)
+            			->update(array('level' => $sklevel));
 				}
 			}
 			/**

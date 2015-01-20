@@ -7,11 +7,14 @@ Route::group(['prefix' => 'admin'], function()
 {
 	Route::resource('user', 'UserController');
 	Route::resource('skill', 'SkillController');
+	Route::get('generator', array('uses' => 'LinkController@index'));
+	Route::post('generate', array('uses' => 'LinkController@generate'));
 });
 
 
 // როუტი ლოგინის ფორმისთვის
 Route::get('login', array('uses' => 'LoginController@showLogin'));
+Route::get('newstudent', array('uses' => 'UserFrontendController@stud_register'));
 
 // როუტი ლოგინის პროცესინგისთვის
 Route::post('login', array('uses' => 'LoginController@doLogin'));

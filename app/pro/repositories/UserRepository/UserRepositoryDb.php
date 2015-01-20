@@ -35,7 +35,7 @@ class UserRepositoryDb implements UserRepositoryInterface {
 		$user->save();
 		$user=$user->find($user->id);
 		$user->trainings()->attach($trainings);
-		return $user;
+		return 1;
 	}
 
 	public function update($id,$input){

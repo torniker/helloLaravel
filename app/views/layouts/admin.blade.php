@@ -31,6 +31,9 @@
 					<li><a href="{{ URL::to('logout') }}" class="nino">
 						გამოსვლა
 					</a></li>
+					<li><a href="{{ URL::to('admin/generator') }}" class="nino">
+						რეგისტრაციის გენერატორი
+					</a></li>
 				</ul>
 			</div>
 			<!-- /.sidebar-collapse -->

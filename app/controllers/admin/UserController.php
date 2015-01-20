@@ -9,7 +9,9 @@ class UserController extends BaseController {
 	public function __construct(UserGateway $gateway) {
 		$this->beforeFilter(function(){
 			if (!Auth::check()){
-				return Redirect::to('/');
+				return Redirect::to('');
+			}elseif(Auth::user()->type!=4){
+				return Redirect::to('');
 			}
 		});
 		$this->gateway = $gateway;
@@ -37,7 +39,14 @@ class UserController extends BaseController {
 
 	public function store() {
 		$input = Input::all();
-		$this->gateway->create($input);
+		if($this->gateway->create($input)){
+			if (isset($input['token'])) {
+				$token=$input['token'];
+				$code = Code::where('code', '=', $token)->firstOrFail();
+				$code->valid=0;
+				$code->save();
+			}
+		}
 		return Redirect::to('admin/user')
 		->with('message_type','success')
 		->with('message', 'User added successfully');

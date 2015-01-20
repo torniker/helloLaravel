@@ -309,3 +309,14 @@ a:-webkit-any-link{
 .jobauthor{
 	margin-bottom: 20px;
 }
+.generator_wrapper{
+	width: 800px;
+	margin-left: 200px;
+	margin-top: 100px;
+}
+.link{
+	width: 550px !important;
+}
+.generate{
+	margin-left: 5px;
+}

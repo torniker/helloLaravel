@@ -1,0 +1,7 @@
+input.score_level{
+	display:none;
+}
+
+input[type='checkbox']:checked + label + input.score_level { 
+	display:block!important;
+} 

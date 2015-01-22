@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration {
 		    $table->string('email');
 		    $table->tinyInteger('gender');
 		    $table->string('remember_token');
+		    $table->tinyInteger('type');
 		    $table->timestamps();
 		    $table->timestamp('deleted_at')->nullable();
 		});

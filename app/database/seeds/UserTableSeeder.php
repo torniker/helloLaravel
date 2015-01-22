@@ -8,6 +8,9 @@ class UserTableSeeder extends Seeder {
 	public function run()
 	{
 		$faker = Faker::create();
+		
+
+
 		User::truncate();
 		 
 		User::create([
@@ -16,6 +19,7 @@ class UserTableSeeder extends Seeder {
 			'firstname'=>$faker->firstName(),
 			'lastname'=>$faker->lastName(),
 			'email'=>$faker->email(),
+			'type'=>'2',
 			'gender'=>$faker->numberBetween(0,1)
 		]);
 
@@ -28,6 +32,7 @@ class UserTableSeeder extends Seeder {
 				'firstname'=>$faker->firstName(),
 				'lastname'=>$faker->lastName(),
 				'email'=>$faker->email(),
+				'type'=>'1',
 				'gender'=>$faker->numberBetween(0,1)
 			]);
 		}

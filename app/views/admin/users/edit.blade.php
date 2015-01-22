@@ -33,22 +33,26 @@
 @endforeach
 
 <div class="form-group">
-<h4>skills</h4>
+<h4>Courses</h4>
 	
-@foreach($skills as $skill)
+@foreach($courses as $course)
 	{{$checked = false}}
-	@foreach($user->skills as $user_skill)
-		@if($skill->id==$user_skill->id)
+	@foreach($user->courses as $user_course)
+		@if($course->id==$user_course->id)
 			<?php $checked = true ?> 
 		@endif
 	@endforeach
 	<div class="col-md-4">
-	{{ Form::checkbox('skill[]',$skill->id,$checked,array('id' => $skill->id)) }}
-	{{ Form::label($skill->id,$skill->name , ['class'=>'control-label']) }}
-	{{ Form::input('text', 'level['.$skill->id.']', '', ['class'=>'form-control'] ) }}
+	{{ Form::checkbox('course[]',$course->id,$checked,array('id' => $course->id)) }}
+	{{ Form::label($course->id,$course->name , ['class'=>'control-label']) }}
+	{{ $score = '' }}
+	@if($curCourse = $user->courses->find($course->id)) 
+		<?php $score = $curCourse->pivot->score; ?>
+	@endif
+	{{ Form::input('text', 'score['.$course->id.']', $score, ['class'=>'form-control score_level'] ) }}
 	</div>
 @endforeach
-</div>
+</div> 
 
 
 {{ Form::submit('Save', ['class'=>'btn btn-primary pull-right'])}}

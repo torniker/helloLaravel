@@ -12,6 +12,7 @@
 	<thead>
 		<th>Firstname/Lastname</th>
 		<th>Skills</th>
+		<th>Course</th>
 		<th>Gender</th>
 		<th colspan="2" class="col-xs-1">Action</th>
 	</thead>
@@ -27,6 +28,11 @@
 			@foreach($user->skills as $skill)
 				<span class="label label-default">{{ $skill->name }}</span>
 			@endforeach
+		</td>
+		<td>
+			@foreach($user->courses as $course)
+				<span class="label label-default">{{ $course->name }}</span>
+			@endforeach 
 		</td>
 		<td>{{ $user->getGender() }}</td>
 		<td>

@@ -10,6 +10,8 @@
 	<title>Students</title>
 	<link href="{{ URL::asset('res/css/bootstrap.css') }}" rel="stylesheet">
 	<link href="{{ URL::asset('res/css/bootstrap-theme.css') }}" rel="stylesheet">
+	<link href="{{ URL::asset('res/css/style.css') }}" rel="stylesheet">
+
 	<script type="text/javascript" src="{{ URL::asset('res/js/jquery.js') }}"></script>
 	<script src="{{ URL::asset('res/js/bootstrap.min.js') }}"></script>
 </head>
@@ -23,12 +25,13 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">Project name</a>
+				<a class="navbar-brand" href="{{ URL::to('admin') }}">Project name</a>
 			</div>
 			<div id="navbar" class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
 					<li><a href="{{ URL::to('admin/user/') }}">Users</a></li>
 					<li><a href="{{ URL::to('admin/skill/') }}">Skills</a></li>
+					<li><a href="{{ URL::to('admin/course/') }}">Courses</a></li> 
 				</ul>
 				<ul class="nav navbar-nav pull-right">
 					<li class="">

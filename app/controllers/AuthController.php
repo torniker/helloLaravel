@@ -23,7 +23,19 @@ class AuthController extends BaseController {
 		
 			if(Auth::attempt($fields)){
 				Notification::success('You have been logged in!');
-				return Redirect::to('admin/user');
+				
+				$user = Auth::user();
+
+				if($user->isAdmin()){
+					return Redirect::to('/admin');
+				} 
+
+				if($user->isFreelancer()){
+					return Redirect::to('/freelancer'); 
+				}
+
+				return Redirect::to('/');
+
 			} else {
 				Notification::error('Username / Password is not correct');
 			}

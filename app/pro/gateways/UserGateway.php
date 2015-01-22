@@ -26,6 +26,35 @@ class UserGateway {
 	}
 	
 	public function update($id,$input) {
-		return $this->userRepo->update($id,$input);
+		$courses = [];
+		
+		if(isset($input['course'])){
+			foreach ($input['course'] as $key => $course_id) {
+				$courses[$course_id] = ['score'=>$input['score'][$course_id]];
+			}
+		}
+
+		return $this->userRepo->update($id,$input,$courses); 
+	}
+
+	public function getUsersWhere($oldWhere=[]){
+		$where = [];
+
+		foreach ($oldWhere as $key => $cond) {
+			if(is_array($cond)){
+				
+				$elNum = count($cond);
+
+				if($elNum==3){
+					$where[] = [$cond[0],$cond[1],$cond[2]];
+				}
+
+				if($elNum==2){
+					$where[] = [$cond[0],'=',$cond[1]];
+				}
+			}
+		}
+		
+		return $this->userRepo->getUsersWhere($where);
 	}
 }

@@ -35,6 +35,14 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	{
 		return $this->belongsToMany('Skill');
 	}
+	public function courses()
+	{
+		return $this->belongsToMany('Course','course_user')->withPivot('score');
+	}
+
+	public function projects(){
+		return $this->hasMany('Project');
+	}
 
 	public function getGender() {
 		if($this->attributes['gender']) {
@@ -43,5 +51,20 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		return 'female';
 	}
 
+	public function isAdmin(){
+		if($this->type==2){
+			return true;
+		}
+
+		return false;
+	}
+
+	public function isFreelancer(){
+	if($this->type==1){
+			return true;
+		}
+
+		return false;
+	}
 
 }

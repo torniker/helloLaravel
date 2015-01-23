@@ -16,6 +16,7 @@
 	<script src="{{ URL::asset('res/js/jquery.js') }}"></script>
 	<script src="{{ URL::asset('res/pretty/icheck.js') }}"></script>
 	<script src="{{ URL::asset('res/js/bootstrap.min.js') }}"></script>
+	<script src="{{ URL::asset('res/js/datepicker.js') }}"></script>
 	<link href="{{ URL::asset('res/css/sb-admin-2.css') }}" rel="stylesheet">
 </head>
 <body>

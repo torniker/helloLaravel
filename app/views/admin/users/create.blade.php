@@ -41,9 +41,12 @@
 	<div style="margin-top:5px">
 		{{ Form::checkbox('trainings[]',$training->id,false,array('id' => $training->id)) }}
 		{{ Form::label($training->id,$training->name, ['class'=>'control-label leftfive']) }}
+		{{ Form::input('text', 'trlevel['.$training->id.']', '', ['class'=>'form-control']) }}
 	</div>
 	@endforeach
 </div>
+
+
 <div class="form-group">
 	{{ Form::label('type', 'მომხმარებლის ტიპი', ['class'=>'control-label']); }}
 	{{ Form::select('type', [1=>'სტუდენტი', 2=>'მომხმარებელი',3=>'კომპანია', 4=>'ადმინისტრატორი'], Input::old("type"), ['class'=>'form-control', 'id'=>'typeselector']); }}

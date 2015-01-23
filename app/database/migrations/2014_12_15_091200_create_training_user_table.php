@@ -17,6 +17,7 @@ class CreateTrainingUserTable extends Migration {
 			$table->increments('id');
 			$table->integer('user_id');
 			$table->integer('training_id');
+			$table->integer('level');
 		});
 	}
 

@@ -320,3 +320,21 @@ a:-webkit-any-link{
 .generate{
 	margin-left: 5px;
 }
+.trlist{
+	margin-top: 300px;
+}
+.datepick{
+	margin-bottom: 20px;
+}
+.table-condensed{
+	width: 300px;
+}
+.day{
+	cursor: pointer;
+}
+.day:hover{
+	background: yellow;
+}
+th.prev, th.next{
+	cursor: pointer;
+}

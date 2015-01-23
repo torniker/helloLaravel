@@ -9,6 +9,15 @@ Route::group(['prefix' => 'admin'], function()
 	Route::resource('skill', 'SkillController');
 	Route::get('generator', array('uses' => 'LinkController@index'));
 	Route::post('generate', array('uses' => 'LinkController@generate'));
+	Route::get('trainings', array('uses' => 'TrainingController@index'));
+	Route::get('trainings/create', array('uses' => 'TrainingController@create'));
+	Route::get('trainings/edit', array('uses' => 'TrainingController@edit'));
+	Route::get('trainings/edit/{id}', array('uses' => 'TrainingController@edit'));
+	Route::post('trainings/store', array('uses' => 'TrainingController@store'));
+	Route::post('trainings/update', array('uses' => 'TrainingController@update'));
+	Route::post('trainings/update/{id}', array('uses' => 'TrainingController@update'));
+	Route::post('trainings/delete', array('uses' => 'TrainingController@destroy'));
+	Route::post('trainings/delete/{id}', array('uses' => 'TrainingController@destroy'));
 });
 
 

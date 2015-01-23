@@ -7,6 +7,7 @@ class JobsGateway {
 		$job = new Job;
 		$job->fill($input);
 		$job->save();
+		return $job->id;
 	}
 	public function apply($student,$job){
 		$result = DB::table('job_user')

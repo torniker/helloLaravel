@@ -53,12 +53,17 @@ class UserController extends BaseController {
 	}
 
 	public function edit($id) {
-		$user = User::with('phones')->with('skills')->find($id);
+		$user = User::with('phones')
+		->with('skills')
+		->with('trainings')
+		->find($id);
 		$skills = Skill::get();
+		$trainings = Training::get();
 
 		return View::make('admin.users.edit')->with(array(
 			'user'=> $user,
-			'skills'=> $skills
+			'skills'=> $skills,
+			'trainings'=> $trainings,
 			));
 	}
 

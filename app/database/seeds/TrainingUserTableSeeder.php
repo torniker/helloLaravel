@@ -17,7 +17,7 @@ class TrainingUserTableSeeder extends Seeder {
 				$trainings = Training::orderByRaw('RAND()')->limit($num)->get();
 				$tr = [];
 				foreach($trainings as $training) {
-					$tr[] = $training->id;
+					$tr[$training->id] = ['level' => $faker->numberBetween(1, 100)];
 				}
 				$user->trainings()->attach($tr);
 			}

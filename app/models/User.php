@@ -40,7 +40,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 	public function trainings()
 	{
-		return $this->belongsToMany('Training');
+		return $this->belongsToMany('Training')->withPivot('level');
 	}
 
 	public function getGender() {

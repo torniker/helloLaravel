@@ -17,6 +17,10 @@ class CreateJobsTable extends Migration {
 			$table->increments('id');
 			$table->string('heading');
 			$table->string('content');
+			$table->string('picture');
+			$table->string('website');
+			$table->date('expires');
+			$table->date('deadline');
 			$table->integer('price');
 			$table->integer('author');
 			$table->timestamps();

@@ -29,8 +29,26 @@ class JobsController extends BaseController {
 	}
 	public function create(){
 		$input=Input::all();
-		$this->gateway->create($input);
+		$input['expires'] = $this->strtodate($input['expires']);
+		$input['deadline'] = $this->strtodate($input['deadline']);
+		$id = $this->gateway->create($input);
+
+		if ( null !== Input::file('picture') ) {
+			echo "here";
+			$hashedfilename=str_random(30).'.'.Input::file('picture')->guessClientExtension();
+			Input::file('picture')->move('./public/uploads',$hashedfilename);
+			$job=Job::find($id);
+			$job->picture=$hashedfilename;
+			$job->save();
+		}
+
 		return Redirect::to('');
+	}
+
+	public function strtodate($str){
+		$parts = explode('/', $str);
+		$date  = "$parts[2]-$parts[0]-$parts[1]";
+		return $date;
 	}
 
 	public function show($id){

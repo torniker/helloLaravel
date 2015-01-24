@@ -78,4 +78,53 @@ class UserFrontendRepository {
 			}
 		}
 	}
+
+	public function create($input) {
+		//file_put_contents('./text.txt', $input['type']);
+		$user = new User;
+		$trainings = $input['trainings'];
+		$trlevels=$input['trlevel'];
+
+		if ($input['type']==3) {
+			$rule=array(
+				'company_name'=>'required',
+				'identification_code'=>'required'
+				);
+			$user->addRule($rule);
+		}
+
+		$user->fill($input);
+		if (!empty($input['password'])) {
+			$user->password = Hash::make($input['password']);
+		}
+		$user->save();
+		$user=$user->find($user->id);
+		$user->trainings()->attach($trainings);
+
+		foreach ($trainings as $training) {
+			$result = DB::table('training_user')
+			->where('user_id', $user->id)
+			->where('training_id', $training)
+			->get();
+
+			$trlevel = !empty($trlevels[$training])?$trlevels[$training]:0;
+
+			if (empty($result)) {
+				DB::table('training_user')->insert(
+					array(
+						'user_id' 	=> $user->id, 
+						'training_id' 	=> $training,
+						'level' 	=> $trlevel,
+						)
+					);
+			}elseif($result[0]->level!=$trlevel){
+				DB::table('training_user')
+				->where('user_id', $user->id)
+				->where('training_id', $training)
+				->update(array('level' => $trlevel));
+			}
+		}
+
+		return 1;
+	}
 }

@@ -45,6 +45,9 @@
 					</li>
 					@endif
 					<li>
+						<a href="{{URL::to('jobs')}}">პროექტები</a>
+					</li>
+					<li>
 						<a href="#">კონტაქტი</a>
 					</li>
 					<li>

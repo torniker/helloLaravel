@@ -67,4 +67,22 @@ class UserFrontendController extends BaseController {
 		return View::make('users.user')
 		->with('user',$user); 
 	}
+
+	public function store() {
+		$input = Input::all();
+
+		if($this->gateway->create($input)){
+			if (isset($input['token'])) {
+				$token=$input['token'];
+				$code = Code::where('code', '=', $token)->firstOrFail();
+				$code->valid=0;
+				$code->save();
+			}
+		}
+		
+		return Redirect::to('')
+		->with('message_type','success')
+		->with('message', 'User added successfully');
+	}
+
 }

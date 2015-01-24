@@ -12,7 +12,10 @@
 				)
 		</div>
 		<div style="margin-bottom:30px">
-			შენი მონაცემები: (<a href="editprofile" class="logout">პროფილის რედაქტირება</a>)
+			შენი მონაცემები: (<a href="{{URL::to('editprofile')}}" class="logout">პროფილის რედაქტირება</a>)
+		</div>
+		<div style="margin-bottom:30px">
+			<a href="{{URL::to('jobs/add')}}" class="logout">პროექტის დამატება</a>
 		</div>
 		<div class="hello">
 			<div class="item">

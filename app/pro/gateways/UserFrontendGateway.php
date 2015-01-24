@@ -26,4 +26,8 @@ class UserFrontendGateway {
 	public function doEdit($input){
 		return $this->clientRepo->doEdit($input);
 	}
+
+	public function create($input) {
+		return $this->clientRepo->create($input);
+	}
 }

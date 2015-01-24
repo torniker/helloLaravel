@@ -39,17 +39,20 @@ class UserController extends BaseController {
 
 	public function store() {
 		$input = Input::all();
-		if($this->gateway->create($input)){
-			if (isset($input['token'])) {
-				$token=$input['token'];
-				$code = Code::where('code', '=', $token)->firstOrFail();
-				$code->valid=0;
-				$code->save();
-			}
-		}
-		return Redirect::to('admin/user')
-		->with('message_type','success')
-		->with('message', 'User added successfully');
+
+		echo "got here";
+		// if($this->gateway->create($input)){
+		// 	if (isset($input['token'])) {
+		// 		$token=$input['token'];
+		// 		$code = Code::where('code', '=', $token)->firstOrFail();
+		// 		$code->valid=0;
+		// 		$code->save();
+		// 	}
+		// }
+		
+		// return Redirect::to('admin/user')
+		// ->with('message_type','success')
+		// ->with('message', 'User added successfully');
 	}
 
 	public function edit($id) {

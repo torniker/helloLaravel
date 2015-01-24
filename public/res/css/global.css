@@ -338,3 +338,40 @@ a:-webkit-any-link{
 th.prev, th.next{
 	cursor: pointer;
 }
+.comment_wrapper{
+	position: relative;
+	border: 2px solid grey;
+	margin-bottom: 20px;
+	padding: 10px;
+}
+.comment_delete{
+	display: block;
+	position: absolute;
+	right: 5px;
+	top: 2px;
+	cursor: pointer;
+}
+.comment_delete:hover{
+	text-decoration: underline;
+	color:red;
+}
+.comment_delete:active{
+	color:red!important;
+}
+.comment_delete:focus{
+	color:red!important;
+}
+.delstyle{
+	color:red;
+}
+.bids_wrapper{
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+.single_bid{
+	margin-bottom: 20px;
+}
+.bid_price{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}

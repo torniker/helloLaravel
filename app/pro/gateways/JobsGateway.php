@@ -9,7 +9,7 @@ class JobsGateway {
 		$job->save();
 		return $job->id;
 	}
-	public function apply($student,$job){
+	public function apply($student,$job,$bid){
 		$result = DB::table('job_user')
 			->where('user_id', $student)
 			->where('job_id', $job)
@@ -19,7 +19,8 @@ class JobsGateway {
    				 array(
    				 	'user_id' => $student, 
    				 	'job_id' => $job,
-   				 	'type' =>0 //0>applied
+   				 	'price' => $bid,
+   				 	'type' =>1 //bid pending
    				 	)
 			);
 			return "წარმატებით გააკეთეთ შეთავაზება";

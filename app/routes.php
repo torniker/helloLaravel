@@ -18,6 +18,7 @@ Route::group(['prefix' => 'admin'], function()
 	Route::post('trainings/update/{id}', array('uses' => 'TrainingController@update'));
 	Route::post('trainings/delete', array('uses' => 'TrainingController@destroy'));
 	Route::post('trainings/delete/{id}', array('uses' => 'TrainingController@destroy'));
+	Route::post('user/store/', array('uses' => 'UserController@store'));
 });
 
 
@@ -41,6 +42,7 @@ Route::post('doedit', array('uses' => 'UserFrontendController@doEdit'));
 
 Route::get('register', array('uses' => 'UserFrontendController@register'));
 Route::post('doregister', array('uses' => 'UserFrontendController@doRegister'));
+Route::post('storestud', array('uses' => 'UserFrontendController@store'));
 
 Route::get('github', array('uses' => 'LoginController@github'));
 
@@ -63,3 +65,7 @@ Route::group(['prefix' => 'jobs'], function()
 	Route::get('show/{id}', array('uses' => 'JobsController@show'));
 	Route::post('apply', array('uses' => 'JobsController@apply'));
 });
+
+Route::post('comments/add', array('uses' => 'CommentController@add'));
+Route::post('comments/delete', array('uses' => 'CommentController@delete'));
+Route::post('comments/delete/{id}', array('uses' => 'CommentController@delete'));

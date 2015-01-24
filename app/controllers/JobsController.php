@@ -54,28 +54,65 @@ class JobsController extends BaseController {
 	public function show($id){
 		$job=Job::find($id);
 		$student=false;
+		$bids=DB::table('job_user')->where('type', '1')->get();
+
+		$sorted_bids=array();
+		foreach ($bids as $bid) {
+			if ($bid->type==1) {
+				$applicant = User::find($bid->user_id);
+				$avatar = $applicant->avatar;
+				$applicant = $applicant->firstname.' '. $applicant->lastname;
+				$sorted_bids[] = array
+					(
+						'applicant_name' => $applicant,
+						'applicant_id' => $bid->user_id,
+						'avatar' => $avatar,
+						'bid' => $bid->price,
+					);
+			}
+		}
+		usort($sorted_bids, function($a, $b){
+			return $a["bid"] > $b["bid"];
+		});
+
+
 		if (Auth::check()){
 			$user=Auth::user();
 			if ($user->type==1){
 				$student=true;
 			}
 		}
+
+		$comments=Comment::where('job_id', '=', $id)->get();
+		$usernames = array();
+		$allusers = User::get();
+		foreach ($allusers as $user) {
+			$usernames[$user->id] = $user->firstname.' '.$user->lastname;
+		}
+
 		if ($student) {
 			return View::make('jobs.show')
 			->with('job',$job)
-			->with('user',$user);
+			->with('user',$user)
+			->with('comments',$comments)
+			->with('usernames',$usernames)
+			->with('bids',$sorted_bids);;
 		}else{
 			return View::make('jobs.show')
-			->with('job',$job);
+			->with('job',$job)
+			->with('comments',$comments)
+			->with('usernames',$usernames)
+			->with('bids',$sorted_bids);
 		}
 	}
 
 	public function apply(){
 		$jobs = Job::all();
 		$input=Input::all();
-		$student=$input["applicant"];
+		$student=Auth::user()->id;
 		$job=$input["job"];
-		$message = $this->gateway->apply($student,$job);
+		$bid=$input["bid"];
+		$message = $this->gateway->apply($student,$job,$bid);
 		return View::make('jobs.index')
 		->with('jobs',$jobs)
 		->with('message',$message);

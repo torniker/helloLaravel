@@ -8,7 +8,7 @@
 		@endforeach
 	@endif
 </div>
-{{ Form::open(array('route' => ['admin.user.store'], 'method' => 'POST')) }}
+{{ Form::open(array('url'=>URL::to('storestud'), 'method' => 'POST')) }}
 
 <div class="form-group">
 	{{ Form::label('username', 'ნიკი', ['class'=>'control-label']); }}
@@ -36,11 +36,12 @@
 </div>
 
 <div class="form-group" style="margin: 40px 0">
-	<h4>Trainings</h4>
+	<h4>ტრენინგები</h4>
 	@foreach($trainings as $training)
 	<div style="margin-top:5px">
 		{{ Form::checkbox('trainings[]',$training->id,false,array('id' => $training->id)) }}
 		{{ Form::label($training->id,$training->name, ['class'=>'control-label leftfive']) }}
+		{{ Form::input('text', 'trlevel['.$training->id.']', '', ['class'=>'form-control']) }}
 	</div>
 	@endforeach
 </div>

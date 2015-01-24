@@ -14,6 +14,21 @@ class CommentController extends BaseController {
 		$comment = new Comment;
 		$comment->fill($input);
 		$comment->save();
+
+		$jobid = Input::get('job_id');
+		$userid = Input::get('user_id');
+
+		$users = Comment::where('job_id', '=', $jobid)->get();
+
+		foreach ($users as $user) {
+			if ($user->user_id!=$userid) {
+				$notification = new Notification;
+				$notification->to_user = $user->user_id;
+				$notification->project_id = $jobid;
+				$notification->save();
+			}
+		}
+
 		return Redirect::back();
 	}
 

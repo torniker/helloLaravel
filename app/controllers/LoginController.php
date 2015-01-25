@@ -31,12 +31,14 @@ class LoginController extends BaseController {
 		$user=Auth::user();
 		$user=User::with('phones')->find($user->id);
 		$type=$user->type;
-		if ($type==1) {
-			return View::make('users.dashboard')->with('user',$user);
-		}elseif($type==2||$type==3){
-			return View::make('clients.dashboard')->with('user',$user);
-		}else{
+		if ($type==4) {
 			return Redirect::to('admin/user');
+		}
+		else {
+			$jobs = Job::all();
+			return View::make('users.dashboard')
+			->with('user',$user)
+			->with('jobs',$jobs);
 		}
 	}
 

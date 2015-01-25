@@ -1,6 +1,7 @@
 body{
 	padding-top: 40px;
 	font-family: Nino Bold;
+	background-color: #f8f8f8;
 }
 .left{
 	float: left;
@@ -374,4 +375,7 @@ th.prev, th.next{
 .bid_price{
 	margin-top: 10px;
 	margin-bottom: 10px;
+}
+.auth_btn{
+	padding: 6px 12px;
 }

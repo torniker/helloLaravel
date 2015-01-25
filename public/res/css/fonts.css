@@ -23,3 +23,10 @@
          url('../fonts/Dosis-Medium.woff') format('woff'),
          url('../fonts/Dosis-Medium.ttf') format('truetype'),
    }
+
+@font-face {
+    font-family: 'Square';
+    src: url('../fonts/bpg_banner_extrasquare_caps_0-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}

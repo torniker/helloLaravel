@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.guest')
 @section('content')
 <div class="wrapper"> 
 <div class="errors" style="margin-bottom:20px">
@@ -64,7 +64,7 @@
 
 <input type="hidden" name="token" value="{{$_GET['token']}}"/> 
 
-{{ Form::submit('რეგისტრაცია', ['class'=>'btn btn-primary'])}}
+{{ Form::submit('რეგისტრაცია', ['class'=>'btn btn-success'])}}
 
 {{ Form::close(); }}
 

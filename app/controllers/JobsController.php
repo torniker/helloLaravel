@@ -17,12 +17,8 @@ class JobsController extends BaseController {
 	public function add(){
 		if (Auth::check()) {
 			$user=Auth::user();
-			if ($user->type==1) {
-				return Redirect::to('/');
-			}else{
 				return View::make('jobs.add')
 				->with('user',$user);
-			}
 		}else{
 			return Redirect::to('/');
 		}
@@ -113,9 +109,8 @@ class JobsController extends BaseController {
 		$job=$input["job"];
 		$bid=$input["bid"];
 		$message = $this->gateway->apply($student,$job,$bid);
-		return View::make('jobs.index')
-		->with('jobs',$jobs)
-		->with('message',$message);
+		return Redirect::to('jobs/show/'.$job)
+		->with('msg', $message);;
 	}
 	
 }

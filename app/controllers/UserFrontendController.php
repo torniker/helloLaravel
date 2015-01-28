@@ -85,4 +85,15 @@ class UserFrontendController extends BaseController {
 		->with('message', 'User added successfully');
 	}
 
+	public function filter($id){
+		$users = User::whereHas('trainings', function($q) use ($id){
+		    $q->where('training_id', $id);
+		})->get();
+		$skills = Skill::get();
+
+		return View::make('home.index')
+			->with('users', $users)
+			->with('skills', $skills);
+	}
+
 }

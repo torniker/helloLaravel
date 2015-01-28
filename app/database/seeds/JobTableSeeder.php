@@ -10,7 +10,7 @@ class JobTableSeeder extends Seeder {
 		Job::truncate();
 		$faker = Faker::create();
 		$userids = array();
-		$users=User::All();
+		$users=User::orderByRaw("RAND()")->get();
 		foreach ($users as $user) {
 			$userids[] = $user->id;
 		}
@@ -22,7 +22,8 @@ class JobTableSeeder extends Seeder {
 			$expires = $faker->date;
 			$deadline = $faker->date;
 			$price = $faker->randomNumber;
-			$author = array_rand($userids);
+			$author = $userids[array_rand($userids)];
+
 
 			Job::create([
 				'heading'=>$heading,

@@ -119,5 +119,9 @@
 		<div class="clear"></div>
 	</div>
 
+	<script>
+		$('.navbar-default').height($(document).height());
+	</script>
+
 </body>
 </html>

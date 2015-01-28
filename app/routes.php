@@ -69,3 +69,6 @@ Route::group(['prefix' => 'jobs'], function()
 Route::post('comments/add', array('uses' => 'CommentController@add'));
 Route::post('comments/delete', array('uses' => 'CommentController@delete'));
 Route::post('comments/delete/{id}', array('uses' => 'CommentController@delete'));
+
+Route::get('filter', array('uses' => 'UserFrontendController@filter'));
+Route::get('filter/{id}', array('uses' => 'UserFrontendController@filter'));

@@ -90,13 +90,25 @@
 			<a href="#" class="follow_btn hidden-xs">ვებ-საიტი</a>
 		</div>
 		<div class="col-md-8  col-xs-12">
+			@if(empty($job->picture))
 			<img src="http://lorempixel.com/output/people-q-c-100-100-1.jpg" class="img-thumbnail picture_job hidden-xs" />
-			<img src="http://lorempixel.com/output/people-q-c-100-100-1.jpg" class="img-thumbnail visible-xs picture_mob" />
+			@else
+			<img src="{{URL::to('uploads/'.$job->picture)}}" class="img-thumbnail picture_job hidden-xs">
+			@endif
+			<?php
+				$author = User::find($job->author);
+				if (!empty($author->avatar)) {
+					$avatar = $author->avatar;
+				}
+			?>
 			<div class="header_job">
-				<h1>Lorem Ipsum</h1>
-				<h4>Web Developer</h4>
-				<span>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."
-					"There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain..."</span>
+				<h1>
+					<a href="{{URL::to('jobs/show/'.$job->id)}}" class="mylink big">
+						{{$job->heading}}
+					</a>
+				</h1>
+				<h4>{{$author->firstname.' '.$author->lastname}}</h4>
+				<div class="job-conten">{{$job->content}}</div>
 				</div>
 			</div>
 		</div>   

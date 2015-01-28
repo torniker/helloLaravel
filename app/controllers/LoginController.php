@@ -35,7 +35,7 @@ class LoginController extends BaseController {
 			return Redirect::to('admin/user');
 		}
 		else {
-			$jobs = Job::all();
+			$jobs = Job::orderBy('id', 'DESC')->get();
 			return View::make('users.dashboard')
 			->with('user',$user)
 			->with('jobs',$jobs);

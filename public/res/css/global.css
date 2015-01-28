@@ -379,3 +379,13 @@ th.prev, th.next{
 .auth_btn{
 	padding: 6px 12px;
 }
+.mylink-two{
+	color: black;
+}
+.mylink-two:hover{
+	color: #F0AD4E;
+	text-decoration: none;
+}
+.big{
+	font-size: 25px;
+}

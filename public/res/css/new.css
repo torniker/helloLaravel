@@ -226,7 +226,6 @@ span.tags
 }
 .navbar-default{
 	background: white;
-	min-height: 1200px;
 	border: 1px solid #e3e3e3;
 	border-top:none;
 }
@@ -453,4 +452,204 @@ span.tags
 }
 .panel{
 	box-shadow: none !important;
+}
+.job_add_form{
+	width:980px; 
+	border: 1px solid #e3e3e3;
+	padding: 30px;
+	background: white;
+}
+#jobname,#expires,#deadline,#jobprice,#website{
+	margin-bottom: 20px;
+}
+.dropdown-menu{
+	background-color: white;
+}
+.job_form_center{
+	width: 600px;
+	margin: 0 auto;
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+.useredit{
+	width: 200px;
+}
+.myphone input{
+	display: block;
+	margin-left: 172px;
+}
+
+.myphone ~ .myphone{
+	margin-left: 172px;
+	margin-top: 10px;
+	width: 200px;
+	display: block;
+}
+.myphone ~ .myphone input{
+	margin-left: 0;
+}
+#phoneadd{
+	display: block;
+	margin: 10px 0;
+	cursor: pointer;
+	margin-left: 157px;
+}
+.usereditbutton{
+	margin-left: 173px;
+}
+.nick-inp{
+	width:235px;
+}
+.remember-inp{
+	margin-left: 136px;
+}
+.sub-inp{
+	margin-left: 154px;
+}
+.mylink{
+	color: black;
+}
+.mylink:hover{
+	color: #F0AD4E;
+	text-decoration: none;
+}
+.big{
+	font-size: 32px;
+}
+.offer_wrapper{
+	display: none;
+	position: absolute;
+    padding:0;
+    margin:0;
+    width: 100%;
+    height: 100%;
+	background: rgba(159, 211, 196, 0.4);
+	color: rgba(117, 151, 53, 0.4);
+}
+.offer_form{
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	position: absolute;
+	left: 0;
+	right: 0;
+	background:white;
+	width: 500px;
+	height: 100px;
+	z-index: 9;
+	border: 2px solid orange;
+	border-radius:20px;
+}
+#close_button{
+	position: absolute;
+	top: 5px;
+	right: 10px;
+	height: 25px;
+	width: 25px;
+	background: url(../../uploads/close.png);
+	background-size: contain;
+	background-repeat: no-repeat;
+	cursor: pointer;
+}
+
+.off_form{
+	margin-top: 30px;
+	margin-left: 70px;
+}
+.recent-comments{
+	margin-bottom: 0;
+}
+.recent-comments li.comment-success {
+  border-left-color: #53c077;
+}
+.list-group .list-group-item {
+  transition: all;
+  transition-duration: 0.4s;
+}
+.list-group-item:first-child {
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+}
+.recent-comments li {
+  border-radius: 0;
+  border-top-width: 0;
+  border-left-width: 4px;
+  border-bottom-width: 0;
+  border-right-width: 0;
+  margin-bottom: 10px;
+  background-color: #f2f2f2;
+}
+.list-group-item {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+  margin-bottom: -1px;
+  background-color: #ffffff;
+  border: 1px solid #e3e3e3;
+}
+.mr15 {
+  margin-right: 15px !important;
+}
+.recent-comments li p {
+  margin-top: 2px;
+}
+.text-ellipsis {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  position: relative;
+}
+.text-muted {
+  color: #777777;
+}
+small, .small {
+  font-size: 85%;
+}
+.comment_delete{
+	position: absolute;
+	right: 10px;
+	top: 5px;
+}
+.sng_comment{
+	margin-top: -10px;
+	width: 80%;
+}
+.heading{
+	font-size: 30px;
+	text-align: center;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+.name{
+	color: black;
+	font-size: 21px;
+}
+.bid_price{
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding: 20px;
+	padding-top: 30px;
+	text-align: center;
+	font-size: 35px;
+	color: white;
+	background:#64B456;
+	height: 100%;
+}
+.recent-comments li.comment-info{
+	border-left-color: #22b7bb;
+}
+.recent-comments li.comment-warning {
+  border-left-color: #f38231;
+}
+.recent-comments li.comment-danger {
+  border-left-color: #da557b;
+}
+.recent-comments li.comment-default {
+  border-left-color:  #e3e3e3;
+}
+.job-content{
+	height: 80px;
+	overflow: hidden;
 }

@@ -1,6 +1,8 @@
-@extends('layouts.master')
+@extends('layouts.guest')
 @section('content')
 <div class="center">
+<div class="job_add_form">
+	<div class="job_form_center"> 
 	<form class="form-horizontal" role="form" method="post" action="{{URL::to('doedit')}}">
 		<div class="errors" style="margin-bottom:20px">
 			<div>{{ $errors->first('username') }}</div>
@@ -12,7 +14,7 @@
 			<label for="inputEmail3" class="col-sm-3 control-label">ნიკი</label>
 			<div class="col-sm-9">
 				@if(empty($gituser))
-				<input type="text" class="form-control" id="username" 
+				<input type="text" class="form-control useredit" id="username" 
 				name="username" value="{{$user->username}}">
 				@else
 				<input type="text" class="form-control orange" id="username" 
@@ -23,14 +25,14 @@
 		<div class="form-group">
 			<label for="inputEmail3" class="col-sm-3 control-label">სახელი</label>
 			<div class="col-sm-9">
-				<input type="text" class="form-control" id="firstname" 
+				<input type="text" class="form-control useredit" id="firstname" 
 				name="firstname" value="{{$user->firstname}}">
 			</div>
 		</div>
 		<div class="form-group">
 			<label for="inputEmail3" class="col-sm-3 control-label">გვარი</label>
 			<div class="col-sm-9">
-				<input type="text" class="form-control" id="lastname" 
+				<input type="text" class="form-control useredit" id="lastname" 
 				name="lastname" value="{{$user->lastname}}">
 			</div>
 		</div>
@@ -38,8 +40,8 @@
 		<div class="form-group" id="phonewrapper">
 			{{ Form::label('phone', 'ტელეფონის ნომერი', ['class'=>'control-label col-sm-3']); }}
 			@foreach ($user->phones as $phone)
-			<div class="col-sm-9 myphone">
-				<input class="form-control" id="phone" name="phone[<?=$phone["id"]?>]" type="text" value="<?=$phone["phone"]?>">
+			<div class="myphone">
+				<input class="form-control useredit" id="phone" name="phone[<?=$phone["id"]?>]" type="text" value="<?=$phone["phone"]?>">
 			</div>
 			@endforeach
 		</div>
@@ -47,28 +49,34 @@
 
 		<div class="myhidden">
 			<div class="form-group">
-				{{ Form::label('company_name', 'კომპანიის დასახელება *', ['class'=>'control-label red']); }}
-				{{ Form::input('text', 'company_name', Input::old("company_name"), ['class'=>'form-control', 'id'=>'company_name']) }}
+				{{ Form::label('company_name', 'კომპანიის დასახელება *', ['class'=>'control-label col-sm-3 red']); }}
+				<div class="col-sm-9">
+					{{ Form::input('text', 'company_name', Input::old("company_name"), ['class'=>'form-control useredit', 'id'=>'company_name']) }}
+				</div>
 			</div>
 
 			<div class="form-group">
-				{{ Form::label('identification_code', 'საიდენტიფიკაციო კოდი *', ['class'=>'control-label red']); }}
-				{{ Form::input('text', 'identification_code', Input::old("identification_code"), ['class'=>'form-control', 'id'=>'identification_code']) }}
+				{{ Form::label('identification_code', 'საიდენტიფიკაციო კოდი *', ['class'=>'control-label col-sm-3 red']); }}
+				<div class="col-sm-9">
+					{{ Form::input('text', 'identification_code', Input::old("identification_code"), ['class'=>'form-control useredit', 'id'=>'identification_code']) }}
+				</div>
 			</div>
 		</div>
 
 		<div class="form-group">
 			<label for="inputPassword3" class="col-sm-3 control-label">პაროლი</label>
 			<div class="col-sm-9">
-				<input type="password" class="form-control" id="password" name="password" placeholder="პაროლი">
+				<input type="password" class="form-control useredit" id="password" name="password" placeholder="პაროლი">
 			</div>
 			<div class="form-group" style="margin-top:70px">
 				<div class="col-sm-10">
-					<button type="submit" class="btn btn-default">რედაქტირება</button>
+					<button type="submit" class="btn btn-default useredit usereditbutton">რედაქტირება</button>
 				</div>
 			</div>
 			<input type="hidden" name="id" value="{{$user->id}}">
 		</form>
+		</div>
+		</div>
 	</div>
 
 	<script>
@@ -89,7 +97,7 @@
 		});
 		$('#phoneadd').on('click', function() {
 			var form = 
-			'<div class="col-sm-9 myphone"><input class="form-control" id="phone'+counter+'" name="phone['+counter+']" type="text"></div>'
+			'<div class="myphone"><input class="form-control" id="phone'+counter+'" name="phone['+counter+']" type="text"></div>'
 			$('#phonewrapper').append(form);
 			counter++;
 		});

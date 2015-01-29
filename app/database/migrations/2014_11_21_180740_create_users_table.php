@@ -23,8 +23,10 @@ class CreateUsersTable extends Migration {
 		    $table->tinyInteger('gender');
 		    $table->string('remember_token');
 		    $table->tinyInteger('type');
+		    $table->text('bio');
 		    $table->timestamps();
 		    $table->timestamp('deleted_at')->nullable();
+		    $table->string('github_token')->nullable();
 		});
 	}
 

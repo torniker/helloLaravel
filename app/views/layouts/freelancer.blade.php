@@ -10,6 +10,9 @@
 	<title>Project</title>
 	<link href="{{ URL::asset('res/css/bootstrap.css') }}" rel="stylesheet">
 	<link href="{{ URL::asset('res/css/bootstrap-theme.css') }}" rel="stylesheet">
+	<link href="{{ URL::asset('res/css/style.css') }}" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="{{ URL::asset('res/js/bootstrap.min.js') }}"></script>
 </head>
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -21,7 +24,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">Project name</a>
+				<a class="navbar-brand" href="{{ URL::to('/freelancer') }}">Project name</a>
 			</div>
 			<div id="navbar" class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
@@ -29,7 +32,7 @@
 					 <li><a href="{{ URL::to('freelancer/projects') }}">All Projects</a></li>
 					 <li><a href="{{ URL::to('freelancer/projects/my') }}">My Projects</a></li>
 					 <li><a href="{{ URL::to('freelancer/profile') }}">Profile</a></li>
-					 <li><a href="{{ URL::to('freelancer/offers') }}">Offers</a></li> 
+					 <li><a href="{{ URL::to('freelancer/offers') }}">My Offers</a></li> 
 		                <li class="">
 		                  @if(Auth::check())
 		                    <a href="{{ URL::to('logout') }}">Logout</a>
@@ -39,6 +42,7 @@
 		                </li>
 		              </ul>
 				</ul>
+				<div class='pull-right label label-xs label-success margin-sm-top'>Hello, {{ Auth::user()->firstname }}!</div>
 			</div><!--/.nav-collapse -->
 		</div>
 	</nav>
@@ -50,8 +54,6 @@
 		@yield('content')
 	</div><!-- /.container -->
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<script src="res/js/bootstrap.min.js"></script>
 
 </body>
 </html>

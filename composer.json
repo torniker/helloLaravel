@@ -9,7 +9,8 @@
 		"atticmedia/anvard": "dev-master",
 		"watson/validating": "0.10.*@dev",
 		"edvinaskrucas/notification": "3.0.*",
-		"guzzle/guzzle": "~3.9"
+		"guzzle/guzzle": "~3.9",
+		"artdarek/oauth-4-laravel": "1.0.5"
 	},
 	"require-dev": {
     	"way/generators": "~2.0",

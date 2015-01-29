@@ -123,7 +123,8 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		'Atticmedia\Anvard\AnvardServiceProvider',
 		'pro\Repositories\RepositoryServiceProvider',
-		'Krucas\Notification\NotificationServiceProvider'
+		'Krucas\Notification\NotificationServiceProvider',
+		 'Artdarek\OAuth\OAuthServiceProvider'
 
 	),
 
@@ -191,7 +192,8 @@ return array(
 		'URL'               => 'Illuminate\Support\Facades\URL',
 		'Validator'         => 'Illuminate\Support\Facades\Validator',
 		'View'              => 'Illuminate\Support\Facades\View',
-		'Notification' 		=> 'Krucas\Notification\Facades\Notification' 
+		'Notification' 		=> 'Krucas\Notification\Facades\Notification',
+		'OAuth' => 'Artdarek\OAuth\Facade\OAuth',
 
 	),
 

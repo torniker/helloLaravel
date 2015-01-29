@@ -1,9 +1,9 @@
 <?php
-use pro\gateways\ProjectGateway;
+use pro\gateways\OfferGateway;
 
 class FreelancerOffersController extends \BaseController {
 
-	public function __construct(ProjectGateway $gateway){
+	public function __construct(OfferGateway $gateway){
 		$this->gateway = $gateway;
 	}
 
@@ -15,7 +15,8 @@ class FreelancerOffersController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		$offers = $this->gateway->all(25);
+		return View::make('freelancer.offers.index')->with('offers',$offers);
 	}
 
 	/**
@@ -37,7 +38,16 @@ class FreelancerOffersController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		$params = Input::only(['project_id','message','price','currency']);
+
+		if($this->gateway->create($params)){
+
+			Notification::success('Offer is sent!');
+		} else {
+			Notification::error('Something went wrong!');
+		}
+
+		return Redirect::back();
 	}
 
 	/**

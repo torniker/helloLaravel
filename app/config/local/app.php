@@ -46,7 +46,8 @@ return array(
 		'Way\Generators\GeneratorsServiceProvider',
 		'Barryvdh\Debugbar\ServiceProvider',
 		'pro\Repositories\RepositoryServiceProvider',
-		'Krucas\Notification\NotificationServiceProvider'
+		'Krucas\Notification\NotificationServiceProvider',
+		 'Artdarek\OAuth\OAuthServiceProvider'
 
 	),
 
@@ -115,6 +116,7 @@ return array(
 		'Validator'         => 'Illuminate\Support\Facades\Validator',
 		'View'              => 'Illuminate\Support\Facades\View',
 		'Debugbar' 			=> 'Barryvdh\Debugbar\Facade',
-		'Notification' 		=> 'Krucas\Notification\Facades\Notification'
+		'Notification' 		=> 'Krucas\Notification\Facades\Notification',
+		'OAuth' => 'Artdarek\OAuth\Facade\OAuth',
 	),
 );

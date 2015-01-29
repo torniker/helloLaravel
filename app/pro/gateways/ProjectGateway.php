@@ -12,7 +12,7 @@ class ProjectGateway {
 		$this->ProjectRepo = $ProjectRepo;
 	}
  
-	public function all($perpg) {
+	public function all($perpg = 25) {
 		return $this->ProjectRepo->all($perpg);
 	}
 

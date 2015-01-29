@@ -13,7 +13,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 	protected $table = 'users';
 	protected $hidden = array('password', 'remember_token');
-	protected $fillable = ['firstname', 'lastname', 'email','gender'];
+	protected $fillable = ['firstname', 'lastname', 'email','gender','github_token'];
 	protected $throwValidationExceptions = true;
 	protected $rules = [
         'username'   => 'required',
@@ -35,20 +35,25 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	{
 		return $this->belongsToMany('Skill');
 	}
+
 	public function courses()
 	{
 		return $this->belongsToMany('Course','course_user')->withPivot('score');
+	}
+
+	public function offers(){
+		return $this->hasMany('Offer');
 	}
 
 	public function projects(){
 		return $this->hasMany('Project');
 	}
 
-	public function getGender() {
-		if($this->attributes['gender']) {
-			return 'male';
+	public function getGenderText() {
+		if($this->attributes['gender']==1) {
+			return 'Male';
 		}
-		return 'female';
+		return 'Female';
 	}
 
 	public function isAdmin(){

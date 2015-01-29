@@ -7,19 +7,25 @@ class ProjectRepositoryDb implements ProjectRepositoryInterface {
 
 
 	public function all($perpg = 25) {
-		$projects = Project::with('user')->get();
-		debug($projects);
+		$projects = Project::with('user')->orderBy('created_at','desc')->paginate($perpg);
 		return $projects;
 	}
 
 	public function byId($id) {
-		return Project::find($id);
+		return Project::with(['user','offers','offers.user'])->find($id);
 	}
 
 	public function create($input) {
+		$project = new Project;
 
+		$input['expires'] = date('Y-m-d H:i:s',time()+50); // TO BE REMOVED!!!!
+		
+		$project->fill($input);
+		$project->save();
+
+		return $project;
 	}
-
+	
 	public function update($id,$input){
 
 	}
@@ -46,7 +52,7 @@ class ProjectRepositoryDb implements ProjectRepositoryInterface {
 	}
 
 	public function byUserId($id,$perpg = 25){ 
-		return Project::with('user')->where('user_id',$id)->paginate($perpg); 
+		return Project::with('user')->where('user_id',$id)->orderBy('created_at','desc')->paginate($perpg); 
 	}
 
 }

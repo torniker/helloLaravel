@@ -4,6 +4,8 @@ namespace pro\repositories\UserRepository;
 
 use User;
 use Hash;
+use Auth;
+use Guzzle;
 
 class UserRepositoryDb implements UserRepositoryInterface {
 
@@ -28,19 +30,19 @@ class UserRepositoryDb implements UserRepositoryInterface {
 
 	public function update($id,$input,$courses = false){
 		$user = $this->byId($id);
-		
-		if($input['password']!='') {
-			$user->password = Hash::make($pass);
+
+		if(isset($input['password']) AND $input['password']!='') {
+			$user->password = Hash::make($input['password']);
 		} else {
 			unset($input['password']);
 		}
 
 		$user->fill($input);
-		
+
 		if(is_array($courses)){
 			$user->courses()->sync($courses);
 		}
-		
+
 		if($user->save()){
 			return true;
 		}
@@ -57,5 +59,15 @@ class UserRepositoryDb implements UserRepositoryInterface {
 
 		return $users->get();
 	}
+
+	public function currentUser(){
+		return Auth::user();
+	}
+
+	public function getGithubData($token){
+		$client = new \Guzzle\Service\Client('https://api.github.com/');
+
+		$resp = $client->get(sprintf('/user?access_token=%s',$token))->send()->json();
+		return $resp;
+	}
 }
- 

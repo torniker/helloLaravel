@@ -8,11 +8,11 @@ class UserTableSeeder extends Seeder {
 	public function run()
 	{
 		$faker = Faker::create();
-		
+
 
 
 		User::truncate();
-		 
+
 		User::create([
 			'username'=>'admin',
 			'password' => Hash::make('admin'),
@@ -32,6 +32,7 @@ class UserTableSeeder extends Seeder {
 				'firstname'=>$faker->firstName(),
 				'lastname'=>$faker->lastName(),
 				'email'=>$faker->email(),
+				'bio' => $faker->paragraphs(4,8),
 				'type'=>'1',
 				'gender'=>$faker->numberBetween(0,1)
 			]);

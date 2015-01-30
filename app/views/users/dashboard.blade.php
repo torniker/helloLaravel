@@ -2,7 +2,7 @@
 @section('content')
 <div class="row not_bar">
 	<div class="col-lg-3 col-md-6">
-		<a href="#" class="block">
+		<a href="{{URL::to('my-projects')}}" class="block">
 			<div class="panel panel-primary">
 				<div class="panel-heading">
 					<div class="row">
@@ -23,7 +23,7 @@
 		</div>
 	</a>
 	<div class="col-lg-3 col-md-6">
-		<a href="#" class="block">
+		<a href="{{URL::to('my-completed')}}" class="block">
 			<div class="panel panel-green">
 				<div class="panel-heading">
 					<div class="row">
@@ -43,7 +43,7 @@
 		</div>
 	</a>
 	<div class="col-lg-3 col-md-6">
-		<a href="#" class="block">
+		<a href="{{URL::to('my-ongoing')}}" class="block">
 			<div class="panel panel-yellow">
 				<div class="panel-heading">
 					<div class="row">
@@ -63,7 +63,7 @@
 		</div>
 	</a>
 	<div class="col-lg-3 col-md-6">
-		<a href="#" class="block">
+		<a href="{{URL::to('my-failed')}}" class="block">
 			<div class="panel panel-red">
 				<div class="panel-heading">
 					<div class="row">

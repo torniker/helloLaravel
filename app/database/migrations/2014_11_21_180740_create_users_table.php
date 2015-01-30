@@ -23,6 +23,8 @@ class CreateUsersTable extends Migration {
 		    $table->string('email');
 		    $table->tinyInteger('gender');
 		    $table->string('avatar');
+		    $table->string('github');
+		    $table->string('facebook');
 		    $table->string('remember_token');
 		    $table->timestamps();
 		    $table->timestamp('deleted_at')->nullable();

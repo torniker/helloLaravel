@@ -66,7 +66,14 @@ Route::group(['prefix' => 'jobs'], function()
 	Route::post('apply', array('uses' => 'JobsController@apply'));
 	Route::post('choose', array('uses' => 'JobsController@choose'));
 	Route::post('close', array('uses' => 'JobsController@close'));
+	Route::post('failure/{id}', array('uses' => 'JobsController@failure'));
+	Route::post('success/{id}', array('uses' => 'JobsController@success'));
 });
+
+Route::get('my-projects', array('uses' => 'JobsController@myAll'));
+Route::get('my-completed', array('uses' => 'JobsController@myCompleted'));
+Route::get('my-ongoing', array('uses' => 'JobsController@myOngoing'));
+Route::get('my-failed', array('uses' => 'JobsController@myFailed'));
 
 Route::post('comments/add', array('uses' => 'CommentController@add'));
 Route::post('comments/delete', array('uses' => 'CommentController@delete'));

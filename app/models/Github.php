@@ -24,6 +24,8 @@ class Github{
 					'access_token' => $params->access_token
 					));
 				$user = $provider->get_user_info($token);
+				$curUser = Auth::user();
+				$curUser = User::find($curUser->id);
 				return Redirect::to("editprofile/".$user['nickname']);
 			}
 			catch (OAuth2_Exception $e)

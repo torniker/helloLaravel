@@ -17,8 +17,8 @@ class JobsController extends BaseController {
 	public function add(){
 		if (Auth::check()) {
 			$user=Auth::user();
-				return View::make('jobs.add')
-				->with('user',$user);
+			return View::make('jobs.add')
+			->with('user',$user);
 		}else{
 			return Redirect::to('/');
 		}
@@ -62,11 +62,11 @@ class JobsController extends BaseController {
 				$avatar = $applicant->avatar;
 				$applicant = $applicant->firstname.' '. $applicant->lastname;
 				$sorted_bids[] = array
-					(
-						'applicant_name' => $applicant,
-						'applicant_id' => $bid->user_id,
-						'avatar' => $avatar,
-						'bid' => $bid->price,
+				(
+					'applicant_name' => $applicant,
+					'applicant_id' => $bid->user_id,
+					'avatar' => $avatar,
+					'bid' => $bid->price,
 					);
 			}
 		}
@@ -135,6 +135,84 @@ class JobsController extends BaseController {
 			Session::flash('msg', "პროექტი წარმატებით დაიხურა");
 		}
 		return Redirect::back();
+	}
+
+	public function myAll(){
+		$user=Auth::user();
+		$author =$user->id;
+		$jobs = Job::where('author', '=', $author)
+		->orderBy('id', 'DESC')->get();
+		return View::make('users.dashboard')
+		->with('user',$user)
+		->with('jobs',$jobs);
+	}
+
+	public function myCompleted(){
+		$user=Auth::user();
+		$author =$user->id;
+		$jobs = Job::whereHas('users', function($q) use ($author){
+			$q->where('user_id', $author);
+			$q->where('job_user.type', 3);
+		})->orderBy('id', 'DESC')->get();
+		return View::make('users.dashboard')
+		->with('user',$user)
+		->with('jobs',$jobs);
+	}
+
+	public function myOngoing(){
+		$user=Auth::user();
+		$author =$user->id;
+		$jobs = Job::whereHas('users', function($q) use ($author){
+			$q->where('user_id', $author);
+			$q->where('job_user.type', 2);
+		})->orderBy('id', 'DESC')->get();
+		return View::make('users.dashboard')
+		->with('user',$user)
+		->with('jobs',$jobs);
+	}
+
+	public function myFailed(){
+		$user=Auth::user();
+		$author =$user->id;
+		$jobs = Job::whereHas('users', function($q) use ($author){
+			$q->where('user_id', $author);
+			$q->where('job_user.type', 0);
+		})->orderBy('id', 'DESC')->get();
+		return View::make('users.dashboard')
+		->with('user',$user)
+		->with('jobs',$jobs);
+	}
+
+	public function failure($id){
+		$user=Auth::user();
+		$job = Job::find($id);
+		if ($user->id==$job->author) {
+			DB::table('job_user')
+			->where('job_id', $id)
+			->where('type', 2)
+			->update(array('type' => 0));
+			Session::flash('msg', "პროექტი ჩავარდა");
+			return Redirect::back();
+		}else{
+			Session::flash('msg', "შენ არ ხარ ამ პროექტის ავტორი!");
+			return Redirect::back();
+		}
+	}
+
+	public function success($id){
+		$user=Auth::user();
+		$job = Job::find($id);
+		if ($user->id==$job->author) {
+			DB::table('job_user')
+			->where('job_id', $id)
+			->where('type', 2)
+			->update(array('type' => 3));
+			Session::flash('msg', "პროექტი წარმატებით დასრულდა, მადლობა!");
+			return Redirect::back();
+		}else{
+			Session::flash('msg', "შენ არ ხარ ამ პროექტის ავტორი!");
+			return Redirect::back();
+		}
 	}
 	
 }

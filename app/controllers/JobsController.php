@@ -50,7 +50,10 @@ class JobsController extends BaseController {
 	public function show($id){
 		$job=Job::find($id);
 		$student=false;
-		$bids=DB::table('job_user')->where('type', '1')->get();
+		$bids=DB::table('job_user')
+		->where('type', '1')
+		->where('job_id', $id)
+		->get();
 
 		$sorted_bids=array();
 		foreach ($bids as $bid) {
@@ -67,6 +70,7 @@ class JobsController extends BaseController {
 					);
 			}
 		}
+
 		usort($sorted_bids, function($a, $b){
 			return $a["bid"] > $b["bid"];
 		});
@@ -111,6 +115,26 @@ class JobsController extends BaseController {
 		$message = $this->gateway->apply($student,$job,$bid);
 		return Redirect::to('jobs/show/'.$job)
 		->with('msg', $message);;
+	}
+
+	public function choose(){
+		$input = Input::all();
+		$message = $this->gateway->choose($input);
+		Session::flash('msg', "$message");
+		return Redirect::back();
+	}
+
+	public function close(){
+		$id = Input::get('job');
+		$job = Job::find($id);
+		if ($job->open==0) {
+			Session::flash('msg', "პროექტი უკვე დახურულია");
+		}else{
+			$job->open=0;
+			$job->save();
+			Session::flash('msg', "პროექტი წარმატებით დაიხურა");
+		}
+		return Redirect::back();
 	}
 	
 }

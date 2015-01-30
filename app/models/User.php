@@ -35,7 +35,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 	public function jobs()
 	{
-		return $this->belongsToMany('Job')->withPivot('type');
+		return $this->belongsToMany('Job')->withPivot('type')->withPivot('price');
 	}
 
 	public function trainings()

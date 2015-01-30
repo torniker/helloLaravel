@@ -34,86 +34,41 @@
 	<div class="container">
 		<div class="navbar-default sidebar left" role="navigation">
 			<div class="sidebar-nav navbar-collapse">
-				<ul class="nav in" id="side-menu">
-					@if(!Auth::check())
-					<li>
-						<a href="{{URL::to('filter/1')}}">
-						<i class="fa fa-th-list"></i>	ვებ პროგრამირება
-						</a>
-					</li>
-					<li>
-						<a href="{{URL::to('filter/2')}}">
-						<i class="fa fa-th-list"></i>	ინტერფეისი
-						</a>
-					</li>
-					<li>
-						<a href="{{URL::to('filter/3')}}">
-						<i class="fa fa-th-list"></i>	ვებ დიზაინი
-						</a>
-					</li>
-					<li>
-						<a href="{{URL::to('filter/4')}}">
-						<i class="fa fa-th-list"></i>	ვებ ადმინისტრირება
-						</a>
-					</li>
-					<li>
-						<a href="{{URL::to('filter/6')}}">
-						<i class="fa fa-th-list"></i>	ინტერნეტ მარკეტინგი
-						</a>
-					</li>
-					<li>
-						<a href="{{URL::to('filter/5')}}">
-						<i class="fa fa-th-list"></i>	Linux ადმინისტრირება
-						</a>
-					</li>
-				</ul>
-				@else
 				<?php $curUser = Auth::user(); ?>
-					@if(empty($curUser->avatar))
+					@if(empty($user->avatar))
 					<img src="{{URL::to('uploads/default_avatar.png')}}" alt="" class="img-circle img-responsive" width="150px" height="150px" style="margin-left:40px; margin-bottom:10px; margin-top:10px;">
 					@else
-					<img src="{{URL::to('uploads/'.$curUser->avatar)}}" width="150px" height="150px" style="margin-left:40px; margin-bottom:10px; margin-top:10px;">
+					<img src="{{URL::to('uploads/'.$user->avatar)}}" width="150px" height="150px" style="margin-left:40px; margin-bottom:10px; margin-top:10px;">
 					@endif
 					<div style="padding-left:40px; margin-bottom:20px;">
 						გამარჯობა, 
 						<a href="{{URL::to('show/'.$user->id)}}">
 							{{
-								$curUser->firstname
+								$user->firstname
 							}}
 						</a>
 					</div>
 				<ul class="nav in" id="side-menu">
 					<li style="border-top: 1px solid #e7e7e7">
-						<a href="{{URL::to('dashboard')}}">
-							<i class="fa fa-th-list"></i> პროექტები
-						</a>
-					</li>
-					<li style="border-top: 1px solid #e7e7e7">
-						<a href="{{URL::to('')}}">
-							<i class="fa fa-th-list"></i> პროგრამისტები
+						<a href="{{URL::to('admin/user/')}}">
+							<i class="fa fa-th-list"></i> მომხმარებლები
 						</a>
 					</li>
 					<li>
-						<a href="{{URL::to('jobs/add')}}">
-							<i class="fa fa-th-list"></i> პროექტის დამატება
+						<a href="{{URL::to('admin/skill/')}}">
+							<i class="fa fa-th-list"></i> სკილები
 						</a>
 					</li>
 					<li>
-						<a href="{{URL::to('editprofile')}}">
-							<i class="fa fa-th-list"></i> პროფილის რედაქტირება
+						<a href="{{URL::to('admin/trainings/')}}">
+							<i class="fa fa-th-list"></i> ტრენინგები
 						</a>
 					</li>
 					<li>
-						<a href="{{URL::to('#')}}">
-							<i class="fa fa-th-list"></i> ფორუმი
+						<a href="{{URL::to('admin/generator')}}">
+							<i class="fa fa-th-list"></i> რეგისტრაციის გენერატორი
 						</a>
 					</li>
-					<li>
-						<a href="{{URL::to('#')}}">
-							<i class="fa fa-th-list"></i> სხვადასხვა
-						</a>
-					</li>
-					@endif
 				</ul>
 			</div>
 		</div>

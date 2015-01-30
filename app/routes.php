@@ -64,6 +64,8 @@ Route::group(['prefix' => 'jobs'], function()
 	Route::get('show', array('uses' => 'JobsController@show'));
 	Route::get('show/{id}', array('uses' => 'JobsController@show'));
 	Route::post('apply', array('uses' => 'JobsController@apply'));
+	Route::post('choose', array('uses' => 'JobsController@choose'));
+	Route::post('close', array('uses' => 'JobsController@close'));
 });
 
 Route::post('comments/add', array('uses' => 'CommentController@add'));

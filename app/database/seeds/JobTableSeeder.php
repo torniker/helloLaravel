@@ -15,15 +15,25 @@ class JobTableSeeder extends Seeder {
 			$userids[] = $user->id;
 		}
 
+		$headings = array(
+			'მესაჭიროება PHP პროგრამისტი',
+			'მესაჭიროება MySQL პროგრამისტი',
+			'პროექტი ინტერფეისის დეველოპერთათვის',
+			'პროექტი ვებ-დეველოპერთათვის',
+			'ახალი სპორტული ვებსაიტი',
+			'გვჭირდება Linux პროგრამისტი'
+		 );
+
 		foreach(range(1, 80) as $index)
 		{
-			$heading = $faker->name;
+			$heading = $headings[array_rand($headings)];
 			$content = $faker->text;
 			$expires = $faker->date;
 			$deadline = $faker->date;
 			$price = $faker->randomNumber;
 			$author = $userids[array_rand($userids)];
-
+			$picture_id = rand(1,4);
+			$picture = 'job'.$picture_id.'.jpg';
 
 			Job::create([
 				'heading'=>$heading,
@@ -31,7 +41,10 @@ class JobTableSeeder extends Seeder {
 				'expires'=>$expires,
 				'deadline'=>$deadline,
 				'price'=>$price,
-				'author'=>$author
+				'author'=>$author,
+				'website'=>'http://itdc.ge',
+				'open'=>1,
+				'picture'=>$picture
 			]);
 		}
 	}

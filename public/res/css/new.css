@@ -97,7 +97,7 @@ body{
 
 .profile 
 {
-    min-height: 280px;
+    min-height: 300px;
     display: inline-block;
     }
 figcaption.ratings
@@ -249,7 +249,7 @@ span.tags
 	border-radius: 2px;
 }
 .trainings_wrapper{
-	min-height: 180px;
+	min-height: 210px;
 }
 .point{
 	margin-bottom: 5px;
@@ -288,6 +288,12 @@ span.tags
 	color: #fff;
 	background-color: #d9534f;;
 }
+.panel{
+	height: 130px;
+}
+.panel_low{
+	position: relative;
+}
 .clearfix:after {
     clear: both;
     content: ".";
@@ -310,7 +316,7 @@ span.tags
 	font-size: 13px;
 }
 .panel{
-	height: 127px;
+	
 }
 .panel-footer{
 	background-color: white;
@@ -444,7 +450,13 @@ span.tags
 }
 .well_row{
 	margin-left: 357px;
+}
+.well_row{
+	margin-left: 357px;
 	margin-top: -30px;
+}
+.well_row_show{
+	margin-left: 350px;
 }
 .single_job{
 	background-color: white;
@@ -452,6 +464,9 @@ span.tags
 }
 .panel{
 	box-shadow: none !important;
+}
+.panel-red{
+	height: 130px;
 }
 .job_add_form{
 	width:980px; 
@@ -513,8 +528,12 @@ span.tags
 	color: #F0AD4E;
 	text-decoration: none;
 }
+.mylink:focus{
+	text-decoration: none;
+	color: black;
+}
 .big{
-	font-size: 32px;
+	font-size: 24px;
 }
 .offer_wrapper{
 	display: none;
@@ -652,4 +671,36 @@ small, .small {
 .job-content{
 	height: 80px;
 	overflow: hidden;
+}
+.choose-form{
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+.block{
+	display: block;
+}
+.close_project{
+	position: absolute;
+	right: 0;
+	top: 0;
+	z-index: 9;
+}
+.project_success{
+	position: absolute;
+	right: 0;
+	top: 0;
+	z-index: 9;
+}
+.project_failure{
+	position: absolute;
+	right: 273px;
+	top: 0;
+	z-index: 9;
+}
+.closed{
+	color: red;
+  	margin-top: 28px;
+  	margin-left: 100px;
+  	font-size: 25px;
 }

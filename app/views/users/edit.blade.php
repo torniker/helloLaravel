@@ -1,6 +1,12 @@
 @extends('layouts.guest')
 @section('content')
 <div class="center">
+@if(null!==Session::get('msg'))
+<div class="alert alert-warning">
+	<a href="#" class="close" data-dismiss="alert">&times;</a>
+	{{ Session::get('msg') }}
+</div>
+@endif
 <div class="job_add_form">
 	<div class="job_form_center"> 
 	<form class="form-horizontal" role="form" method="post" action="{{URL::to('doedit')}}">
@@ -74,9 +80,16 @@
 				</div>
 			</div>
 			<input type="hidden" name="id" value="{{$user->id}}">
+		</div>
+
+		<div class="form-group">
+			<a class="auth left btn btn-success auth_btn" 
+			href="{{URL::to('gitauth')}}" style="margin-left:80px">Github აუტენთიფიკაცია
+			</a>
+		</div>
+
 		</form>
-		</div>
-		</div>
+		
 	</div>
 
 	<script>

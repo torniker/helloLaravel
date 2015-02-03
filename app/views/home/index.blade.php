@@ -5,71 +5,90 @@
 	{{ Session::get('message') }}
 </div>
 @endif
+
 <div class="left">
 	@foreach($users as $user)
 	<div class="row users_row left">
 		<div class="single_user">
-    	 <div class="well profile">
+          <div class="well profile">
             <div class="col-sm-12 trainings_wrapper">
                 <div class="col-xs-12 col-sm-8">
                     <h2>
-                    	<a href="show/{{$user->id}}" class="mylink">
-                    		{{ $user->firstname." ".$user->lastname }}
-                    	</a>
+                    	<a href="show/{{$user->id}}" class="jtextfill mylink"
+                            style="width:200px;height:34px;">
+                            <span class="bigtext">{{ $user->firstname." ".$user->lastname }}</span>
+                        </a>
                     </h2>
                     <div><strong>ძირითადი პროფილი </strong></div>
-                    <div class="main_training">Web Designer / UI</div> 
+                    <div class="main_training">
+                      {{Training::find($user->mainprofile)->name}}
+                    </div> 
                     <p><strong>ტრენინგები: </strong>
-                    <?php $index = 0;  $go = true; ?>
-                    @foreach($user->trainings as $training)
-                    	<?php $index++; ?>
-                    	@if($go)
+                        <?php $index = 0;  $go = true; ?>
+                        @foreach($user->trainings as $training)
+                        <?php $index++; ?>
+                        @if($go)
                         <span class="tags">{{$training->name}}</span> 
                         <?php 
-                        	if($index>2){ 
-                        		$go=false;
-                        		echo '<a href="show/'.$user->id.'" class="inlinelink"><span class="tags more">...</span></a>';
-                       		}
-                        ?>
-                        @else
-                    	@endif
-                     @endforeach
-                    </p>
-                </div>             
-                <div class="col-xs-12 col-sm-4 text-center">
-                    <figure>
-                    	@if(empty($user->avatar))
-                        <img src="{{URL::to('uploads/default_avatar.png')}}" alt="" class="img-circle img-responsive">
-                        @else
-						<img src="{{URL::to('uploads/'.$user->avatar)}}" width="100px" height="100px">
-						@endif
-                        <figcaption class="ratings">
-                            <div class="point">ITDC Point: 80</div>
-                           	<div class="point_slider">
-                           		<div class="point_slide" style="width:100px"></div>
-                           	</div>
-                        </figcaption>
-                    </figure>
-                </div>
-            </div>            
-            <div class="col-xs-12 divider text-center">
-                <div class="col-xs-12 col-sm-4 emphasis">
-                    <button class="btn btn-success btn-block my_btn github"> Github </button>
-                </div>
-                <div class="col-xs-12 col-sm-4 emphasis">
-                    <button class="btn btn-info btn-block my_btn"><span class="fa fa-user"></span> პროფილი </button>
-                </div>
-                <div class="col-xs-12 col-sm-4 emphasis">
-                    <div class="btn-group dropup btn-block">
-                      <button type="button" class="btn btn-primary my_btn facebook"> Facebook </button>
-                    </div>
-                </div>
-            </div>
-    	 </div>                 
-		</div>
-	</div>
-	@endforeach
-	<div class="clear"></div>
+                        if($index>2){ 
+                          $go=false;
+                          ?>
+                          <a href="{{URL::to('show/'.$user->id)}}" class="inlinelink"><span class="tags more">...</span></a>
+                          <?php
+                          }
+                      ?>
+                      @else
+                      @endif
+                      @endforeach
+                  </p>
+              </div>             
+              <div class="col-xs-12 col-sm-4 text-center">
+                <figure>
+                   @if(empty($user->avatar))
+                   <img src="{{URL::to('uploads/default_avatar.png')}}" alt="" class="img-circle img-responsive">
+                   @else
+                   <img src="{{URL::to('uploads/'.$user->avatar)}}" width="100px" height="100px">
+                   @endif
+                   <figcaption class="ratings">
+                    <div class="point">ITDC Point: {{$user->point}}</div>
+                    <?php $width = $user->point/100*120 ?>
+                    <div class="point_slider">
+                       <div class="point_slide" style="width:{{$width}}px"></div>
+                   </div>
+               </figcaption>
+           </figure>
+       </div>
+   </div>            
+   <div class="col-xs-12 divider text-center">
+    <div class="col-xs-12 col-sm-4 emphasis">
+        <button class="btn btn-success btn-block my_btn github"> Github </button>
+    </div>
+    <div class="col-xs-12 col-sm-4 emphasis">
+        <a href="{{URL::to('show/'.$user->id)}}"><button class="btn btn-info btn-block my_btn"><span class="fa fa-user"></span> პროფილი </button></a>
+    </div>
+    <div class="col-xs-12 col-sm-4 emphasis">
+        <div class="btn-group dropup btn-block">
+          <button type="button" class="btn btn-primary my_btn facebook"> Facebook </button>
+      </div>
+  </div>
 </div>
+</div>                 
+</div>
+</div>
+@endforeach
+<div class="clear"></div>
+</div>
+
+<script>
+    $(".bigtext").bigText({
+        rotateText: null,
+        fontSizeFactor: 0.8,
+        maximumFontSize: 20,
+        limitingDimension: "both",
+        horizontalAlign: "left",
+        verticalAlign: "center",
+        textAlign: "left"
+    });
+</script>
 
 @stop

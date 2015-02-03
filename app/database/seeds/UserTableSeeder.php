@@ -30,6 +30,12 @@ class UserTableSeeder extends Seeder {
 			'ივანიშვილი'
 			);
 
+		$trainings=Training::All();
+		$trainingids = array();
+		foreach ($trainings as $training) {
+			$trainingids[] = $training->id;
+		}
+
 		foreach(range(1, 30) as $index)
 		{
 			$name = $faker->userName;
@@ -55,7 +61,8 @@ class UserTableSeeder extends Seeder {
 				'type'=>$type,
 				'company_name'=>$company_name,
 				'identification_code'=>$id_code,
-				'avatar'=>$avatar
+				'avatar'=>$avatar,
+				'mainprofile'=>$trainingids[array_rand($trainingids)]
 				]);
 		}
 	}

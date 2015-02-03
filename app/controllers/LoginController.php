@@ -42,7 +42,12 @@ class LoginController extends BaseController {
 		}
 	}
 
-	public function github(){
+	public function gitAuth(){
+		session_start();
+		return Github::gitAuth();
+	}
+
+	public function gitLogin(){
 		session_start();
 		return Github::gitLogin();
 	}

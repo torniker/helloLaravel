@@ -34,7 +34,7 @@
 	<div class="container">
 		<div class="navbar-default sidebar left" role="navigation">
 			<div class="sidebar-nav navbar-collapse">
-				<?php $curUser = Auth::user(); ?>
+				<?php $user = Auth::user(); ?>
 					@if(empty($user->avatar))
 					<img src="{{URL::to('uploads/default_avatar.png')}}" alt="" class="img-circle img-responsive" width="150px" height="150px" style="margin-left:40px; margin-bottom:10px; margin-top:10px;">
 					@else

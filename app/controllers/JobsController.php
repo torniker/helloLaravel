@@ -109,10 +109,16 @@ class JobsController extends BaseController {
 	public function apply(){
 		$jobs = Job::all();
 		$input=Input::all();
-		$student=Auth::user()->id;
 		$job=$input["job"];
-		$bid=$input["bid"];
+		$student=Auth::user()->id;
+		if (null !== Input::get('free')) {
+			$bid=0;
+		}else{
+			$bid=$input["bid"];
+		}
+
 		$message = $this->gateway->apply($student,$job,$bid);
+		
 		return Redirect::to('jobs/show/'.$job)
 		->with('msg', $message);;
 	}

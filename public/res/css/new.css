@@ -17,6 +17,9 @@ body{
 .right{
 	float: right;
 }
+.jtextfill{
+	display: block;
+}
 .logo{
 	display: block;
 	background: url('../../uploads/logo.png');
@@ -209,6 +212,19 @@ span.tags
 	background-position: 10px 5px;
 	background-size: 20px 20px;
 	background-repeat: no-repeat;
+}
+.gitlog{
+	background-image: url(../../uploads/github.png);
+	background-position: 12px 8px;
+	background-size: 20px 20px;
+	background-repeat: no-repeat;
+	padding: 18px !important;
+	padding-left: 27px !important;
+	margin-left: 10px;
+	padding-top: 19px !important;
+}
+.gitlog:after{
+	
 }
 .facebook{
 	background-image: url(../../uploads/facebook.png);
@@ -545,6 +561,22 @@ span.tags
 	background: rgba(159, 211, 196, 0.4);
 	color: rgba(117, 151, 53, 0.4);
 }
+.bid-itm{
+	margin-left: 30px;
+}
+.free{
+	width: 300px;
+}
+.bid-submit{
+	margin-left: 29px;
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+	width: 101px;
+}
+.bid-input{
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+}
 .offer_form{
 	top: 0;
 	bottom: 0;
@@ -554,10 +586,11 @@ span.tags
 	right: 0;
 	background:white;
 	width: 500px;
-	height: 100px;
+	height: 147px;
 	z-index: 9;
 	border: 2px solid orange;
 	border-radius:20px;
+	border: 1px solid grey;
 }
 #close_button{
 	position: absolute;
@@ -573,7 +606,7 @@ span.tags
 
 .off_form{
 	margin-top: 30px;
-	margin-left: 70px;
+	margin-left: 88px;
 }
 .recent-comments{
 	margin-bottom: 0;
@@ -636,13 +669,20 @@ small, .small {
 }
 .heading{
 	font-size: 30px;
-	text-align: center;
+	text-align: left;
 	margin-top: 20px;
 	margin-bottom: 20px;
 }
 .name{
 	color: black;
 	font-size: 21px;
+}
+.bidder_name{
+	display: block;
+	margin-top:23px;
+}
+.bids_wrapper{
+	padding-bottom: 80px;
 }
 .bid_price{
 	position: absolute;
@@ -655,6 +695,12 @@ small, .small {
 	color: white;
 	background:#64B456;
 	height: 100%;
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
+	width: 350px;
+}
+.single-bid{
+	margin-bottom: 20px;
 }
 .recent-comments li.comment-info{
 	border-left-color: #22b7bb;
@@ -703,4 +749,17 @@ small, .small {
   	margin-top: 28px;
   	margin-left: 100px;
   	font-size: 25px;
+}
+.link{
+	width: 750px;
+	height: 34px;
+}
+.uss{
+	width:800px;
+}
+.myhid{
+	display: none;
+}
+.trinp{
+	width: 200px;
 }

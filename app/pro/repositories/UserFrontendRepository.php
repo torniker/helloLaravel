@@ -85,14 +85,6 @@ class UserFrontendRepository {
 		$trainings = $input['trainings'];
 		$trlevels=$input['trlevel'];
 
-		if ($input['type']==3) {
-			$rule=array(
-				'company_name'=>'required',
-				'identification_code'=>'required'
-				);
-			$user->addRule($rule);
-		}
-
 		$user->fill($input);
 		if (!empty($input['password'])) {
 			$user->password = Hash::make($input['password']);

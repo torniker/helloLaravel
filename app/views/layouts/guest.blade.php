@@ -17,12 +17,14 @@
 	<script src="{{ URL::asset('res/pretty/icheck.js') }}"></script>
 	<script src="{{ URL::asset('res/js/bootstrap.min.js') }}"></script>
 	<script src="{{ URL::asset('res/js/datepicker.js') }}"></script>
+	<script src="{{ URL::asset('res/js/bigtext.js') }}"></script>
 </head>
 <body>
 	<div class="container">
 		<div class="menu_wrapper">
 			<a class="logo left" href="{{URL::to('')}}"></a>
 			@if(!Auth::check())
+			<a class="auth right btn btn-success auth_btn gitlog" href="{{URL::to('gitlogin')}}" alt="Login Using Github" title="Login Using Github"></a>
 			<a class="auth right btn btn-success auth_btn" href="{{URL::to('login')}}">ავტორიზაცია</a>
 			@else
 			<a class="auth right btn btn-danger auth_btn" href="{{URL::to('logout')}}">გამოსვლა</a>

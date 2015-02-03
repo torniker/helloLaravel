@@ -4,13 +4,18 @@
 		@if($job->open)
 		<form method="POST" action="{{URL::to('jobs/apply')}}" class="off_form">
 			<div class="form-group">
-				<div class="col-sm-5" style="margin-right:30px">
-					{{ Form::input('text', 'bid', Input::old("bid"), ['class'=>'form-control useredit', 'id'=>'company_name']) }}
+				<div class="bid_itm">
+					{{ Form::submit('უფასოდ დაგეხმარები', ['class'=>'btn btn-success free','name'=>'free'])}}
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-5" class="bid_itm" style="padding-left:0">
+					{{ Form::input('number', 'bid', Input::old("bid"), ['class'=>'form-control useredit bid-input', 'id'=>'company_name']) }}
 				</div>
 			</div>
 			<input type="hidden" value="{{$job->id}}" name="job">
 
-			{{ Form::submit('დაბიდვა', ['class'=>'btn btn-primary pull-left'])}}
+			{{ Form::submit('დაბიდვა', ['class'=>'btn btn-primary bid-submit pull-left'])}}
 		</form>
 		@else
 		<div class="closed">პროექტი დახურულია</div>
@@ -115,10 +120,10 @@ $colors=array('success','info','warning','danger','default');
 ?>
 
 @if(!empty($bids))
-<div class="heading">ბიდები</div>
+<div class="heading">ბიდები:</div>
 <div class="bids_wrapper">
 	@foreach($bids as $bid)
-	<ul class="list-group recent-comments">
+	<ul class="list-group recent-comments single-bid">
 		<li class="list-group-item clearfix comment-{{$colors[array_rand($colors)]}}">
 			<div class="avatar pull-left mr15">
 				<a href="{{URL::to('show/'.$bid['applicant_id'])}}" class="mylink">
@@ -133,11 +138,24 @@ $colors=array('success','info','warning','danger','default');
 			</div>
 			<p class="text-ellipsis">
 				<a href="{{URL::to('show/'.$bid['applicant_id'])}}" class="mylink">
-					<span class="name strong">{{$bid['applicant_name']}}</span>
+					<span class="name bidder_name strong">{{$bid['applicant_name']}}</span>
 				</a>
+				@if(isset($user))
+				@if(
+					$user->id==$bid['applicant_id'] || 
+					$user->id==$job->author ||
+					$user->type==4
+					)
 				<div class="bid_price">
+					@if($bid['bid']==0)
+					სურვილისამებრ
+					@else
 					{{$bid['bid']}} ლარი
+					@endif
 				</div>
+				@endif
+				@endif
+
 				@if(isset($user))
 				@if(
 					$user->id==$job->author
@@ -162,7 +180,7 @@ $colors=array('success','info','warning','danger','default');
 
 
 	@if(!empty($comments))
-	<div class="heading">კომენტარები</div>
+	<div class="heading">კომენტარები:</div>
 	<ul class="list-group recent-comments">
 		@foreach($comments as $comment)
 		<?php
@@ -176,10 +194,10 @@ $colors=array('success','info','warning','danger','default');
 				<a href="{{URL::to('show/'.$comment->user_id)}}" class="mylink">
 					@if(isset($avatar))
 					<img src="{{URL::to('uploads/'.$avatar)}}" alt="avatar"
-					width="80px" height="80px" style="border-radius:100px">
+					width="60px" height="60px" style="border-radius:100px">
 					@else
 					<img src="{{URL::to('uploads/noavatar.png')}}" alt="avatar"
-					width="80px" height="80px" style="border-radius:100px">
+					width="60px" height="60px" style="border-radius:100px">
 					@endif
 				</a>
 			</div>

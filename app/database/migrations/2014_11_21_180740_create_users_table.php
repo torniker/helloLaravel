@@ -22,6 +22,9 @@ class CreateUsersTable extends Migration {
 		    $table->string('lastname');
 		    $table->string('email');
 		    $table->tinyInteger('gender');
+		    $table->integer('point');
+		    $table->integer('mainprofile');
+		    $table->integer('gitId');
 		    $table->string('avatar');
 		    $table->string('github');
 		    $table->string('facebook');

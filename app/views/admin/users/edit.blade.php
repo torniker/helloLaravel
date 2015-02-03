@@ -1,5 +1,7 @@
-@extends('layouts.admin')
+@extends('layouts.admin-new')
 @section('content')
+<div class="job_add_form">
+	<div class="job_form_center"> 
 {{ Form::open(array(
 		'route' => array('admin.user.update', $user->id),
 		'files'=>true,
@@ -58,6 +60,7 @@
 		['class'=>'form-control','id' => 'for_'.$skill->id, $disabled] ) }}
 	</div>
 	@endforeach
+	<div class="clear"></div>
 </div>
 
 <div class="form-group trlist">
@@ -84,14 +87,21 @@
 		['class'=>'form-control','id' => 'trfor_'.$training->id, $trdisabled] ) }}
 	</div>
 	@endforeach
+	<div class="clear"></div>
 </div>
 
 
 {{ Form::submit('Save', ['class'=>'btn btn-primary pull-right'])}}
 
 {{ Form::close(); }}
+</div>
+</div>
+
 
 <script type="text/javascript">
+
+	$('.job_form_center').height($(document).height());
+
 	$('.skcheckbox').change(function() {
 		var inpId = 'for_'+this.id;
 		if(this.checked) {

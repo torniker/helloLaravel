@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.admin-new')
 @section('content')
 {{ Form::open(array('route' => array('admin.skill.update', $skill->id), 'method' => 'PUT')) }}
 

@@ -13,7 +13,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 	protected $table = 'users';
 	protected $hidden = array('password', 'remember_token');
-	protected $fillable = ['username','firstname', 'lastname', 'email','gender','company_name','identification_code','type'];
+	protected $fillable = ['username','firstname', 'lastname', 'email','gender','company_name','identification_code','type','mainprofile'];
 	protected $throwValidationExceptions = true;
 	protected $rules = [
         'username'   => 'required',

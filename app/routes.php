@@ -44,7 +44,11 @@ Route::get('register', array('uses' => 'UserFrontendController@register'));
 Route::post('doregister', array('uses' => 'UserFrontendController@doRegister'));
 Route::post('storestud', array('uses' => 'UserFrontendController@store'));
 
-Route::get('github', array('uses' => 'LoginController@github'));
+
+Route::get('gitauth', array('uses' => 'LoginController@gitAuth'));
+Route::get('gitlogin', array('uses' => 'LoginController@gitLogin'));
+
+
 
 Route::get('clientprofile', array('uses' => 'ClientController@dashboard'));
 

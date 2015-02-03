@@ -27,6 +27,7 @@ class UserGateway {
 	public function create($input) {
 		return $this->userRepo->create($input);
 	}
+
 	public function getGithubData($user = false){
 		if(!$user){
 			$user = Auth::user();
@@ -38,6 +39,7 @@ class UserGateway {
 
 		return $this->userRepo->getGithubData($user->github_token);
 	}
+	
 	public function update($id,$input) {
 		$courses = [];
 

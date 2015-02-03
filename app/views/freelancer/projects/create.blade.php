@@ -7,6 +7,9 @@
 
 	{{ Form::label('body', 'Body', ['class'=>'control-label']); }}
 	{{ Form::textarea('body', '', ['class'=>'form-control', 'id'=>'body']) }}
+
+	{{ Form::label('expires', 'Number of days before expiring', ['class'=>'control-label']); }}
+	{{ Form::number('expires', '', ['class'=>'form-control', 'id'=>'expires']) }}
 </div>
 {{ Form::submit('Save', ['class'=>'btn btn-primary pull-right'])}}
 

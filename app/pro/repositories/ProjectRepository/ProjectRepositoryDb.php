@@ -3,6 +3,7 @@
 namespace pro\repositories\ProjectRepository;
 
 use Project;
+use Validator;
 class ProjectRepositoryDb implements ProjectRepositoryInterface {
 
 
@@ -17,9 +18,6 @@ class ProjectRepositoryDb implements ProjectRepositoryInterface {
 
 	public function create($input) {
 		$project = new Project;
-
-		$input['expires'] = date('Y-m-d H:i:s',time()+50); // TO BE REMOVED!!!!
-		
 		$project->fill($input);
 		$project->save();
 

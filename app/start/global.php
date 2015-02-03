@@ -46,10 +46,23 @@ Log::useFiles(storage_path().'/logs/laravel.log');
 |
 */
 
+class SimpleValidationException extends Exception {
+	protected $param;
+	public function __construct($param){
+		parent::__construct();
+		$this->param = $param;
+	}
+	public function getErrors(){
+		return $this->param;
+	}
+}
+
+
 App::error(function(Exception $exception, $code)
 {
 	Log::error($exception);
 });
+
 
 App::error(function(Watson\Validating\ValidationException $e)
 {
@@ -62,6 +75,12 @@ App::error(function(Watson\Validating\ValidationException $e)
 		}
 	}
 	Notification::error($errors);
+    return Redirect::back()->withInput();
+});
+
+
+App::error(function(SimpleValidationException $e){
+	Notification::error($e->getErrors());
     return Redirect::back()->withInput();
 });
 
@@ -93,3 +112,4 @@ App::down(function()
 */
 
 require app_path().'/filters.php';
+require app_path().'/helpers.php';

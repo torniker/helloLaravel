@@ -4,6 +4,7 @@ namespace pro\gateways;
 
 use pro\repositories\OfferRepository\OfferRepositoryInterface;
 use Auth;
+use Offer;
 
 class OfferGateway {
 
@@ -23,6 +24,9 @@ class OfferGateway {
 
 	public function create($input) {
 		$input['user_id'] = Auth::user()->id;
+		$offer = new Offer;
+		validate($input,$offer->rules['creating']);
+		
 		return $this->OfferRepo->create($input);
 	}
 	

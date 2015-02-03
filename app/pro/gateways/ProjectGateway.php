@@ -4,6 +4,8 @@ namespace pro\gateways;
 
 use pro\repositories\ProjectRepository\ProjectRepositoryInterface;
 use Auth;
+use Project;
+
 class ProjectGateway {
 
 	private $ProjectRepo;
@@ -22,6 +24,9 @@ class ProjectGateway {
 	}
 
 	public function create($input) {
+		$input['expires'] = date('Y-m-d H:i:s', strtotime(sprintf(date('Y-m-d H:i:s'). ' + %d days',$input['expires'])));
+		$project = new Project;
+		validate($input,$project->rules['creating']);
 		return $this->ProjectRepo->create($input);
 	}
 	

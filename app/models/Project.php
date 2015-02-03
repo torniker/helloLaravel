@@ -2,6 +2,14 @@
 
 class Project extends \Eloquent {
 	protected $fillable = ['title','body','expires','user_id'];
+    
+    public $rules = [
+        'creating' => [
+            'title' => 'required',
+            'body' => 'required',
+            'expires' => 'required|date'
+        ]
+    ];
 
 	public function user()
     {

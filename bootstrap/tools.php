@@ -13,3 +13,10 @@ function mySplit($string,$size){
 	echo "$string[$index]";
 	//return mb_substr($string,0,$index);
 }
+
+
+function pr($data){
+	echo "<pre>";
+	var_dump($data);
+	echo "</pre>";
+}

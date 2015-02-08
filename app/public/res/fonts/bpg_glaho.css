@@ -1,8 +1,0 @@
-@font-face {
-    font-family: 'BPGGlahoRegular';
-    src: url('bpg_glaho.eot');
-    src: url('bpg_glaho.eot') format('embedded-opentype'),
-         url('bpg_glaho.woff') format('woff'),
-         url('bpg_glaho.ttf') format('truetype'),
-         url('bpg_glaho.svg#BPGGlahoRegular') format('svg');
-}

@@ -8,61 +8,52 @@
       {{ Form::input('text', 'link', '', ['class'=>'form-control pull-left link', 'id'=>'link', 'disabled']) }}
       {{ Form::submit('გენერაცია', ['class'=>'btn btn-success pull-left generate'])}}
       <div class="clear"></div>
-    </form>
-  </div>
 
-  <div class="form-group" style="margin: 40px 0">
-    <h4>ტრენინგები</h4>
-    @foreach($trainings as $training)
-    <div style="margin-top:5px" id="c_b">
-      {{ Form::checkbox('trainings[]',$training->id,false,array('id' => $training->id, 'class'=>'trcheck')) }}
-      {{ Form::label($training->id,$training->name, ['class'=>'control-label leftfive']) }}
-      {{ Form::input('text', 'trlevel['.$training->id.']', '', ['class'=>'form-control trinp']) }}
-    </div>
-    @endforeach
-    <?php  
-    ?>
+      <div class="form-group" style="margin: 40px 0">
+        <h4>ტრენინგები</h4>
+        @foreach($trainings as $training)
+        <div style="margin-top:5px" id="c_b">
+          {{ Form::checkbox('trainings[]',$training->id,false,array('id' => $training->id, 'class'=>'trcheck')) }}
+          {{ Form::label($training->id,$training->name, ['class'=>'control-label leftfive']) }}
+          {{ Form::input('text', 'trlevel['.$training->id.']', '', ['class'=>'form-control trinp']) }}
+        </div>
+        @endforeach
+      </div>
+    </form>
   </div>
 </div>
 </div>
 
 <script>
-  var ccounter = 0;
 
   jQuery(document).ready(function($){
-    $('#generator').on('submit', function(){ 		 
-      $.post(
-        $(this).prop('action'),
-        function(code){
-         $('#link').prop("disabled", false); 
-         code=$.trim(code);
-         $('#link').val(code); 
+    $('#generator').on('submit', function(){    
+      var data = $("form").serialize();
+      $.ajax({
+        url:  $(this).prop('action'),
+        type: "POST",
+        async: true,
+        cache: false,
+        data: data,
+        success: function(data){ 
+          $('#link').prop("disabled", false); 
+          data=$.trim(data);
+          $('#link').val(data); 
        }
-       ); 
+   });
       return false;
-    }); 
+    });
   });
 
-  function updateTextArea() {         
-     var allVals = [];
-     var str='';
-     $('#c_b :checked').each(function() {
-       allVals.push($(this).val());
-       str=str+"&val_"+1+"="+$(this).val();
-       if(ccounter==0){
-        str = "?" + str; 
-       }
-       ccounter++;
-     });
-     if($('#link').val()){
-        var val = $('#link').val();
-        $('#link').val(val+str);
-     }
-   }
-   $(function() {
-     $('#c_b input').click(updateTextArea);
-     updateTextArea();
-   });
+
+$(document).ready(function(){
+  $('input').iCheck({
+    checkboxClass: 'icheckbox_square-red',
+    radioClass: 'iradio_square-red',
+            increaseArea: '20%' // optional
+          });
+});
+
 </script>
 
 @stop

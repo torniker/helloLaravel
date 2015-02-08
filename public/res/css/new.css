@@ -751,8 +751,10 @@ small, .small {
   	font-size: 25px;
 }
 .link{
-	width: 750px;
+	width: 450px;
 	height: 34px;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
 }
 .uss{
 	width:800px;
@@ -762,4 +764,8 @@ small, .small {
 }
 .trinp{
 	width: 200px;
+}
+.generate{
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
 }

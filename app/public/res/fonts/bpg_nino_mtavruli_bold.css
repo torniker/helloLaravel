@@ -1,8 +1,0 @@
-@font-face {
-    font-family: 'BPGNinoMtavruliBold';
-    src: url('bpg_nino_mtavruli_bold.eot');
-    src: url('bpg_nino_mtavruli_bold.eot') format('embedded-opentype'),
-         url('bpg_nino_mtavruli_bold.woff') format('woff'),
-         url('bpg_nino_mtavruli_bold.ttf') format('truetype'),
-         url('bpg_nino_mtavruli_bold.svg#BPGNinoMtavruliBold') format('svg');
-}

@@ -1,53 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="">
-	<meta name="author" content="">
-	<link rel="icon" href="../../favicon.ico">
-	<title>Students</title>
-	<link href="{{ URL::asset('res/css/bootstrap.css') }}" rel="stylesheet">
-	<link href="{{ URL::asset('res/css/bootstrap-theme.css') }}" rel="stylesheet">
-</head>
-<body>
-	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#">Project name</a>
-			</div>
-			<div id="navbar" class="collapse navbar-collapse">
-				<ul class="nav navbar-nav">
-					 <ul class="nav navbar-nav pull-right">
-		                <li class="">
-		                  @if(Auth::check())
-		                    <a href="{{ URL::to('logout') }}">Logout</a>
-		                  @else
-		                    <a href="{{ URL::to('login') }}">Login</a>
-		                  @endif
-		                </li>
-		              </ul>
-				</ul>
-			</div><!--/.nav-collapse -->
-		</div>
-	</nav>
+<html>
+	<head>
+		<meta charset="utf-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<div class="container">
-		<div class='notifications'>
-			{{ Notification::showAll() }}
-		</div>
-		@yield('content')
-	</div><!-- /.container -->
+    	<link href="{{ URL::to('res/css/bootstrap.min.css') }}" rel="stylesheet">
+	    <link href="{{ URL::to('res/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
+	    <link href="{{ URL::to('res/css/animate.css') }}" rel="stylesheet">
+	    <link href="{{ URL::to('res/css/style.css') }}" rel="stylesheet">
+	    
+	    <script src="{{ URL::to('res/js/jquery-2.1.1.js') }}"></script>
+    	<script src="{{ URL::to('res/js/bootstrap.min.js') }}"></script>
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<script src="res/js/bootstrap.min.js"></script>
+		<script src="{{ URL::to('res/js/inspinia.js') }}"></script>
+    	
+    	<!-- Plugins -->
+	    <link href="{{ URL::to('res/css/plugins/toastr/toastr.min.css') }}" rel="stylesheet">
+    	<script src="{{ URL::to('res/js/plugins/toastr/toastr.min.js') }}"></script>
 
-</body>
+    	<script src="{{ URL::to('res/js/plugins/validate/jquery.validate.min.js') }}"></script>
+
+    	<script src="{{ URL::to('res/js/plugins/metisMenu/jquery.metisMenu.js') }}"></script>
+		<script src="{{ URL::to('res/js/plugins/slimscroll/jquery.slimscroll.min.js') }}"></script>
+		<script src="{{ URL::to('res/js/plugins/pace/pace.min.js') }}"></script>
+		<script src="{{ URL::to('res/js/plugins/slimscroll/jquery.slimscroll.min.js') }}"></script>
+		
+	    @yield('master_head')
+	</head>
+	<body class='fixed-sidebar'>
+
+		<script>
+			notifications = {{ Notification::all()->toJson() }};
+
+			for (var i=0; i<notifications.length; i++){
+				if(notifications[i].type=='error'){
+					toastr.error(notifications[i].message)
+				} else if(notifications[i].type=='success'){
+					toastr.success(notifications[i].message)
+				} else if(notifications[i].type=='info'){
+					toastr.info(notifications[i].message)
+				} else if(notifications[i].type=='warning'){
+					toastr.warning(notifications[i].message)
+				}
+			}
+
+			$(function(){
+				// $('body').addClass('fixed-sidebar');
+			});
+		</script>
+		@yield('master_body')
+
+	</body>
 </html>

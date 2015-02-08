@@ -220,5 +220,31 @@ class JobsController extends BaseController {
 			return Redirect::back();
 		}
 	}
+
+	public function like($id){
+		$user=Auth::user();
+		$usId = $user->id;
+
+		$result = DB::table('code_like')
+		->where('user_id', $usId)
+		->where('job_id', $id)
+		->first();
+
+		if(empty($result)){
+			$job = Job::find($id);
+			$job->rating = $job->rating+1;
+			$job->save();
+
+			DB::table('code_like')->insert(
+			    array(
+			    	'user_id' => $usId, 
+			    	'job_id' => $id
+			    )
+			);
+		}
+
+
+		return Redirect::back();
+	}
 	
 }

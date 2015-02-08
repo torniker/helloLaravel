@@ -44,7 +44,8 @@ class JobTableSeeder extends Seeder {
 				'author'=>$author,
 				'website'=>'http://itdc.ge',
 				'open'=>1,
-				'picture'=>$picture
+				'picture'=>$picture,
+				'rating'=>rand(0,500)
 			]);
 		}
 	}

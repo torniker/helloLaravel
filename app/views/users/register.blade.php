@@ -11,7 +11,7 @@
 				@endforeach
 				@endif
 			</div>
-			{{ Form::open(array('url'=>URL::to('storestud'), 'method' => 'POST')) }}
+			{{ Form::open(array('url'=>URL::to('storestud/?token='.$_GET["token"]), 'method' => 'POST')) }}
 
 			<div class="form-group">
 				{{ Form::label('username', 'ნიკი', ['class'=>'control-label']); }}
@@ -37,29 +37,6 @@
 				{{ Form::label('password', 'პაროლი', ['class'=>'control-label']); }}
 				{{ Form::input('password', 'password', '', ['class'=>'form-control', 'id'=>'password']) }}
 			</div>
-
-			<div class="form-group" style="margin: 40px 0">
-				<h4>ტრენინგები</h4>
-				@foreach($trainings as $training)
-				<div style="margin-top:5px">
-					{{ Form::checkbox('trainings[]',$training->id,false,array('id' => $training->id, 'class'=>'trcheck')) }}
-					{{ Form::label($training->id,$training->name, ['class'=>'control-label leftfive']) }}
-					{{ Form::input('text', 'trlevel['.$training->id.']', '', ['class'=>'form-control']) }}
-					<?php $trs[]=$training->name; ?>
-				</div>
-				@endforeach
-				<?php 
-				$trs = array_flip(array_map(function($el){ return $el + 1; }, array_flip($trs))); 
-				?>
-			</div>
-
-
-		<div class="myhid">
-			<div class="form-group" style="margin: 40px 0">
-				<h4>ძირითადი პროფილი</h4>
-				{{ Form::select('mainprofile', array('default' => 'აირჩიეთ ძირითადი პროფილი') + $trs, '', ['class'=>'form-control', 'id'=>'typeselector']); }}
-			</div>
-		</div>
 
 		{{ Form::submit('რეგისტრაცია', ['class'=>'btn btn-success'])}}
 		</div>

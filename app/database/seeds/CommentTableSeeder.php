@@ -25,13 +25,14 @@ class CommentTableSeeder extends Seeder {
 			$jobids[] = $job->id;
 		}
 
-		foreach(range(1, 80) as $index)
+		foreach(range(1, 380) as $index)
 		{
 			$comment = $faker->text;
 			Comment::create([
 				'text'=>$comment,
 				'user_id'=>array_rand($userids),
-				'job_id'=>array_rand($jobids)
+				'job_id'=>array_rand($jobids),
+				'replied_to'=>0
 			]);
 		}
 	}

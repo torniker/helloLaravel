@@ -36,9 +36,9 @@ class UserTableSeeder extends Seeder {
 			$trainingids[] = $training->id;
 		}
 
-		foreach(range(1, 30) as $index)
+		foreach(range(1, 150) as $index)
 		{
-			$name = $faker->userName;
+			$name = $faker->userName.rand();
 			$type = $faker->numberBetween(1,4);
 			$company_name = -1;
 			$id_code = -1;
@@ -62,7 +62,8 @@ class UserTableSeeder extends Seeder {
 				'company_name'=>$company_name,
 				'identification_code'=>$id_code,
 				'avatar'=>$avatar,
-				'mainprofile'=>$trainingids[array_rand($trainingids)]
+				'mainprofile'=>$trainingids[array_rand($trainingids)],
+				'color' => random_color()
 				]);
 		}
 	}

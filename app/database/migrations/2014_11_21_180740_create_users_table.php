@@ -33,6 +33,7 @@ class CreateUsersTable extends Migration {
 		    $table->timestamp('deleted_at')->nullable();
 		    $table->string('company_name');
 		    $table->string('identification_code');
+		    $table->string('color');
 		});
 	}
 

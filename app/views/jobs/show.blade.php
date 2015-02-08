@@ -106,7 +106,7 @@
 		<div class="well_job job_btn left" style="background-color:#5cb85c" id="offerbtn">		OFFER
 		</div>
 		<div class="well_job job_btn left" style="background-color:#f0ad4e">სრულად ნახვა</div>
-		<div class="well_job job_btn left" style="background-color:#337ab7"><i class="fa fa-thumbs-o-up fa-lg"></i> 26</div>
+		<a class="well_job job_btn left mylink" style="background-color:#337ab7; color:white" href="{{URL::to('jobs/like/'.$job->id)}}"><i class="fa fa-thumbs-o-up fa-lg"></i> {{$job->rating}}</a>
 		<div class="clear"></div>
 	</div>
 	<div class="clear"></div>
@@ -123,8 +123,13 @@ $colors=array('success','info','warning','danger','default');
 <div class="heading">ბიდები:</div>
 <div class="bids_wrapper">
 	@foreach($bids as $bid)
+	<?php
+		$bidus = User::find($bid['applicant_id']);
+		$bidclr = $bidus->color;
+	?>
 	<ul class="list-group recent-comments single-bid">
-		<li class="list-group-item clearfix comment-{{$colors[array_rand($colors)]}}">
+		<li class="list-group-item clearfix comment-{{$colors[array_rand($colors)]}}"
+		style="border-left: 8px solid {{$bidclr}}">
 			<div class="avatar pull-left mr15">
 				<a href="{{URL::to('show/'.$bid['applicant_id'])}}" class="mylink">
 					@if(!empty($bid['avatar']))
@@ -153,6 +158,7 @@ $colors=array('success','info','warning','danger','default');
 					{{$bid['bid']}} ლარი
 					@endif
 				</div>
+
 				@endif
 				@endif
 
@@ -187,9 +193,11 @@ $colors=array('success','info','warning','danger','default');
 		$curus = User::find($comment->user_id);
 		if(!empty($curus->avatar))
 			$avatar=$curus->avatar;
+			$curcolor=$curus->color;
 		?>
 
-		<li class="list-group-item clearfix comment-{{$colors[array_rand($colors)]}}">
+		<li class="list-group-item clearfix comment-{{$colors[array_rand($colors)]}}"
+		style="border-left: 8px solid {{$curcolor}}"">
 			<div class="avatar pull-left mr15">
 				<a href="{{URL::to('show/'.$comment->user_id)}}" class="mylink">
 					@if(isset($avatar))
@@ -212,8 +220,11 @@ $colors=array('success','info','warning','danger','default');
 						<form method="POST" action="{{URL::to('comments/delete/'.$comment->id)}}">
 							<input type="hidden" name="authorid" value="{{$comment->user_id}}">
 							<input type="hidden" name="jobauthor" value="{{$job->author}}">
-							<input type="submit" value="წაშლა" class="delstyle btn btn-danger">
+							<input type="submit" value="" class="delstyle btn btn-danger">
 						</form>
+					</div>
+					<div class="comment_reply btn btn-success" id="ans-{{$comment->id}}">
+						პასუხი
 					</div>
 					@endif
 					@endif
@@ -230,6 +241,19 @@ $colors=array('success','info','warning','danger','default');
 					</div>
 				</p>
 			</li>
+			{{ Form::open(array('url' => 'comments/add', 'method' => 'POST', 
+			'class' => 'replyform')) }}
+
+			<div class="form-group jobtext jobanswer myhid" id="jobans-{{$comment->id}}">
+				<textarea rows="3" name="text" class="form-control" id="txtans-{{$comment->id}}"></textarea>
+				{{ Form::submit('პასუხი', ['class'=>'btn btn-success pull-left ansbtn'])}}
+			</div>
+
+			{{ Form::input('hidden', 'user_id', $user->id) }}
+			{{ Form::input('hidden', 'job_id', $job->id) }}
+			{{ Form::input('hidden', 'replied_to', $job->id) }}
+
+			{{ Form::close(); }}
 			@endforeach
 		</ul>
 		@endif
@@ -286,13 +310,29 @@ $colors=array('success','info','warning','danger','default');
 			)
 
 		$( "#close_button" ).click(function() {
-			$( ".offer_wrapper" ).hide() ;
+			$( ".offer_wrapper" ).hide();
 			$(".content").fadeTo( "slow", 1 );
 		}
 		)
 
 		$('.single_job').height($(document).height());
 
+		$('.comment_reply').click(function(e){
+			$( ".jobanswer" ).show("slow");
+
+			var ansid = $(this).attr('id');
+			ansid = ansid.substring(4);
+			var textid = 'txtans-'+ansid;
+			$("#"+textid).focus();
+
+
+			$("#"+textid).focusout(function(){
+    			setTimeout(function() {
+		        	$(".jobanswer").hide("slow")
+		    	}, 3000);
+			});
+
+		});
 
 	</script>
 

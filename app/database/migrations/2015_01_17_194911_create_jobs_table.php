@@ -24,6 +24,7 @@ class CreateJobsTable extends Migration {
 			$table->integer('price');
 			$table->integer('author');
 			$table->tinyInteger('open');
+			$table->integer('rating');
 			$table->timestamps();
 		});
 	}

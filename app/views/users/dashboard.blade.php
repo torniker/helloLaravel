@@ -124,7 +124,7 @@
 	<div class="col-md-8 col-xs-12 well_row" style="padding: 0px;">
 		<div class="well_job job_btn left" style="background-color:#5cb85c">OFFER</div>
 		<div class="well_job job_btn left" style="background-color:#f0ad4e">სრულად ნახვა</div>
-		<div class="well_job job_btn left" style="background-color:#337ab7"><i class="fa fa-thumbs-o-up fa-lg"></i> 26</div>
+		<a class="well_job job_btn left mylink" style="background-color:#337ab7; color:white" href="{{URL::to('jobs/like/'.$job->id)}}"><i class="fa fa-thumbs-o-up fa-lg"></i> {{$job->rating}}</a>
 	</div>
 </div>
 </div>

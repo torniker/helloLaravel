@@ -618,9 +618,8 @@ span.tags
   transition: all;
   transition-duration: 0.4s;
 }
-.list-group-item:first-child {
-  border-top-right-radius: 3px;
-  border-top-left-radius: 3px;
+.list-group-item {
+  border-radius:5px !important;
 }
 .recent-comments li {
   border-radius: 0;
@@ -717,6 +716,7 @@ small, .small {
 .job-content{
 	height: 80px;
 	overflow: hidden;
+	display: block;
 }
 .choose-form{
 	position: absolute;
@@ -768,4 +768,37 @@ small, .small {
 .generate{
 	border-top-left-radius: 0;
 	border-bottom-left-radius: 0;
+}
+.replyform{
+	width: 856px !important;
+	margin-left: 103px;
+}
+.jobanswer{
+	position: relative;
+}
+.ansbtn{
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+	border-top-right-radius: 0;
+}
+.delstyle{
+	background-image: url('../../uploads/del.png');
+	width: 31px;
+	height: 31px;
+	background-size:cover;
+	background-repeat: no-repeat;
+	background-color:transparent;
+	border:none;
+}
+.comment_reply{
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+	border-top-right-radius: 0;
+	cursor: pointer;
 }

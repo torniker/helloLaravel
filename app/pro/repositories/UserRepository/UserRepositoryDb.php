@@ -34,6 +34,7 @@ class UserRepositoryDb implements UserRepositoryInterface {
 		if (!empty($input['password'])) {
 			$user->password = Hash::make($input['password']);
 		}
+		$user->color = "#".strtoupper(dechex(rand(0x000000, 0xFFFFFF)));
 		$user->save();
 		$user=$user->find($user->id);
 		$user->trainings()->attach($trainings);
@@ -61,6 +62,8 @@ class UserRepositoryDb implements UserRepositoryInterface {
 				->update(array('level' => $trlevel));
 			}
 		}
+
+
 
 		return 1;
 	}

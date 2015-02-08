@@ -3,24 +3,31 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCommentsTable extends Migration {
+class CreateUserLikeTable extends Migration {
 
+	/**
+	 * Run the migrations.
+	 *
+	 * @return void
+	 */
 	public function up()
 	{
-		Schema::create('comments', function(Blueprint $table)
+		Schema::create('code_like', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->string('text');
 			$table->integer('user_id');
 			$table->integer('job_id');
-			$table->integer('replied_to');
-			$table->timestamps();
 		});
 	}
 
+	/**
+	 * Reverse the migrations.
+	 *
+	 * @return void
+	 */
 	public function down()
 	{
-		Schema::drop('comments');
+		Schema::drop('code_like');
 	}
 
 }

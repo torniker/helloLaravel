@@ -72,6 +72,7 @@ Route::group(['prefix' => 'jobs'], function()
 	Route::post('close', array('uses' => 'JobsController@close'));
 	Route::post('failure/{id}', array('uses' => 'JobsController@failure'));
 	Route::post('success/{id}', array('uses' => 'JobsController@success'));
+	Route::get('like/{id}', array('uses' => 'JobsController@like'));
 });
 
 Route::get('my-projects', array('uses' => 'JobsController@myAll'));

@@ -1,6 +1,6 @@
-@extends('old.layouts.freelancer')
+@extends('layouts.freelancer.master')
 
-@section('content')
+@section('body')
 <div class='clearfix row'>
 	<div class='col-xs-9'>
 		<h2>{{ $project->title }}</h2>
@@ -17,9 +17,9 @@
 	</div>
 	<div class='col-xs-3'>
 		<div class="clearfix">
-			<button type="button" id="modal_launcher" class="btn btn-primary col-xs-12 margin-bottom block" data-toggle="modal" data-target="#create-offer">
+			<button type="button" id="modal_launcher" style="width:100%" class="btn btn-primary margin-bottom block" data-toggle="modal" data-target="#create-offer">
 			  Make an Offer
-			</button> 
+			</button>
 		</div>
 		<div class="panel panel-default">
 		  <div class="panel-heading">Project details</div>
@@ -40,16 +40,16 @@
 		    	<li><span class='attribute'>Name:</span> <span class='value'>{{ $project->user->firstname }} {{ $project->user->lastname }}</span></li>
 		    	<li><span class='attribute'>Registered:</span> <span class='value'>{{ $project->user->created_at->diffForHumans() }}</span></li>
 		    	<li><span class='attribute'>Total Projects:</span> <span class='value'>{{ $total_projects_by_user }}</span></li>
-		    	
+
 		    </ul>
 		  </div>
 		</div>
 	</div>
 </div>
 
-<div class="modal fade" id="create-offer" tabindex="-1" role="dialog" aria-labelledby="create-offerLabel" aria-hidden="true">
+<div class="modal" id="create-offer" tabindex="-1" role="dialog" aria-labelledby="create-offerLabel" aria-hidden="true">
 		<div class="modal-dialog">
-			<div class="modal-content">
+			<div class="modal-content animated flipInY">
 			  <div class="modal-header">
 			    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 			    <h4 class="modal-title" id="create-offerLabel">Make an Offer</h4>
@@ -72,7 +72,7 @@
 				</div>
 
 				{{ Form::hidden('project_id',$project->id,['id' => 'project_id_value']) }}
-			
+
 
 			  </div>
 			  <div class="modal-footer">

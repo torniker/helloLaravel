@@ -1,5 +1,5 @@
-@extends('old.layouts.freelancer')
-@section('content')
+@extends('layouts.freelancer.master')
+@section('body')
 
 <table class="table table-bordered table-hover table-striped">
 	<thead>

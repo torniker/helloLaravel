@@ -1,6 +1,6 @@
-@extends('old.layouts.freelancer')
+@extends('layouts.freelancer.master')
 
-@section('content')
+@section('body')
 	<div class='clearfix margin-bottom'>
 		<a href="{{ URL::to('freelancer/projects/create') }}" class="btn btn-success pull-right">
 			<i class="glyphicon glyphicon-plus"></i> Create Project

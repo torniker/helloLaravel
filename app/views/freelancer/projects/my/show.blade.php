@@ -1,6 +1,6 @@
-@extends('old.layouts.freelancer')
+@extends('layouts.freelancer.master')
 
-@section('content')
+@section('body')
 <div class='clearfix row'>
 	<div class='col-xs-9'>
 		<h2>{{ $project->title }}</h2>
@@ -13,7 +13,7 @@
 				  <div class="panel-body">
 				    <div>{{ $offer->user->firstname }} {{ $offer->user->lastname }}</div>
 				    <div>Offer Price: {{ $offer->price }} {{ $offer->currencyText() }}</div>
-				    <p class='one-line-text message'>{{ $offer->message }} {{ $offer->message }} {{ $offer->message }} {{ $offer->message }}</p>
+				    <p class='one-line-text message margin-sm-top'>{{ $offer->message }} {{ $offer->message }} {{ $offer->message }} {{ $offer->message }}</p>
 				  </div>
 				</div>
 			@endforeach

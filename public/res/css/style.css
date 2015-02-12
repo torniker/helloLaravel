@@ -37,6 +37,33 @@ h5 {
   margin-top: 5px;
   font-weight: 600;
 }
+.panel-body ul {
+  list-style-type:none;
+  padding-left:0;
+}
+.panel-body ul li {
+  margin-bottom:7px;
+}
+.panel-body .attribute {
+  font-weight:bold;
+}
+.one-line-text{
+  width: 90%;
+  clear: both;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.offer{
+  cursor: pointer;
+}
+.margin-sm-top{
+  margin-top:17px;
+}
+.margin-top-big{
+  margin-top:75px;
+}
 .nav > li > a {
   color: #a7b1c2;
   font-weight: 600;
@@ -5039,7 +5066,7 @@ body.skin-3 {
 }
 .margin-bottom{
   margin-bottom:20px;
-} 
+}
 .margin-top-14{
   margin-top:14px;
 }

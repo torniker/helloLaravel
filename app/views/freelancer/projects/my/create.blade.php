@@ -10,5 +10,5 @@
 </div>
 {{ Form::submit('Save', ['class'=>'btn btn-primary pull-right'])}}
 
-{{ Form::close(); }} 
-@stop 
+{{ Form::close(); }}
+@stop

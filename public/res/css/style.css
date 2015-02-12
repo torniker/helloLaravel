@@ -50,13 +50,29 @@ h5 {
 .one-line-text{
   width: 90%;
   clear: both;
-    display: inline-block;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
-.offer{
-  cursor: pointer;
+.no-border {
+  border:none !important;
+  padding:0;
+}
+div.ibox-content.hide-by-default{
+  display:none;
+}
+.ibox-title-padding {
+  padding:10px 20px !important;
+}
+.floatdel{
+  float:none !important;
+}
+.custom-padding {
+  padding:15px !important;
+}
+.ibox-title {
+  height:auto !important;
 }
 .margin-sm-top{
   margin-top:17px;

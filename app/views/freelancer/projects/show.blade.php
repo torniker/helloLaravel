@@ -2,7 +2,7 @@
 
 @section('body')
 <div class='clearfix row'>
-	<div class='col-xs-9'>
+	<div class='col-xs-18'>
 		<h2>{{ $project->title }}</h2>
 		<p>{{ $project->body }}</p>
 
@@ -15,7 +15,7 @@
 			</ol>
 		</div>
 	</div>
-	<div class='col-xs-3'>
+	<div class='col-xs-6'>
 		<div class="clearfix">
 			<button type="button" id="modal_launcher" style="width:100%" class="btn btn-primary margin-bottom block" data-toggle="modal" data-target="#create-offer">
 			  Make an Offer

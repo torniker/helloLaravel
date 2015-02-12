@@ -23,13 +23,13 @@
                     </div>
                 </li>
                 <li class="">
-                    <a href="{{ URL::to('freelancer/projects') }}"><i class="fa fa-th-large"></i> <span class="nav-label">All Projects</span></a>
+                    <a href="{{ URL::to('freelancer/projects') }}"><i class="fa fa-th"></i> <span class="nav-label">All Projects</span></a>
                 </li>
                 <li class="">
-                    <a href="{{ URL::to('freelancer/projects/my') }}"><i class="fa fa-th-large"></i> <span class="nav-label">My Projects</span></a>
+                    <a href="{{ URL::to('freelancer/projects/my') }}"><i class="fa fa-desktop"></i> <span class="nav-label">My Projects</span></a>
                 </li>
                 <li class="">
-                    <a href="{{ URL::to('freelancer/profile') }}"><i class="fa fa-th-large"></i> <span class="nav-label">Profile</span></a>
+                    <a href="{{ URL::to('freelancer/profile') }}"><i class="fa fa-user"></i> <span class="nav-label">Profile</span></a>
                 </li>
                 <li class="">
                     <a href="{{ URL::to('freelancer/offers') }}"><i class="fa fa-th-large"></i> <span class="nav-label">My Offers</span></a>
@@ -66,7 +66,7 @@
         <div class="footer fixed">
         	@section('footer')
 	            <div>
-	                <strong>Copyright</strong> Dripway &copy; 2014-2015
+	                <strong>Copyright</strong> Hello Laravel &copy; 2014-2015
 	            </div>
             @show
         </div>

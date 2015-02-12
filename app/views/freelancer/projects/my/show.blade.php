@@ -2,24 +2,38 @@
 
 @section('body')
 <div class='clearfix row'>
-	<div class='col-xs-9'>
-		<h2>{{ $project->title }}</h2>
-		<p>{{ $project->body }}</p>
-
+	<div class='col-xs-18'>
+		<div class='ibox border-bottom'>
+			<div class='ibox-title'>
+				<h4>{{ $project->title }}</h4>
+			</div>
+			<div class='ibox-content'>
+				<p>{{ $project->body }}</p>
+			</div>
+		</div>
 		<div class='margin-top-big'>
 			<h4>Offers</h4>
 			@foreach($project->offers as $offer)
-				<div class="panel panel-default offer">
-				  <div class="panel-body">
-				    <div>{{ $offer->user->firstname }} {{ $offer->user->lastname }}</div>
-				    <div>Offer Price: {{ $offer->price }} {{ $offer->currencyText() }}</div>
-				    <p class='one-line-text message margin-sm-top'>{{ $offer->message }} {{ $offer->message }} {{ $offer->message }} {{ $offer->message }}</p>
-				  </div>
+			<div class='ibox border-bottom' style="margin-bottom:0">
+				<div class='ibox-title ibox-title-padding collapse-link icon clearfix'>
+					<div class="pull-left" >
+						<b>{{ $offer->user->firstname }} {{ $offer->user->lastname }}</b> - 
+						<b class="label label-primary floatdel"  > {{ $offer->price }} {{ $offer->currencyText() }}</b>
+					</div>
+					<div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+					</div>
 				</div>
+				<div class='ibox-content custom-padding hide-by-default'> 
+					<p class='margin-sm-top' style="margin:0">{{ $offer->message }} {{ $offer->message }} {{ $offer->message }} {{ $offer->message }}</p>
+				</div>
+			</div>
 			@endforeach
 		</div>
 	</div>
-	<div class='col-xs-3'>
+	<div class='col-xs-6'>
 		<div class="clearfix">
 		</div>
 		<div class="panel panel-default">

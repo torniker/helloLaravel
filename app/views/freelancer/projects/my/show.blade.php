@@ -11,6 +11,11 @@
 			@foreach($project->offers as $offer)
 				<div class="panel panel-default offer">
 				  <div class="panel-body">
+				    @if($offer->isHired())
+				    	hired! 
+				    @else
+				    	<a clas='btn btn-xs btn-success' href='{{ URL::to("freelancer/projects/my/".$project->id."/hire",$offer->id) }}'>Hire</a>
+				    @endif
 				    <div>{{ $offer->user->firstname }} {{ $offer->user->lastname }}</div>
 				    <div>Offer Price: {{ $offer->price }} {{ $offer->currencyText() }}</div>
 				    <p class='one-line-text message margin-sm-top'>{{ $offer->message }} {{ $offer->message }} {{ $offer->message }} {{ $offer->message }}</p>

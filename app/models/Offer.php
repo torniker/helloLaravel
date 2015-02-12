@@ -1,7 +1,8 @@
 <?php
 
 class Offer extends \Eloquent {
-	protected $fillable = ['message','price','currency','project_id','user_id'];
+	protected $fillable = ['message','price','currency','project_id','user_id','hired'];
+    
     public $rules = [
         'creating' => [
             'message' => 'required',
@@ -9,7 +10,13 @@ class Offer extends \Eloquent {
             'currency' => 'required|min:1|max:3',
             'project_id' => 'required|exists:projects,id'
         ],
+        'hiring' => [
+            'project_id' => 'required',
+            'user_id' => 'required',
+            'offer_id' => 'required|exists:project_id,user_id,id:'
+        ]
     ];
+
 	public function Project(){
         return $this->belongsTo('Project'); 
     }
@@ -33,5 +40,13 @@ class Offer extends \Eloquent {
     	}
 
     	return 'NO_CURRENCY';
+    }
+
+    public function isHired(){
+        if($this->hired==1){
+            return true;
+        }
+
+        return false;
     }
 }

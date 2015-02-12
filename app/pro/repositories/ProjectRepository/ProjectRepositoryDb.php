@@ -13,7 +13,7 @@ class ProjectRepositoryDb implements ProjectRepositoryInterface {
 	}
 
 	public function byId($id) {
-		return Project::with(['user','offers','offers.user'])->find($id);
+		return Project::with(['user','comments','comments.user','offers','offers.user'])->find($id);
 	}
 
 	public function create($input) {

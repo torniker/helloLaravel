@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateOffersTable extends Migration {
+class CreateCommentsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,15 +12,12 @@ class CreateOffersTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('offers', function(Blueprint $table)
+		Schema::create('comments', function(Blueprint $table)
 		{
 			$table->increments('id');
+			$table->integer('project_id');
 			$table->integer('user_id');
 			$table->text('message');
-			$table->float('price');
-			$table->tinyInteger('currency');
-			$table->integer('project_id');
-			$table->integer('hired');
 			$table->timestamps();
 		});
 	}
@@ -33,7 +30,7 @@ class CreateOffersTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('offers');
+		Schema::drop('comments');
 	}
 
 }

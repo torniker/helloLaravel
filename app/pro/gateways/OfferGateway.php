@@ -63,4 +63,10 @@ class OfferGateway {
 		$user = Auth::user();
 		return $this->OfferRepo->ByUserId($user->id);
 	}
+
+	public function hire($user_id,$project_id,$offer_id){
+		$offer = new Offer;
+		validate(['offer_id'=>$offer_id,'project_id'=>$project_id,'user_id'=>$user_id],$offer->rules['hiring']);
+		return true;
+	}
 }

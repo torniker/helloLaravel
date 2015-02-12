@@ -30,6 +30,7 @@ class OffersTableSeeder extends Seeder {
 				'project_id' => $faker->randomElement($projects),
 				'message' => $faker->paragraph($faker->numberBetween(3,8)),
 				'user_id' => $faker->randomElement($users),
+				'hired' => $faker->randomElement([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1])
 			]);
 		}
 	}

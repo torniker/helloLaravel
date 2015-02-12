@@ -26,6 +26,11 @@ class OfferRepositoryDb implements OfferRepositoryInterface {
 
 	public function update($id,$input){
 
+		$offer = $this->getOffersWhere($id);
+		$offer->fill($input);
+		$offer->save();
+
+		return $course;
 	}
 
 	public function delete($id){

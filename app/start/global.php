@@ -111,5 +111,10 @@ App::down(function()
 |
 */
 
+// Validator::extend('checkHiringPermission', function($field, $value, $parameters) {
+// 	dd($this->data);
+//     return true;
+// });
+
 require app_path().'/filters.php';
 require app_path().'/helpers.php';

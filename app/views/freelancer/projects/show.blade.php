@@ -82,4 +82,10 @@
 			</div>
 		</div>
 	</div>
+
+	<div class='comments'>
+		@include('misc.comments.show',['comments'=>$project->comments])
+		
+		@include('misc.comments.create',['project_id'=>$project->id])
+	</div>
 @stop

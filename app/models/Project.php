@@ -20,6 +20,10 @@ class Project extends \Eloquent {
     	return $this->hasMany('Offer');
     }
 
+    public function comments(){
+        return $this->hasMany('Comment');
+    }
+
     public function isExpired(){
     	if($this->expires<=date('Y-m-d H:i:s')){
     		return true;

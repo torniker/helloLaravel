@@ -1,5 +1,5 @@
-@extends('old.layouts.freelancer')
-@section('content')
+@extends('layouts.freelancer.master')
+@section('body')
 {{ Form::open(array('route' => ['freelancer.projects.store'], 'method' => 'POST')) }}
 <div class="form-group">
 	{{ Form::label('title', 'Title', ['class'=>'control-label']); }}

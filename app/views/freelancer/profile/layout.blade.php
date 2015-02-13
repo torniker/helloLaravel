@@ -1,7 +1,8 @@
-@extends('old.layouts.freelancer')
-@section('content')
+@extends('layouts.freelancer.master')
+@section('body')
 <div class='clearfix row'>
-	<div class='col-xs-9'>
+	<div class='col-xs-18'>
+	
 		<div class='clearfix vertical-align-center'>
 			<h2 class='pull-left'>{{ $user->firstname }} {{ $user->lastname }}</h2>
 			<span class='pull-left'>@section('name') @show </span>
@@ -17,7 +18,7 @@
 		</div>
 	</div>
 
-	<div class='col-xs-3'>
+	<div class='col-xs-6'>
 		<div class="clearfix">
 			@section('buttons')
 

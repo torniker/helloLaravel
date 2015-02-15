@@ -96,11 +96,14 @@ class UserFrontendRepository {
 		if (!empty($input['password'])) {
 			$user->password = Hash::make($input['password']);
 		}
+		$user->type=1;
 		
 		$user->save();
 		$user=$user->find($user->id);
 
-		$user->trainings()->attach($tr);
+		if(!empty($tr)){
+			$user->trainings()->attach($tr);
+		}
 		$user->color = "#".strtoupper(dechex(rand(0x000000, 0xFFFFFF)));
 		$user->save();
 

@@ -17,6 +17,9 @@
 	<script src="{{ URL::asset('res/pretty/icheck.js') }}"></script>
 	<script src="{{ URL::asset('res/js/bootstrap.min.js') }}"></script>
 	<link href="{{ URL::asset('res/css/sb-admin-2.css') }}" rel="stylesheet">
+	<script src="{{ URL::asset('res/js/animatedscroll.js') }}"></script>
+	<script src="{{ URL::asset('res/js/sweetalert/lib/sweet-alert.min.js') }}"></script>
+	<link href="{{ URL::asset('res/js/sweetalert/lib/sweet-alert.css') }}" rel="stylesheet">
 </head>
 <body>
 	<div class="navbar-default sidebar" role="navigation">

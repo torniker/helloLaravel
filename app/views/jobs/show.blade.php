@@ -26,6 +26,7 @@
 @extends('layouts.guest')
 @section('content')
 
+
 @if(null!==Session::get('msg'))
 <div class="alert alert-warning">
 	<a href="#" class="close" data-dismiss="alert">&times;</a>
@@ -103,8 +104,25 @@
 
 <div class="clearfix">    
 	<div class="col-md-8 col-xs-12 well_row_show" style="padding: 0px;">
+		<?php 
+			$bck = "";
+			$offer='offer';
+			if($job->author==$user->id){
+				$bck = "isauth";
+				$offer='';
+			};
+		?>
+		@if(isset($user))
+		@if($job->author==$user->id)
+		<a class="well_job job_btn left {{$offer}} offerbtn {{$bck}}" style="background-color:#f0ad4e" href="{{URL::to('jobs/show/'.$job->id.'?author=1')}}">OFFERS</a>
+		@else
 		<div class="well_job job_btn left" style="background-color:#5cb85c" id="offerbtn">		OFFER
 		</div>
+		@endif
+		@else
+		<div class="well_job job_btn left" style="background-color:#5cb85c" id="offerbtn">		OFFER
+		</div>
+		@endif
 		<div class="well_job job_btn left" style="background-color:#f0ad4e">სრულად ნახვა</div>
 		<a class="well_job job_btn left mylink" style="background-color:#337ab7; color:white" href="{{URL::to('jobs/like/'.$job->id)}}"><i class="fa fa-thumbs-o-up fa-lg"></i> {{$job->rating}}</a>
 		<div class="clear"></div>
@@ -335,5 +353,11 @@ $colors=array('success','info','warning','danger','default');
 		});
 
 	</script>
+
+	@if(isset($_GET['author']))
+	<script>
+	$("html, body").animate({ scrollTop: $('.bids_wrapper').offset().top }, 1000);
+	</script>
+	@endif
 
 	@stop

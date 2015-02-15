@@ -20,7 +20,7 @@ class JobsController extends BaseController {
 			return View::make('jobs.add')
 			->with('user',$user);
 		}else{
-			return Redirect::to('/');
+			return Redirect::to('');
 		}
 	}
 	public function create(){
@@ -28,17 +28,18 @@ class JobsController extends BaseController {
 		$input['expires'] = $this->strtodate($input['expires']);
 		$input['deadline'] = $this->strtodate($input['deadline']);
 		$id = $this->gateway->create($input);
+		$job=Job::find($id);
 
 		if ( null !== Input::file('picture') ) {
-			echo "here";
 			$hashedfilename=str_random(30).'.'.Input::file('picture')->guessClientExtension();
 			Input::file('picture')->move('./public/uploads',$hashedfilename);
-			$job=Job::find($id);
 			$job->picture=$hashedfilename;
-			$job->save();
+		}else{
+			$job->picture='job3.jpg';
 		}
+			$job->save();
 
-		return Redirect::to('');
+		return Redirect::to('dashboard');
 	}
 
 	public function strtodate($str){
@@ -160,6 +161,7 @@ class JobsController extends BaseController {
 			$q->where('user_id', $author);
 			$q->where('job_user.type', 3);
 		})->orderBy('id', 'DESC')->get();
+
 		return View::make('users.dashboard')
 		->with('user',$user)
 		->with('jobs',$jobs);
@@ -169,9 +171,10 @@ class JobsController extends BaseController {
 		$user=Auth::user();
 		$author =$user->id;
 		$jobs = Job::whereHas('users', function($q) use ($author){
-			$q->where('user_id', $author);
+			$q->where('job_user.user_id', $author);
 			$q->where('job_user.type', 2);
 		})->orderBy('id', 'DESC')->get();
+
 		return View::make('users.dashboard')
 		->with('user',$user)
 		->with('jobs',$jobs);
@@ -180,10 +183,13 @@ class JobsController extends BaseController {
 	public function myFailed(){
 		$user=Auth::user();
 		$author =$user->id;
+
+
 		$jobs = Job::whereHas('users', function($q) use ($author){
 			$q->where('user_id', $author);
 			$q->where('job_user.type', 0);
 		})->orderBy('id', 'DESC')->get();
+
 		return View::make('users.dashboard')
 		->with('user',$user)
 		->with('jobs',$jobs);
@@ -232,6 +238,7 @@ class JobsController extends BaseController {
 
 		if(empty($result)){
 			$job = Job::find($id);
+			$counter = $job->rating+1;
 			$job->rating = $job->rating+1;
 			$job->save();
 
@@ -241,10 +248,13 @@ class JobsController extends BaseController {
 			    	'job_id' => $id
 			    )
 			);
+		}else{
+			$job = Job::find($id);
+			$counter = $job->rating;
 		}
 
-
-		return Redirect::back();
+		return $counter;
+		
 	}
 	
 }

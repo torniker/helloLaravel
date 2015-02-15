@@ -8,12 +8,14 @@
 			<div class="col-sm-12 trainings_wrapper">
 				<div class="col-xs-12 col-sm-8">
 					<h2>
-						<a href="show/{{$user->id}}" class="mylink">
+						<a href="#" class="mylink">
 							{{ $user->firstname." ".$user->lastname }}
 						</a>
 					</h2>
 					<div><strong>ძირითადი პროფილი </strong></div>
-					<div class="main_training">Web Designer / UI</div> 
+					<div class="main_training">
+						{{Training::find($user->mainprofile)->name}}
+					</div> 
 					<p><strong>ტრენინგები: </strong>
 						@foreach($user->trainings as $training)
 						<div>
@@ -27,7 +29,8 @@
 						@if(empty($user->avatar))
 						<img src="{{URL::to('uploads/default_avatar.png')}}" alt="" class="img-circle img-responsive">
 						@else
-						<img src="{{URL::to('uploads/'.$user->avatar)}}" width="100px" height="100px">
+						<img src="{{URL::to('uploads/'.$user->avatar)}}" width="100px" height="100px" id="zoom_04"
+						data-zoom-image="{{URL::to('uploads/'.$user->avatar)}}">
 						@endif
 						<figcaption class="ratings">
 							<div class="point">ITDC Point: 80</div>
@@ -57,4 +60,7 @@
 <div class="clear"></div>
 </div>
 </div>
+<script type="text/javascript">
+	$("#zoom_04").elevateZoom({zoomWindowPosition: 1, zoomWindowOffetx: 2, borderSize:0, zoomLens:false, containLensZoom:true});
+</script>
 @stop

@@ -2,6 +2,7 @@ body{
 	font-family: Square;
 	padding: 0;
 	background-color: #f8f8f8;
+	line-height: 1.428571;
 }
 .menu_wrapper{
 	padding: 10px 20px;
@@ -361,7 +362,15 @@ span.tags
 .not_bar{
 	margin-left: -30px;
 }
-
+.offerbtn{
+	background-color: #5cb85c !important;
+}
+.isauth{
+	background-color: #d9534f !important;
+}
+.isauth:hover{
+	background-color: #EC6C68 !important;
+}
 
 .well_job {
 	color: white;
@@ -377,7 +386,29 @@ span.tags
 	cursor: pointer;
 	font-size: 25px;
 	padding: 15px;
+	display: block;
 }
+.well_job:hover,.emphasis:hover,.reset:hover{
+	color: white;
+	text-decoration: none;
+}
+.well_job:focus,.emphasis:focus,.reset:focus{
+	text-decoration: none;
+	color: white;
+}
+
+
+.srulad:hover{
+	background-color: #F2B55F !important;
+}
+.offer:hover{
+	background-color: #7FC77F !important;
+}
+.likes:hover{
+	background-color: #619BCD !important;
+}
+
+
 .job_btn{
 	width: 200px;
 	margin-right: 10px;
@@ -463,6 +494,7 @@ span.tags
 .single_job{
 	width: 990px;
 	border: 1px solid #e3e3e3;
+	position: relative;
 }
 .well_row{
 	margin-left: 357px;
@@ -801,4 +833,7 @@ small, .small {
 	border-bottom-left-radius: 0;
 	border-top-right-radius: 0;
 	cursor: pointer;
+}
+.sweet-alert h2{
+	font-family: Square;
 }

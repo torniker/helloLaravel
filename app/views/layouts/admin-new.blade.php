@@ -17,6 +17,7 @@
 	<script src="{{ URL::asset('res/pretty/icheck.js') }}"></script>
 	<script src="{{ URL::asset('res/js/bootstrap.min.js') }}"></script>
 	<script src="{{ URL::asset('res/js/datepicker.js') }}"></script>
+	<script src="{{ URL::asset('res/js/jquery.elevatezoom.js') }}"></script>
 </head>
 <body>
 	<div class="container">

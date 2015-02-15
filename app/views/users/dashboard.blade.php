@@ -1,5 +1,9 @@
 @extends('layouts.guest')
 @section('content')
+<?php if (session_status() == PHP_SESSION_NONE) {
+	session_start();
+	$user=Auth::user();
+}?>
 <div class="row not_bar">
 	<div class="col-lg-3 col-md-6">
 		<a href="{{URL::to('my-projects')}}" class="block">
@@ -10,7 +14,7 @@
 							<i class="fa fa-comments fa-5x"></i>
 						</div>
 						<div class="col-xs-9 text-right">
-							<div class="huge">26</div>
+							<div class="huge">{{$_SESSION['alljob']}}</div>
 						</div>
 					</div>
 				</div>
@@ -31,7 +35,7 @@
 							<i class="fa fa-tasks fa-5x"></i>
 						</div>
 						<div class="col-xs-9 text-right">
-							<div class="huge">12</div>
+							<div class="huge">{{$_SESSION['compl']}}</div>
 						</div>
 					</div>
 				</div>
@@ -51,7 +55,7 @@
 							<i class="fa fa-shopping-cart fa-5x"></i>
 						</div>
 						<div class="col-xs-9 text-right">
-							<div class="huge">124</div>
+							<div class="huge">{{$_SESSION['ong']}}</div>
 						</div>
 					</div>
 				</div>
@@ -71,7 +75,7 @@
 							<i class="fa fa-support fa-5x"></i>
 						</div>
 						<div class="col-xs-9 text-right">
-							<div class="huge">13</div>
+							<div class="huge">{{$_SESSION['failed']}}</div>
 						</div>
 					</div>
 				</div>
@@ -84,8 +88,40 @@
 </div>
 
 @foreach($jobs as $job)
+<?php $get=''; ?>
+@if($job->author==$user->id)
+<?php $get = '?author=1'; ?>
+@endif
+
+
 
 <div class="container single_job" style="margin-top: 20px; margin-bottom: 20px;">
+
+	<div class="offer_wrapper" id="form_{{$job->id}}" style="background:none">
+		<div class="offer_form">
+			<div id="close_button"></div>
+			@if($job->open)
+			<form method="POST" action="{{URL::to('jobs/apply')}}" class="off_form">
+				<div class="form-group">
+					<div class="bid_itm">
+						{{ Form::submit('უფასოდ დაგეხმარები', ['class'=>'btn btn-success free','name'=>'free'])}}
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-5" class="bid_itm" style="padding-left:0">
+						{{ Form::input('number', 'bid', Input::old("bid"), ['class'=>'form-control useredit bid-input', 'id'=>'company_name']) }}
+					</div>
+				</div>
+				<input type="hidden" value="{{$job->id}}" name="job">
+
+				{{ Form::submit('დაბიდვა', ['class'=>'btn btn-primary bid-submit pull-left'])}}
+			</form>
+			@else
+			<div class="closed">პროექტი დახურულია</div>
+			@endif
+		</div>
+	</div>
+
 	<div class="row panel">
 		<div class="col-md-4 bg_blur" 
 		style="background-image:url({{(URL::to('uploads/'.$job->picture))}})">
@@ -107,7 +143,7 @@
 		@endif
 		<div class="header_job">
 			<h1>
-				<a href="{{URL::to('jobs/show/'.$job->id)}}" class="mylink big">
+				<a href="{{URL::to('jobs/show/'.$job->id.$get)}}" class="mylink big">
 					{{$job->heading}}
 				</a>
 			</h1>
@@ -122,12 +158,56 @@
 <div class="row nav">    
 	<div class="col-md-4"></div>
 	<div class="col-md-8 col-xs-12 well_row" style="padding: 0px;">
-		<div class="well_job job_btn left" style="background-color:#5cb85c">OFFER</div>
-		<div class="well_job job_btn left" style="background-color:#f0ad4e">სრულად ნახვა</div>
-		<a class="well_job job_btn left mylink" style="background-color:#337ab7; color:white" href="{{URL::to('jobs/like/'.$job->id)}}"><i class="fa fa-thumbs-o-up fa-lg"></i> {{$job->rating}}</a>
+		<?php 
+			$bck = "";
+			$offer='offer';
+			if($job->author==$user->id){
+				$bck = "isauth";
+				$offer='';
+			};
+		?>
+		@if($job->author==$user->id)
+
+		<a class="well_job job_btn left {{$offer}} offerbtn {{$bck}}" style="background-color:#f0ad4e" href="{{URL::to('jobs/show/'.$job->id.'?author=1')}}">OFFERS</a>
+		@else
+		<div class="well_job job_btn left {{$offer}} offerbtn {{$bck}}" id="offer_{{$job->id}}">OFFER</div>
+		@endif
+		<a class="well_job job_btn srulad left" style="background-color:#f0ad4e" href="{{URL::to('jobs/show/'.$job->id.$get)}}">სრულად ნახვა</a>
+		<a class="well_job job_btn left mylink likes" id="likes-{{$job->id}}" style="background-color:#337ab7; color:white" href="{{URL::to('jobs/like/'.$job->id)}}"><i class="fa fa-thumbs-o-up fa-lg"></i> {{$job->rating}}</a>
 	</div>
 </div>
 </div>
 
 @endforeach
+
+<script type="text/javascript">
+	$( ".offerbtn" ).click(function() {
+		var offerid = $(this).attr('id');
+		offerid = offerid.substring(6);
+		var wrapid="form_"+offerid;
+
+
+
+		//$(".content").fadeTo( "slow", 0.1 );
+		$( "#"+wrapid ).fadeIn( "slow") 
+	}
+	)
+
+	$( "#close_button" ).click(function() {
+		$( ".offer_wrapper" ).hide();
+		$(".content").fadeTo( "slow", 1 );
+	}
+	)
+
+	$( ".likes" ).click(function() {
+		event.preventDefault();
+		var url = $(this).attr('href');
+		var id = $(this).attr('id');
+		$.get( url, function( data ) {
+			$("#"+id).html('<i class="fa fa-thumbs-o-up fa-lg"></i>'+data);
+			$("#"+id).css("background-color", "#619BCD");
+		});
+	}
+	)
+</script>
 @stop

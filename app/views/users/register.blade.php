@@ -34,6 +34,16 @@
 			</div>
 
 			<div class="form-group">
+				{{ Form::label('github', 'Github', ['class'=>'control-label']); }}
+				{{ Form::input('text', 'github', '', ['class'=>'form-control', 'id'=>'github', 'placeholder' => 'Github ექაუნთის ლინკი']) }}
+			</div>
+
+			<div class="form-group">
+				{{ Form::label('facebook', 'Facebook', ['class'=>'control-label']); }}
+				{{ Form::input('text', 'facebook', '', ['class'=>'form-control', 'id'=>'github', 'placeholder' => 'Facebook ექაუნთის ლინკი']) }}
+			</div>
+
+			<div class="form-group">
 				{{ Form::label('password', 'პაროლი', ['class'=>'control-label']); }}
 				{{ Form::input('password', 'password', '', ['class'=>'form-control', 'id'=>'password']) }}
 			</div>

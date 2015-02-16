@@ -15,7 +15,7 @@
                             <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">{{ $user->username }}</strong>
                              </span> <span class="text-muted text-xs block">Actions <b class="caret"></b></span> </span> </a>
                             <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                                <li><a href="{{ URL::to('account/logout') }}">Logout</a></li>
+                                <li><a href="{{ URL::to('logout') }}">Logout</a></li>
                             </ul>
                     </div>
                     <div class="logo-element">
@@ -48,7 +48,7 @@
                 </div>
                 <ul class="nav navbar-top-links navbar-right">
                     <li>
-                        <a href="{{ URL::to('account/logout') }}">
+                        <a href="{{ URL::to('logout') }}">
                             <i class="fa fa-sign-out"></i> Log out
                         </a>
                     </li>

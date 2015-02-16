@@ -5,7 +5,7 @@
 		<h5>Create new project</h5>
 	</div>
 	<div class='ibox-content'>
-		{{ Form::open(array('route' => ['freelancer.projects.store'], 'method' => 'POST')) }}
+		{{ Form::open(array('route' => ['freelancer.projects.store'], 'id'=>'create-project', 'method' => 'POST')) }}
 		<div class="form-group">
 			{{ Form::label('title', 'Title', ['class'=>'control-label']); }}
 			{{ Form::input('text', 'title', '', ['class'=>'form-control', 'id'=>'title']) }}
@@ -21,4 +21,23 @@
 		{{ Form::close(); }}
 	</div>
 </div>
+
+<script>
+	$(function(){
+		$('#create-project').validate({
+			rules:{
+				title: {
+					required: true
+				},
+				body: {
+					required: true
+				},
+				expires: {
+					required:true,
+					number:true
+				}
+			}
+		})
+	})
+</script>
 @stop 

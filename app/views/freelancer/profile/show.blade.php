@@ -1,4 +1,4 @@
-@extends('old.freelancer.profile.layout')
+@extends('freelancer.profile.layout')
 
 @if($user->projects)
 	@section('projects')

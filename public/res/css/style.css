@@ -44,8 +44,31 @@ h5 {
 .panel-body ul li {
   margin-bottom:7px;
 }
+
 .panel-body .attribute {
   font-weight:bold;
+}
+.ibox-content ul li{
+  margin-bottom:7px;
+}
+.ibox-content ul {
+  list-style-type:none;
+  padding-left:0;
+}
+.align{
+ vertical-align: middle !important;
+}
+.align-center{
+ text-align: center !important;
+ vertical-align: middle !important;
+}
+.custom-margin{
+  margin-bottom: 7px;
+
+}
+.error {
+  font-weight: normal;
+  display: block !important;
 }
 .one-line-text{
   width: 90%;

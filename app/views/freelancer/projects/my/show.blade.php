@@ -36,14 +36,14 @@
 	<div class='col-xs-6'>
 		<div class="clearfix">
 		</div>
-		<div class="panel panel-default">
-		  <div class="panel-heading">Project details</div>
-		  <div class="panel-body">
+		<div class="ibox border-bottom">
+		  <div class="ibox-title">Project details</div>
+		  <div class="ibox-content">
 		    <ul class='attributes'>
-		    	<li><span class='attribute'>Project Added:</span> <span class='value'>{{ $project->created_at->diffForHumans() }}</span></li>
-		    	<li><span class='attribute'>Expires:</span> <span class='value'>{{ $project->expires->diffForHumans() }}</span></li>
-		    	<li><span class='attribute'>Number of offers:</span> <span class='value'>{{ $project->offers->count() }}</span></li>
-		    </ul>
+		    	<li><b class='attribute'>Project Added:</b> <span class='value'>{{ $project->created_at->diffForHumans() }}</span></li>
+		    	<li><b class='attribute'>Expires:</b> <span class='value'>{{ $project->expires->diffForHumans() }}</span></li>
+		    	<li><b class='attribute'>Number of offers:</b> <span class='value'>{{ $project->offers->count() }}</span></li>
+		   </ul>
 		  </div>
 		</div>
 	</div>

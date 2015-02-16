@@ -20,29 +20,7 @@
                         DW
                     </div>
                 </li>
-                <li class="{{ $activeMenu == 'admin/domains' ? 'active' : '' }}">
-                    <a href="#"><i class="fa fa-desktop"></i> <span class="nav-label">Domains</span>  <span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level collapse">
-                        <li class="{{ $activeSecondLevelMenu == 'admin/domains/view' ? 'active' : '' }}"><a href="{{ URL::to('admin/domains') }}">View domains</a></li>
-                        <li class="{{ $activeSecondLevelMenu == 'admin/domains/create' ? 'active' : '' }}"><a href="{{ URL::to('admin/domains/create') }}">Import domains</a></li>
-                    </ul>
-                </li>
-                <li class="{{ $activeMenu == 'admin/users' ? 'active' : '' }}">
-                    <a href="#"><i class="fa fa-users"></i> <span class="nav-label">Users</span> <span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level collapse">
-                        <li class="{{ $activeSecondLevelMenu == 'admin/users/view' ? 'active' : '' }}"><a href="{{ URL::to('admin/users') }}">View users</a></li>
-                        <li class="{{ $activeSecondLevelMenu == 'admin/users/create' ? 'active' : '' }}"><a href="{{ URL::to('admin/users/create') }}">Create an user</a></li>
-                    </ul>
-                </li>
-                <li class="{{ $activeMenu == 'admin/transactions' ? 'active' : '' }}">
-                    <a href="{{ URL::to('admin/transactions') }}"><i class="fa fa-money"></i> <span class="nav-label">Transactions</span> </a>
-                </li>
-                <li class="{{ $activeMenu == 'admin/settings' ? 'active' : '' }}">
-                    <a href="{{ URL::to('admin/settings') }}"><i class="fa fa-gears"></i> <span class="nav-label">Settings</span> </a>
-                </li>
-                <li class="{{ $activeMenu == 'admin/stats' ? 'active' : '' }}">
-                    <a href="{{ URL::to('admin/stats') }}"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Statistics</span> </a>
-                </li>
+               
             </ul>
 
         </div>

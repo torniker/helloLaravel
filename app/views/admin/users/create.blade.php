@@ -1,4 +1,4 @@
-@extends('old.layouts.admin')
+@extends('layouts.admin.master')
 @section('content')
 
 {{ Form::open(array('route' => ['admin.user.store'], 'method' => 'POST')) }}

@@ -5,11 +5,10 @@ use pro\gateways\CourseGateway;
 
 class AdminUserController extends BaseController {
 
-	protected $layout = 'layouts.admin';
+	// protected $layout = 'layouts.admin';
 
 
 	public function __construct(UserGateway $Usergateway,GithubGateway $GithubGateway,CourseGateway $CourseGateway) {
-		// $this->beforeFilter('auth', array('except' => 'getLogin'));
 		$this->Usergateway = $Usergateway;
 		$this->GithubGateway = $GithubGateway;
 		$this->CourseGateway = $CourseGateway;

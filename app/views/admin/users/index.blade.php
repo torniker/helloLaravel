@@ -1,5 +1,5 @@
-@extends('old.layouts.admin')
-@section('content')
+@extends('layouts.admin.master')
+@section('body')
 
 <div class="">
 	<?php echo $users->links(); ?>
@@ -34,7 +34,7 @@
 				<span class="label label-default">{{ $course->name }}</span>
 			@endforeach 
 		</td>
-		<td>{{ $user->getGender() }}</td>
+		<td>{{ $user->getGenderText() }}</td>
 		<td>
 			<a href="{{ URL::to('admin/user/'.$user->id.'/edit') }}" class="btn btn-primary btn-xs">
 				<i class="glyphicon glyphicon-pencil"></i>

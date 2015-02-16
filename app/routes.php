@@ -6,7 +6,9 @@ Route::group(['before'=>'auth'],function(){
 
 Route::group(['prefix' => 'admin','before'=>'auth|isAdmin'], function()
 {
-	Route::resource('/','AdminUserController');
+	Route::get('/',function(){
+		return Redirect::to('admin/user');
+	});
 	Route::resource('user', 'AdminUserController');
 	Route::resource('skill', 'AdminSkillController');
 	Route::resource('course','AdminCoursesController');

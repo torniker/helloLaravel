@@ -68,7 +68,7 @@ class LoginController extends BaseController {
 		$user=Auth::user();
 		$user=User::with('phones')->find($user->id);
 		$type=$user->type;
-		$jobs = Job::orderBy('id', 'DESC')->get();
+		$jobs = Job::orderBy('id', 'DESC')->paginate(6);
 		return View::make('users.dashboard')
 		->with('user',$user)
 		->with('jobs',$jobs);

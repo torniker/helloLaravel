@@ -6,7 +6,7 @@
 </div>
 @endif
 
-<div class="left">
+<div class="left scroll">
 	@foreach($users as $user)
 	<div class="row users_row left">
 		<div class="single_user">
@@ -83,9 +83,22 @@
 </div>
 @endforeach
 <div class="clear"></div>
+<?php echo $users->links(); ?>
 </div>
 
 <script>
+ $(function() {
+    $('.scroll').jscroll({
+        autoTrigger: true,
+        nextSelector: '.pagination li.active + li a', 
+        contentSelector: 'div.scroll',
+        callback: function() {
+           $('.pagination').css("display:none");
+           $('.navbar-default').height($(document).height());
+        }
+    });
+});
+
   $(".bigtext").bigText({
     rotateText: null,
     fontSizeFactor: 0.8,

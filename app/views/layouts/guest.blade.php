@@ -20,6 +20,7 @@
 	<script src="{{ URL::asset('res/js/bigtext.js') }}"></script>
 	<script src="{{ URL::asset('res/js/jquery.elevatezoom.js') }}"></script>
 	<script src="{{ URL::asset('res/js/animatedscroll.js') }}"></script>
+	<script src="{{ URL::asset('res/js/jscroll.js') }}"></script>
 	<script src="{{ URL::asset('res/js/sweetalert/lib/sweet-alert.min.js') }}"></script>
 	<link href="{{ URL::asset('res/js/sweetalert/lib/sweet-alert.css') }}" rel="stylesheet">
 </head>

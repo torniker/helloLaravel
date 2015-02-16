@@ -26,7 +26,7 @@ class HomeController extends BaseController {
 				$wanted_users[]=$user->id;
 			}
 			if (!empty($wanted_users)) {
-				$data = User::whereIn('id', $wanted_users)->get();
+				$data = User::whereIn('id', $wanted_users)->paginate(8);
 				$skills = Skill::get();
 				return View::make('home.index')
 				->with('users', $data)
@@ -34,7 +34,7 @@ class HomeController extends BaseController {
 			}
 			
 		}else{
-			$users = User::where('type', '=', '1')->with('skills')->with('trainings')->get();
+			$users = User::where('type', '=', '1')->with('skills')->with('trainings')->paginate(8);
 			$skills = Skill::get();
 			return View::make('home.index')
 			->with('users', $users)

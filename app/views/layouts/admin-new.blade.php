@@ -18,6 +18,7 @@
 	<script src="{{ URL::asset('res/js/bootstrap.min.js') }}"></script>
 	<script src="{{ URL::asset('res/js/datepicker.js') }}"></script>
 	<script src="{{ URL::asset('res/js/jquery.elevatezoom.js') }}"></script>
+	<script src="{{ URL::asset('res/js/jscroll.js') }}"></script>
 </head>
 <body>
 	<div class="container">

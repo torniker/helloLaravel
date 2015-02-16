@@ -580,6 +580,26 @@ span.tags
 	text-decoration: none;
 	color: black;
 }
+@media(max-width:1400px){
+	.content{
+		width: 71%;
+	}
+	.users_row{
+		width: 50%;
+	}
+}
+
+.whitelink{
+	color: black;
+}
+.whitelink:hover{
+	color: white;
+	text-decoration: none;
+}
+.whitelink:focus{
+	text-decoration: none;
+	color: white;
+}
 .big{
 	font-size: 24px;
 }
@@ -865,4 +885,11 @@ small, .small {
 	right: 0;
 	top: 0;
 	z-index:9999;
+}
+.pagination{
+	width: 0;
+	height: 0;
+	display: none;
+	padding: 0;
+	margin: 0;
 }

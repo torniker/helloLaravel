@@ -23,6 +23,13 @@
 						</div> 
 						@endforeach
 					</p>
+					<p><strong>პროექტები: </strong>
+						@foreach($user->jobs as $job)
+						<div>
+							<a href="{{URL::to('jobs/show/'.$job->id)}}" class="whitelink"><span class="tags">{{$job->heading}}</span></a>
+						</div> 
+						@endforeach
+					</p>
 				</div>             
 				<div class="col-xs-12 col-sm-4 text-center">
 					<figure>

@@ -10,6 +10,14 @@ class JobsGateway {
 		$job->save();
 		return $job->id;
 	}
+
+	public function edit($input,$id){
+		$job = Job::find($id);
+		$job->fill($input);
+		$job->save();
+		return $job->id;
+	}
+
 	public function apply($student,$job,$bid){
 		$result = DB::table('job_user')
 			->where('user_id', $student)

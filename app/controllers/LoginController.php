@@ -48,13 +48,14 @@ class LoginController extends BaseController {
 		})->orderBy('id', 'DESC')->get();
 
 		$alljob = Job::whereHas('users', function($q) use ($author){
-			$q->where('user_id', $author);
+			$q->where('jobs.author', $author);
 		})->orderBy('id', 'DESC')->get();
 
 		$ongcounter = count($ongoing);
 		$completed = count($completed);
 		$failed = count($failed);
-		$alljob = count($failed);
+		$alljob = count($alljob);
+
 
 
 		$_SESSION['ong'] = $ongcounter;
@@ -67,15 +68,11 @@ class LoginController extends BaseController {
 		$user=Auth::user();
 		$user=User::with('phones')->find($user->id);
 		$type=$user->type;
-		if ($type==4) {
-			return Redirect::to('admin/user');
-		}
-		else {
-			$jobs = Job::orderBy('id', 'DESC')->get();
-			return View::make('users.dashboard')
-			->with('user',$user)
-			->with('jobs',$jobs);
-		}
+		$jobs = Job::orderBy('id', 'DESC')->get();
+		return View::make('users.dashboard')
+		->with('user',$user)
+		->with('jobs',$jobs);
+		
 	}
 
 	public function gitAuth(){

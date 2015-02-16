@@ -36,8 +36,10 @@ class UserFrontendRepository {
 			$user->password=Hash::make($input['password']);
 		}
 		$user->save();
-		$hisphones = $input['phone'];
-		$this->update_phones($hisphones,$user,$id);
+		if(isset($input['phone'])){
+			$hisphones = $input['phone'];
+			$this->update_phones($hisphones,$user,$id);
+		}
 		return Redirect::to('dashboard');
 	}
 

@@ -53,21 +53,6 @@
 		</div>
 		<a id="phoneadd" style="color:#E04836">ნომრის დამატება</a>
 
-		<div class="myhidden">
-			<div class="form-group">
-				{{ Form::label('company_name', 'კომპანიის დასახელება *', ['class'=>'control-label col-sm-3 red']); }}
-				<div class="col-sm-9">
-					{{ Form::input('text', 'company_name', Input::old("company_name"), ['class'=>'form-control useredit', 'id'=>'company_name']) }}
-				</div>
-			</div>
-
-			<div class="form-group">
-				{{ Form::label('identification_code', 'საიდენტიფიკაციო კოდი *', ['class'=>'control-label col-sm-3 red']); }}
-				<div class="col-sm-9">
-					{{ Form::input('text', 'identification_code', Input::old("identification_code"), ['class'=>'form-control useredit', 'id'=>'identification_code']) }}
-				</div>
-			</div>
-		</div>
 
 		<div class="form-group">
 			<label for="inputPassword3" class="col-sm-3 control-label">პაროლი</label>
@@ -94,20 +79,6 @@
 
 	<script>
 		var counter = 1000000;
-		$( document ).ready(function() {
-			var val = $( "#typeselector" ).val();
-			if (val==3) {
-				$(".myhidden").show();
-			};
-		});
-		$('#typeselector').on('change', function() {
-			if(this.value==3){
-				$(".myhidden").show("slow");
-			}
-			else{
-				$(".myhidden").hide("slow");
-			}
-		});
 		$('#phoneadd').on('click', function() {
 			var form = 
 			'<div class="myphone"><input class="form-control" id="phone'+counter+'" name="phone['+counter+']" type="text"></div>'

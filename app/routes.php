@@ -73,6 +73,9 @@ Route::group(['prefix' => 'jobs'], function()
 	Route::post('failure/{id}', array('uses' => 'JobsController@failure'));
 	Route::post('success/{id}', array('uses' => 'JobsController@success'));
 	Route::get('like/{id}', array('uses' => 'JobsController@like'));
+	Route::get('edit/{id}', array('uses' => 'JobsController@edit'));
+	Route::post('doedit/{id}', array('uses' => 'JobsController@doedit'));
+	Route::get('delete/{id}', array('uses' => 'JobsController@delete'));
 });
 
 Route::get('my-projects', array('uses' => 'JobsController@myAll'));

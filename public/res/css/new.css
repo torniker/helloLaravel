@@ -837,3 +837,32 @@ small, .small {
 .sweet-alert h2{
 	font-family: Square;
 }
+#adminmenu{
+	list-style:none; 
+	padding-left:0
+}
+#adminmenu li{
+	
+}
+#adminmenu li a{
+	display: block;
+	padding: 15px 10px;
+	padding-bottom: 12px;
+}
+.red:hover{
+	text-decoration: none;
+	background-color: #eee;
+	color:red !important;
+}
+.red{
+	color: red;
+}
+.showadmin{
+	cursor: pointer;
+}
+.edit_delete{
+	position: absolute;
+	right: 0;
+	top: 0;
+	z-index:9999;
+}

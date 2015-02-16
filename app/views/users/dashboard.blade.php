@@ -4,6 +4,12 @@
 	session_start();
 	$user=Auth::user();
 }?>
+@if(null!==Session::get('msg'))
+<div class="alert alert-warning">
+	<a href="#" class="close" data-dismiss="alert">&times;</a>
+	{{ Session::get('msg') }}
+</div>
+@endif
 <div class="row not_bar">
 	<div class="col-lg-3 col-md-6">
 		<a href="{{URL::to('my-projects')}}" class="block">
@@ -96,6 +102,10 @@
 
 
 <div class="container single_job" style="margin-top: 20px; margin-bottom: 20px;">
+	<div class="edit_delete">
+		<a href="jobs/edit/{{$job->id}}" class="jobedit btn btn-primary">რედაქტირება</a>
+		<a href="jobs/delete/{{$job->id}}" class="jobdelete btn btn-danger">წაშლა</a>
+	</div>
 
 	<div class="offer_wrapper" id="form_{{$job->id}}" style="background:none">
 		<div class="offer_form">
@@ -209,5 +219,13 @@
 		});
 	}
 	)
+
+	$('.jobdelete').click(function(e){
+		if(confirm("დარწმუნებული ხარ რომ გინდა წაშლა?")){
+
+		}else{
+			e.preventDefault();
+		}	
+	});
 </script>
 @stop

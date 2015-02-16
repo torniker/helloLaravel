@@ -51,25 +51,64 @@
 					</div>
 				<ul class="nav in" id="side-menu">
 					<li style="border-top: 1px solid #e7e7e7">
-						<a href="{{URL::to('admin/user/')}}">
-							<i class="fa fa-th-list"></i> მომხმარებლები
+						<a href="{{URL::to('dashboard')}}">
+							<i class="fa fa-th-list"></i> პროექტები
+						</a>
+					</li>
+					<li style="border-top: 1px solid #e7e7e7">
+						<a href="{{URL::to('')}}">
+							<i class="fa fa-th-list"></i> პროგრამისტები
 						</a>
 					</li>
 					<li>
-						<a href="{{URL::to('admin/skill/')}}">
-							<i class="fa fa-th-list"></i> სკილები
+						<a href="{{URL::to('jobs/add')}}">
+							<i class="fa fa-th-list"></i> პროექტის დამატება
 						</a>
 					</li>
 					<li>
-						<a href="{{URL::to('admin/trainings/')}}">
-							<i class="fa fa-th-list"></i> ტრენინგები
+						<a href="{{URL::to('editprofile')}}">
+							<i class="fa fa-th-list"></i> პროფილის რედაქტირება
 						</a>
 					</li>
 					<li>
-						<a href="{{URL::to('admin/generator')}}">
-							<i class="fa fa-th-list"></i> რეგისტრაციის გენერატორი
+						<a href="{{URL::to('#')}}">
+							<i class="fa fa-th-list"></i> ფორუმი
 						</a>
 					</li>
+					<li>
+						<a href="{{URL::to('#')}}">
+							<i class="fa fa-th-list"></i> სხვადასხვა
+						</a>
+					</li>
+
+					<li style="border-top: 1px solid #e7e7e7">
+							<a class="red showadmin">
+								<i class="fa fa-th-list"></i> ადმინკა
+							</a>
+					</li>
+
+					<ul id="adminmenu" class="myhid">
+						<li style="border-top: 1px solid #e7e7e7">
+							<a href="{{URL::to('admin/user/')}}">
+								<i class="fa fa-th-list"></i> მომხმარებლები
+							</a>
+						</li>
+						<li>
+							<a href="{{URL::to('admin/skill/')}}">
+								<i class="fa fa-th-list"></i> სკილები
+							</a>
+						</li>
+						<li>
+							<a href="{{URL::to('admin/trainings/')}}">
+								<i class="fa fa-th-list"></i> ტრენინგები
+							</a>
+						</li>
+						<li>
+							<a href="{{URL::to('admin/generator')}}">
+								<i class="fa fa-th-list"></i> რეგისტრაციის გენერატორი
+							</a>
+						</li>
+					</ul>
 				</ul>
 			</div>
 		</div>
@@ -82,6 +121,14 @@
 
 	<script>
 		$('.navbar-default').height($(document).height());
+		$( ".showadmin" ).click(function() {
+			if ($('#adminmenu').css('display') == 'none'){
+				$( "#adminmenu" ).show("slow"); 
+			}else{
+				$( "#adminmenu" ).hide("slow"); 
+			}
+		}
+		)
 	</script>
 
 </body>

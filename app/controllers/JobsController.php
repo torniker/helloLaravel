@@ -160,7 +160,10 @@ class JobsController extends BaseController {
 		$jobs = Job::whereHas('users', function($q) use ($author){
 			$q->where('user_id', $author);
 			$q->where('job_user.type', 3);
-		})->orderBy('id', 'DESC')->get();
+		})->orWhereHas('users', function($q) use ($author){
+			$q->where('jobs.author', $author);
+			$q->where('job_user.type', 3);})
+			->orderBy('id', 'DESC')->get();
 
 		return View::make('users.dashboard')
 		->with('user',$user)
@@ -173,7 +176,10 @@ class JobsController extends BaseController {
 		$jobs = Job::whereHas('users', function($q) use ($author){
 			$q->where('job_user.user_id', $author);
 			$q->where('job_user.type', 2);
-		})->orderBy('id', 'DESC')->get();
+		})->orWhereHas('users', function($q) use ($author){
+			$q->where('jobs.author', $author);
+			$q->where('job_user.type', 2);})
+			->orderBy('id', 'DESC')->get();
 
 		return View::make('users.dashboard')
 		->with('user',$user)
@@ -188,7 +194,10 @@ class JobsController extends BaseController {
 		$jobs = Job::whereHas('users', function($q) use ($author){
 			$q->where('user_id', $author);
 			$q->where('job_user.type', 0);
-		})->orderBy('id', 'DESC')->get();
+		})->orWhereHas('users', function($q) use ($author){
+			$q->where('jobs.author', $author);
+			$q->where('job_user.type', 0);})
+		->orderBy('id', 'DESC')->get();
 
 		return View::make('users.dashboard')
 		->with('user',$user)
@@ -255,6 +264,32 @@ class JobsController extends BaseController {
 
 		return $counter;
 		
+	}
+
+	public function delete($id){
+		$user=Auth::user();
+		if ($user->type==4) {
+			$job = Job::find($id);
+			$job->delete();
+			DB::table('job_user')->where('job_id', '=', $id)->delete();
+			Session::flash('msg', 'წარმატებით წაიშალა პროექტი');
+		}
+		return Redirect::back();
+	}
+
+	public function edit($id){
+		$job=Job::find($id);
+		return View::make('jobs.edit')
+		->with('job',$job);
+	}
+	public function doedit($id){
+		$user = Auth::user();
+		if ($user->type==4) {
+			$input=Input::all();
+			$this->gateway->edit($input,$id);
+			Session::flash('msg', 'პროექტი წარმატებით დარედაქტირდა');
+		}
+		return Redirect::to('dashboard');
 	}
 	
 }

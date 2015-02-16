@@ -61,9 +61,17 @@ Route::filter('auth', function()
 
 Route::filter('auth.basic', function()
 {
-	return Auth::basic();
+	return Auth::basic('username');
 });
 
+Route::filter('isAdmin',function(){
+	$user = Auth::user();
+
+	if(!$user->isAdmin()){
+		Notification::error('Acess is restricted for you!');
+		return Redirect::to('/'); 
+	}
+});
 /*
 |--------------------------------------------------------------------------
 | Guest Filter

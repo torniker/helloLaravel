@@ -1,0 +1,1 @@
+C:\Users\n.chikovani\Desktop\helloLaravel\helloLaravel-master\app/views/offers/index.blade.php

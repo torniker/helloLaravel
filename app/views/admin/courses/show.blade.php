@@ -1,0 +1,1 @@
+C:\Users\n.chikovani\Desktop\helloLaravel\helloLaravel-master\app/views/courses/show.blade.php

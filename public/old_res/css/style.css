@@ -1,0 +1,43 @@
+input.score_level{
+	display:none;
+}
+
+input[type='checkbox']:checked + label + input.score_level {
+	display:block!important;
+}
+.margin-bottom{
+	margin-bottom:20px;
+}
+.margin-sm-top{
+	margin-top:17px;
+}
+.block{
+	display:block!important;
+}
+.attributes{
+	list-style-type: none;
+	padding:0;
+}
+.attributes li span.attribute{
+	font-weight: bold;
+}
+.margin-top-big{
+	margin-top:75px;
+}
+.no-list-style{
+	padding-left:20px;
+}
+.one-line-text{
+	width: 90%;
+	clear: both;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.offer{
+	cursor: pointer;
+}
+.vertical-align-center{
+	vertical-align: middle;
+}

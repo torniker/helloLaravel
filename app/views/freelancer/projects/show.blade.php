@@ -59,7 +59,7 @@
 			    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 			    <h4 class="modal-title" id="create-offerLabel">Make an Offer</h4>
 			  </div>
-			   {{ Form::open(array('route' => ['freelancer.offers.store'], 'method' => 'POST')) }}
+			   {{ Form::open(array('route' => ['freelancer.offers.store'], 'id' => 'offer-form', 'method' => 'POST')) }}
 			  <div class="modal-body">
 				<div class="form-group">
 					{{ Form::label('price', 'Price', ['class'=>'control-label']); }}
@@ -93,4 +93,21 @@
 		
 		@include('misc.comments.create',['project_id'=>$project->id])
 	</div>
+
+	<script>
+	$(function(){
+		$('#offer-form').validate({
+			rules:{
+				price: {
+					required: true,
+					number: true
+				},
+				message: {
+					required: true
+				}
+			}
+		})
+	})
+</script>
 @stop
+

@@ -1,4 +1,5 @@
 @extends('layouts.freelancer.master')
+
 @section('body')
 <div class='clearfix row'>
 	<div class='col-xs-18'>

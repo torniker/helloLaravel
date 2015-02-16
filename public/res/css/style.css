@@ -66,6 +66,10 @@ h5 {
   margin-bottom: 7px;
 
 }
+.error {
+  font-weight: normal;
+  display: block !important;
+}
 .one-line-text{
   width: 90%;
   clear: both;

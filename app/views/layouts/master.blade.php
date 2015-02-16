@@ -19,6 +19,7 @@
     	<script src="{{ URL::to('res/js/plugins/toastr/toastr.min.js') }}"></script>
 
     	<script src="{{ URL::to('res/js/plugins/validate/jquery.validate.min.js') }}"></script>
+    	<script src="{{ URL::to('res/js/scripts.js') }}"></script>
 
     	<script src="{{ URL::to('res/js/plugins/metisMenu/jquery.metisMenu.js') }}"></script>
 		<script src="{{ URL::to('res/js/plugins/slimscroll/jquery.slimscroll.min.js') }}"></script>

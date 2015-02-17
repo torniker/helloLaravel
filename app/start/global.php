@@ -46,18 +46,42 @@ Log::useFiles(storage_path().'/logs/laravel.log');
 |
 */
 
+class SimpleValidationException extends Exception {
+	protected $param;
+	public function __construct($param){
+		parent::__construct();
+		$this->param = $param;
+	}
+	public function getErrors(){
+		return $this->param;
+	}
+}
+
+
 App::error(function(Exception $exception, $code)
 {
 	Log::error($exception);
 });
 
+
 App::error(function(Watson\Validating\ValidationException $e)
 {
-	$errors = $e->getErrors();
+	$exceptions = $e->getErrors()->toArray();
+	
+	$errors = array();
+	foreach ($exceptions as $key => $exc) {
+		foreach ($exc as $key => $error) {
+			$errors[] = $error;
+		}
+	}
+	Notification::error($errors);
+    return Redirect::back()->withInput();
+});
 
-    return Redirect::back()
-        ->withErrors($errors)
-        ->withInput();
+
+App::error(function(SimpleValidationException $e){
+	Notification::error($e->getErrors());
+    return Redirect::back()->withInput();
 });
 
 /*
@@ -87,4 +111,10 @@ App::down(function()
 |
 */
 
+// Validator::extend('checkHiringPermission', function($field, $value, $parameters) {
+// 	dd($this->data);
+//     return true;
+// });
+
 require app_path().'/filters.php';
+require app_path().'/helpers.php';

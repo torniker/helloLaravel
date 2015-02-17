@@ -22,9 +22,10 @@ class SkillController extends BaseController {
 		$skill = new Skill;
 		$skill->fill($input);
 		$skill->save();
-		return Redirect::to('admin/skill')
-			->with('message_type','success')
-			->with('message', 'Skill added successfully');
+
+		Notification::success('Skill added successfully');
+
+		return Redirect::to('admin/skill');
 	}
 
 	public function edit($id) {
@@ -41,9 +42,10 @@ class SkillController extends BaseController {
 		$input = Input::all();
 		$skill->fill($input);
 		$skill->save();
-		return Redirect::to('admin/skill')
-			->with('message_type','success')
-			->with('message', 'Skill updated successfully');
+
+		Notification::success('Skill updated successfully');
+
+		return Redirect::to('admin/skill');
 	}
 
 	public function destroy($id) {
@@ -53,9 +55,10 @@ class SkillController extends BaseController {
 		}
 
 		$skill->delete();
-		return Redirect::to('admin/skill')
-			->with('message_type','success')
-			->with('message', 'User deleted successfully');
+
+		Notification::success('User deleted successfully');
+
+		return Redirect::to('admin/skill');
 	}
 
 }

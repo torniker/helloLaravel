@@ -1,18 +1,18 @@
-@extends('layouts.admin')
-@section('content')
-@if(Session::has('message'))
-    <div class="alert alert-{{ Session::get('message_type') }}">
-        {{ Session::get('message') }}
-    </div>
-@endif
-<p class="text-right">
-	<a href="{{ URL::to('admin/user/create') }}" class="btn btn-success">
+@extends('layouts.admin.master')
+@section('body')
+
+<div class="">
+	<?php echo $users->links(); ?>
+	<a href="{{ URL::to('admin/user/create') }}" class="btn btn-success pull-right">
 		<i class="glyphicon glyphicon-plus"></i> Create User
 	</a>
-</p>
+	<div style="clear:both"></div>
+</div>
 <table class="table table-bordered table-hover table-striped">
 	<thead>
 		<th>Firstname/Lastname</th>
+		<th>Skills</th>
+		<th>Course</th>
 		<th>Gender</th>
 		<th colspan="2" class="col-xs-1">Action</th>
 	</thead>
@@ -24,7 +24,17 @@
 				{{ $user->firstname }} {{ $user->lastname }}
 			</a>
 		</td>
-		<td>{{ $user->getGender() }}</td>
+		<td>
+			@foreach($user->skills as $skill)
+				<span class="label label-default">{{ $skill->name }}</span>
+			@endforeach
+		</td>
+		<td>
+			@foreach($user->courses as $course)
+				<span class="label label-default">{{ $course->name }}</span>
+			@endforeach 
+		</td>
+		<td>{{ $user->getGenderText() }}</td>
 		<td>
 			<a href="{{ URL::to('admin/user/'.$user->id.'/edit') }}" class="btn btn-primary btn-xs">
 				<i class="glyphicon glyphicon-pencil"></i>
@@ -40,6 +50,13 @@
 	</tr>
 	@endforeach
 	</tbody>
-	
 </table>
+
+<style>
+	.pagination {
+		margin:0;
+	}
+</style>
+
 @stop
+

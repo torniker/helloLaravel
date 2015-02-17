@@ -13,7 +13,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 	protected $table = 'users';
 	protected $hidden = array('password', 'remember_token');
-	protected $fillable = ['firstname', 'lastname', 'email','gender'];
+	protected $fillable = ['firstname', 'lastname', 'email','gender','github_token'];
 	protected $throwValidationExceptions = true;
 	protected $rules = [
         'username'   => 'required',
@@ -21,24 +21,60 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
         'lastname'   => 'required'
     ];
 
-	
+	public function integrations()
+	{
+		return $this->hasMany('Integration');
+	}
 
 	public function phones()
 	{
 		return $this->hasMany('Phone');
 	}
 
+	public function comment()
+    {
+        return $this->hasMany('Comment');
+    }
+
 	public function skills()
 	{
 		return $this->belongsToMany('Skill');
 	}
 
-	public function getGender() {
-		if($this->attributes['gender']) {
-			return 'male';
-		}
-		return 'female';
+	public function courses()
+	{
+		return $this->belongsToMany('Course','course_user')->withPivot('score');
 	}
 
+	public function offers(){
+		return $this->hasMany('Offer');
+	}
+
+	public function projects(){
+		return $this->hasMany('Project');
+	}
+
+	public function getGenderText() {
+		if($this->attributes['gender']==1) {
+			return 'Male';
+		}
+		return 'Female';
+	}
+
+	public function isAdmin(){
+		if($this->type==2){
+			return true;
+		}
+
+		return false;
+	}
+
+	public function isFreelancer(){
+	if($this->type==1){
+			return true;
+		}
+
+		return false;
+	}
 
 }

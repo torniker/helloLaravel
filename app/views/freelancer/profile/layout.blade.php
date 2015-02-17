@@ -18,6 +18,12 @@
 		        @show
 		</div>
 	</div>
+	
+	<div class="ibox border-bottom">
+		<div class="ibox-title"><h4>Feedbacks</h4></div>
+		<div class="ibox-content">
+		</div>
+	</div>
 
 	<div class='col-xs-6'>
 		<div class="clearfix">
@@ -39,6 +45,7 @@
 		    </ul>
 		  </div>
 		</div>
-		@section('sidebar')@show
+		@section('sidebar')
+		@show
 </div>
 @stop

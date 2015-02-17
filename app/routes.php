@@ -24,7 +24,11 @@ Route::group(['prefix'=>'freelancer','before'=>'auth'],function(){
 	Route::get('{id}','FreelancerProfileController@show')->where('id', '[0-9]+');;
 	Route::get('projects/my','FreelancerProjectsController@myprojects');
 	Route::get('projects/my/{id}','FreelancerProjectsController@myproject');
+
 	Route::get('projects/my/{project_id}/hire/{offer_id}','FreelancerOffersController@hire');
+	Route::get('projects/my/{project_id}/finish/{offer_id}','FreelancerOffersController@finish');
+	Route::post('offers/feedback','FreelancerOffersController@feedback');
+
 
 	Route::any('profile/github/add','FreelancerProfileController@linkGithub');
 	Route::any('profile/github/remove','FreelancerProfileController@removeGithub');

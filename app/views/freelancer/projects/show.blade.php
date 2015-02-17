@@ -53,48 +53,48 @@
 </div>
 
 <div class="modal" id="create-offer" tabindex="-1" role="dialog" aria-labelledby="create-offerLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content animated flipInY">
-			  <div class="modal-header">
-			    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			    <h4 class="modal-title" id="create-offerLabel">Make an Offer</h4>
-			  </div>
-			   {{ Form::open(array('route' => ['freelancer.offers.store'], 'id' => 'offer-form', 'method' => 'POST')) }}
-			  <div class="modal-body">
-				<div class="form-group">
-					{{ Form::label('price', 'Price', ['class'=>'control-label']); }}
-					{{ Form::input('number', 'price', '', ['class'=>'form-control', 'id'=>'price']) }}
-				</div>
-
-				<div class="form-group">
-					{{ Form::label('message', 'message', ['class'=>'control-label']); }}
-					{{ Form::textarea('message', '', ['class'=>'form-control', 'id'=>'message']) }}
-				</div>
-
-				<div class="form-group">
-					{{ Form::label('currency', 'Currency', ['class'=>'control-label']); }}
-					{{ Form::select('currency', [1=>'USD', 2=>'GEL',3=>'EURO'], '', ['class'=>'form-control', 'id'=>'currency']); }}
-				</div>
-
-				{{ Form::hidden('project_id',$project->id,['id' => 'project_id_value']) }}
-
-
-			  </div>
-			  <div class="modal-footer">
-			    {{ Form::submit('Make an Offer', ['class'=>'btn btn-primary pull-right'])}}
-			  </div>
-				{{ Form::close(); }}
+	<div class="modal-dialog">
+		<div class="modal-content animated flipInY">
+		  <div class="modal-header">
+		    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		    <h4 class="modal-title" id="create-offerLabel">Make an Offer</h4>
+		  </div>
+		   {{ Form::open(array('route' => ['freelancer.offers.store'], 'id' => 'offer-form', 'method' => 'POST')) }}
+		  <div class="modal-body">
+			<div class="form-group">
+				{{ Form::label('price', 'Price', ['class'=>'control-label']); }}
+				{{ Form::input('number', 'price', '', ['class'=>'form-control', 'id'=>'price']) }}
 			</div>
+
+			<div class="form-group">
+				{{ Form::label('message', 'message', ['class'=>'control-label']); }}
+				{{ Form::textarea('message', '', ['class'=>'form-control', 'id'=>'message']) }}
+			</div>
+
+			<div class="form-group">
+				{{ Form::label('currency', 'Currency', ['class'=>'control-label']); }}
+				{{ Form::select('currency', [1=>'USD', 2=>'GEL',3=>'EURO'], '', ['class'=>'form-control', 'id'=>'currency']); }}
+			</div>
+
+			{{ Form::hidden('project_id',$project->id,['id' => 'project_id_value']) }}
+
+
+		  </div>
+		  <div class="modal-footer">
+		    {{ Form::submit('Make an Offer', ['class'=>'btn btn-primary pull-right'])}}
+		  </div>
+			{{ Form::close(); }}
 		</div>
 	</div>
+</div>
 
-	<div class='comments'>
-		@include('misc.comments.show',['comments'=>$project->comments])
-		
-		@include('misc.comments.create',['project_id'=>$project->id])
-	</div>
+<div class='comments'>
+	@include('misc.comments.show',['comments'=>$project->comments])
+	
+	@include('misc.comments.create',['project_id'=>$project->id])
+</div>
 
-	<script>
+<script>
 	$(function(){
 		$('#offer-form').validate({
 			rules:{

@@ -24,14 +24,26 @@ class OffersTableSeeder extends Seeder {
 
 		foreach(range(1, 50) as $index)
 		{
-			Offer::create([
-				'price' => $faker->randomFloat(2,0,1000000),
-				'currency' => $faker->numberBetween(1,3),
-				'project_id' => $faker->randomElement($projects),
-				'message' => $faker->paragraph($faker->numberBetween(3,8)),
-				'user_id' => $faker->randomElement($users),
-				'hired' => $faker->randomElement([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1])
-			]);
+			if($faker->numberBetween(1,100)<5){
+				Offer::create([
+					'price' => $faker->randomFloat(2,0,1000000),
+					'currency' => $faker->numberBetween(1,3),
+					'project_id' => $faker->randomElement($projects),
+					'message' => $faker->paragraph($faker->numberBetween(3,8)),
+					'user_id' => $faker->randomElement($users),
+					'status' => 3,
+					'feedback' => $faker->paragraph($faker->numberBetween(1,5))
+				]);
+			} else {
+				Offer::create([
+					'price' => $faker->randomFloat(2,0,1000000),
+					'currency' => $faker->numberBetween(1,3),
+					'project_id' => $faker->randomElement($projects),
+					'message' => $faker->paragraph($faker->numberBetween(3,8)),
+					'user_id' => $faker->randomElement($users),
+					'status' => $faker->randomElement([1,1,1,1,1,1,1,1,1,1,1,2,2,2])
+				]);
+			}
 		}
 	}
 

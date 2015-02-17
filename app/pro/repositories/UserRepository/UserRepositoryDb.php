@@ -16,7 +16,8 @@ class UserRepositoryDb implements UserRepositoryInterface {
 	}
 
 	public function byId($id) {
-		return User::with('phones')->with('skills')->with('courses')->with('integrations')->find($id);
+		debug('byid');
+		return User::with(['offers'=>function($query){ $query->where('status', '=', '3'); }])->with(['courses','integrations'])->find($id);
 	}
 
 	public function create($input) {
@@ -61,7 +62,7 @@ class UserRepositoryDb implements UserRepositoryInterface {
 	}
 
 	public function currentUser(){
-		return Auth::user();
+		return $this->byId(Auth::user()->id);
 	}
 
 	public function getGithubData($token){

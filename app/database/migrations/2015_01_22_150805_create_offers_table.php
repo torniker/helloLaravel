@@ -20,7 +20,8 @@ class CreateOffersTable extends Migration {
 			$table->float('price');
 			$table->tinyInteger('currency');
 			$table->integer('project_id');
-			$table->integer('hired');
+			$table->integer('status')->min(1)->max(3)->default(1);
+			$table->text('feedback')->nullable();
 			$table->timestamps();
 		});
 	}

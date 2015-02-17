@@ -1,7 +1,7 @@
 <?php
 
 class Offer extends \Eloquent {
-	protected $fillable = ['message','price','currency','project_id','user_id','hired'];
+	protected $fillable = ['message','price','currency','project_id','user_id','status','feedback'];
     
     public $rules = [
         'creating' => [
@@ -11,17 +11,28 @@ class Offer extends \Eloquent {
             'project_id' => 'required|exists:projects,id'
         ],
         'hiring' => [
-            'project_id' => 'required',
-            'user_id' => 'required',
-            'offer_id' => 'required|exists:project_id,user_id,id:'
+            'project_id' => 'required|exists:projects,id',
+            'user_id' => 'required|exists:users,id',
+            'offer_id' => 'required|exists:offers,id'
+        ],
+        'finishing' => [
+            'project_id' => 'required|exists:projects,id',
+            'user_id' => 'required|exists:users,id',
+            'offer_id' => 'required|exists:offers,id'
+        ],
+        'adding_feedback' => [
+            'project_id' => 'required|exists:projects,id',
+            'user_id' => 'required|exists:users,id',
+            'offer_id' => 'required|exists:offers,id',
+            'feedback' => 'required' 
         ]
     ];
 
-	public function Project(){
+	public function project(){
         return $this->belongsTo('Project'); 
     }
 
-    public function User(){
+    public function user(){
         return $this->belongsTo('User'); 
     }
     
@@ -43,7 +54,7 @@ class Offer extends \Eloquent {
     }
 
     public function isHired(){
-        if($this->hired==1){
+        if($this->status>=2){
             return true;
         }
 

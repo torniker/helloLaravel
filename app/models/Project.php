@@ -17,7 +17,7 @@ class Project extends \Eloquent {
     }
 
     public function offers(){
-    	return $this->hasMany('Offer');
+        return $this->hasMany('Offer');
     }
 
     public function comments(){

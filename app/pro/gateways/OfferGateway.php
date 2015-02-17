@@ -5,7 +5,7 @@ namespace pro\gateways;
 use pro\repositories\OfferRepository\OfferRepositoryInterface;
 use Auth;
 use Offer;
-
+use Notification;
 class OfferGateway {
 
 	private $OfferRepo;
@@ -66,7 +66,64 @@ class OfferGateway {
 
 	public function hire($user_id,$project_id,$offer_id){
 		$offer = new Offer;
-		validate(['offer_id'=>$offer_id,'project_id'=>$project_id,'user_id'=>$user_id],$offer->rules['hiring']);
-		return true;
+		$params = ['offer_id'=>$offer_id,'project_id'=>$project_id,'user_id'=>$user_id];
+
+		validate($params,$offer->rules['hiring']);
+		
+
+		$res = $this->OfferRepo->hire($params);
+		
+		if(is_string($res)){
+			Notification::error($res);
+			return false;
+		}
+
+		if($res===true){
+			return true;
+		}
+		
+		return false;
+	}
+
+	public function finish($user_id,$project_id,$offer_id){
+		$offer = new Offer;
+		$params = ['offer_id'=>$offer_id,'project_id'=>$project_id,'user_id'=>$user_id];
+
+		validate($params,$offer->rules['finishing']);
+		
+
+		$res = $this->OfferRepo->finish($params);
+		
+		if(is_string($res)){
+			Notification::error($res);
+			return false;
+		}
+
+		if($res===true){
+			return true;
+		}
+		
+		return false;
+	}
+
+	public function addFeedback($user_id,$project_id,$offer_id,$feedback){
+		$offer = new Offer;
+		$params = ['offer_id'=>$offer_id,'project_id'=>$project_id,'user_id'=>$user_id,'feedback'=>$feedback];
+
+		validate($params,$offer->rules['adding_feedback']);
+		
+
+		$res = $this->OfferRepo->addFeedback($params);
+		
+		if(is_string($res)){
+			Notification::error($res);
+			return false;
+		}
+
+		if($res===true){
+			return true;
+		}
+		
+		return false;
 	}
 }

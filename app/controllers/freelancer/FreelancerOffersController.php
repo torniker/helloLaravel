@@ -1,4 +1,5 @@
 <?php
+
 use pro\gateways\OfferGateway;
 
 class FreelancerOffersController extends \BaseController {
@@ -25,6 +26,7 @@ class FreelancerOffersController extends \BaseController {
  		$user_id = Auth::user()->id;
  		
  		$resp = $this->gateway->hire($user_id,$project_id,$offer_id);
+ 		debug($resp);
 
  		if($resp){
  			Notification::success('Sucessfully hired!');
@@ -32,6 +34,37 @@ class FreelancerOffersController extends \BaseController {
  			Notification::error('Something went wrong when hiring');
  		}
 
+ 		return Redirect::back();
+ 	}
+
+ 	public function finish($project_id,$offer_id){
+ 		
+ 		$user_id = Auth::user()->id;
+ 		
+ 		$resp = $this->gateway->finish($user_id,$project_id,$offer_id);
+ 		debug($resp);
+
+ 		if($resp){
+ 			Notification::success('Sucessfully finished!');
+ 		} else {
+ 			Notification::error('Something went wrong when finishing');
+ 		}
+
+ 		return Redirect::back();
+ 	}
+
+ 	public function feedback(){
+ 		
+ 		$user_id = Auth::user()->id;
+ 		
+ 		$resp = $this->gateway->addFeedback($user_id,Input::get('project_id',''),Input::get('offer_id',''),Input::get('feedback',''));
+
+ 		if($resp){ 
+ 			Notification::success('Sucessfully added feedback!');
+ 		} else {
+ 			Notification::error('Something went wrong when adding feedback');
+ 		}
+ 		
  		return Redirect::back();
  	}
 

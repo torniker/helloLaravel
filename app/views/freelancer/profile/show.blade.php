@@ -1,4 +1,38 @@
 @extends('freelancer.profile.layout')
+@section('feedback')
+	<div class="ibox margin-bottom">
+	<div class="ibox-title">
+		<h4>
+			temo
+		</h4>
+	</div>
+	<div class="ibox-content">
+		<p>asdlfkhsdkfj hask;fhg akfjgkl asjdnfkaj </p>
+	</div>
+</div>
+
+<div class="ibox margin-bottom">
+	<div class="ibox-title">
+		<h4>
+			tata
+		</h4>
+	</div>
+	<div class="ibox-content">
+		<p>asdlfkhsdkfj hask;fhg akfjgkl asjdnfkaj </p>
+	</div>
+</div>
+
+<div class="ibox margin-bottom">
+	<div class="ibox-title">
+		<h4>
+			nika
+		</h4>
+	</div>
+	<div class="ibox-content">
+		<p>asdlfkhsdkfj hask;fhg akfjgkl asjdnfkaj </p>
+	</div>
+</div>
+@stop
 
 @if($user->projects)
 	@section('projects')

@@ -56,6 +56,7 @@
 
             </nav>
         </div>
+        @yield('custom-header')
         <div class="wrapper wrapper-content animated fadeInRight">
             <div class="row">
                 <div class="col-lg-24">
@@ -63,14 +64,15 @@
                 </div>
             </div>
         </div>
-        <div class="footer fixed">
-        	@section('footer')
-	            <div>
-	                <strong>Copyright</strong> Hello Laravel &copy; 2014-2015
-	            </div>
-            @show
-        </div>
+        
 
     </div>
+    <div class="footer fixed">
+            @section('footer')
+                <div>
+                    <strong>Copyright</strong> Hello Laravel &copy; 2014-2015
+                </div>
+            @show
+        </div>
 </div>
 @stop

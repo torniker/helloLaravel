@@ -7,10 +7,12 @@
 	"require": {
 		"laravel/framework": "4.2.*",
 		"atticmedia/anvard": "dev-master",
-		"watson/validating": "0.10.*@dev"
+		"watson/validating": "0.10.*@dev",
+		"edvinaskrucas/notification": "3.0.*",
+		"guzzle/guzzle": "~3.9",
+		"artdarek/oauth-4-laravel": "1.0.5"
 	},
 	"require-dev": {
-		"barryvdh/laravel-ide-helper": "~1.11",
     	"way/generators": "~2.0",
     	"fzaninotto/faker": "v1.3.0",
     	"barryvdh/laravel-debugbar": "1.8.*@dev"
@@ -21,6 +23,7 @@
 			"app/models",
 			"app/controllers",
 			"app/controllers/admin",
+			"app/controllers/freelancer",
 			"app/database/migrations",
 			"app/database/seeds",
 			"app/tests/TestCase.php"
@@ -36,7 +39,6 @@
 		],
 		"post-update-cmd": [
 			"php artisan clear-compiled",
-			"php artisan ide-helper:generate",
 			"php artisan optimize"
 		],
 		"post-create-project-cmd": [

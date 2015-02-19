@@ -37,6 +37,10 @@ h5 {
   margin-top: 5px;
   font-weight: 600;
 }
+.custom_margin {
+margin-bottom:25px !important;
+
+}
 .panel-body ul {
   list-style-type:none;
   padding-left:0;

@@ -1,11 +1,17 @@
 @extends('layouts.freelancer.master')
 
-@section('body')
-	<div class='clearfix margin-bottom'>
-		<a href="{{ URL::to('freelancer/projects/create') }}" class="btn btn-success pull-right">
-			<i class="glyphicon glyphicon-plus"></i> Create Project
-		</a>
+@section('custom-header') 
+	<div class="row dashboard-header white-bg border-bottom">
+		<h2 class="pull-left">Profile</h2>
+		<div class="clearfix pull-right" style="margin-top:7px">
+			<a href="{{ URL::to('freelancer/projects/create') }}" class="btn btn-success pull-right">
+				<i class="glyphicon glyphicon-plus"></i> Create Project
+			</a>
+		</div>
 	</div>
+@stop
+
+@section('body')
 	<div>
 		@foreach($projects as $project)
 			@if($project->isExpired())

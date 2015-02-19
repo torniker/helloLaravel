@@ -1,32 +1,26 @@
-@extends('old.layouts.custom')
-`
-@section('head')
-	<style type="text/css" src='{{ URL::to("res/css/signin.css") }}'></style>
-@stop
+@extends('layouts.master')
 
-@section('body')
-<div class="container">
-	<div class='notifications'>
-		{{ Notification::showAll() }}
-	</div>
 
-	<div class='col-xs-4 col-xs-offset-4'>
-	  	{{ Form::open(array('url' => 'login','method' => 'post')) }}
-		    <h2 class="form-signin-heading">Please sign in</h2>
-		    
-		    <label for="inputUsername" class="sr-only">Username</label>
-		    <input name='username' type="text" id="inputUsername" class="form-control" placeholder="Username" autofocus>
-		    
-		    <label for="inputPassword" class="sr-only">Password</label>
-		    <input name='password' type="password" id="inputPassword" class="form-control" placeholder="Password">
-		    
-		    <div class="checkbox">
-		      	<label>
-		        	<input type="checkbox" value="remember-me"> Remember me
-		      	</label>
-		    </div>
-		    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-	  	{{ Form::close() }}
-	</div>
-</div> <!-- /container -->
+@section('master_body')
+
+
+<div class="middle-box text-center loginscreen  animated fadeInDown">
+    <div>
+        <div>
+            <h1 class="logo-name">Hi</h1>
+        </div>
+        <h3>Welcome to Entity Project</h3>
+        <p class = 'custom_margin'>Login in. To see it in action.</p>
+        {{ Form::open(array('url' => 'login','method' => 'post')) }}
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Username" required="" name="username">
+            </div>
+            <div class="form-group">
+                <input class="form-control" placeholder="Password" required="" name="password" type="password" value="">
+            </div>
+            <button type="submit" class="btn btn-primary block full-width m-b">Login</button>
+        {{ Form::close() }}
+    </div>
+</div>
+
 @stop

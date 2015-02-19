@@ -65,7 +65,7 @@ class FreelancerProjectsController extends \BaseController {
 		$project = $this->gateway->byId($id);
 		$total_projects_by_user = $project->user->projects()->count();
 		$user_projects = $project->user->projects()->take(5)->get();
-		
+
 		return View::make('freelancer.projects.show')->with(['project'=>$project,'total_projects_by_user'=>$total_projects_by_user,'user_projects'=>$user_projects]);
 	}
 
@@ -112,7 +112,8 @@ class FreelancerProjectsController extends \BaseController {
 
 	public function myproject($id){
 		$project = $this->gateway->byId($id);
-		debug($project->offers);
+		debug($project->comments);
+		return '</br>';
 		return View::make('freelancer.projects.my.show')->with('project',$project);  
 	}
 }

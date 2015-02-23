@@ -13,13 +13,18 @@ class TrainingUserTableSeeder extends Seeder {
 		DB::table('training_user')->truncate();
 		foreach($users as $user) {
 			if ($user->type==1) {
+				$count = 0;
 				$num = $faker->numberBetween(0, $training_num);
 				$trainings = Training::orderByRaw('RAND()')->limit($num)->get();
 				$tr = [];
 				foreach($trainings as $training) {
-					$tr[$training->id] = ['level' => $faker->numberBetween(1, 100)];
+					$level = $faker->numberBetween(1, 100);
+					$tr[$training->id] = ['level' => $level];
+					$count+=$level;
 				}
 				$user->trainings()->attach($tr);
+				$user->point=$count/6;
+				$user->save();
 			}
 		}
 	}

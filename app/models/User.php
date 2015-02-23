@@ -13,7 +13,19 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 	protected $table = 'users';
 	protected $hidden = array('password', 'remember_token');
-	protected $fillable = ['username','firstname', 'lastname', 'email','gender','company_name','identification_code','type'];
+	protected $fillable = [
+	'username',
+	'firstname', 
+	'lastname', 
+	'email',
+	'gender',
+	'company_name',
+	'identification_code',
+	'type',
+	'mainprofile',
+	'facebook',
+	'github'
+	];
 	protected $throwValidationExceptions = true;
 	protected $rules = [
         'username'   => 'required',
@@ -35,7 +47,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 	public function jobs()
 	{
-		return $this->belongsToMany('Job')->withPivot('type');
+		return $this->belongsToMany('Job')->withPivot('type')->withPivot('price');
 	}
 
 	public function trainings()
@@ -54,10 +66,5 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		$this->rules = array_merge($this->rules,$rule);
 	}
 
-	public static function pr($data){
-		echo "<pre>";
-		var_dump($data);
-		echo "</pre>";
-	}
 
 }

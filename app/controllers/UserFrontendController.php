@@ -59,6 +59,14 @@ class UserFrontendController extends BaseController {
 
 	public function doEdit(){
 		$input=Input::all();
+		$id = $input['id'];
+		if ( null !== Input::file('file') ) {
+			$hashedfilename=str_random(30).'.'.Input::file('file')->guessClientExtension();
+			Input::file('file')->move('./public/uploads',$hashedfilename);
+			$user=User::find($id);
+			$user->avatar=$hashedfilename;
+			$user->save();
+		}
 		return $this->gateway->doEdit($input);
 	}
 
@@ -83,6 +91,17 @@ class UserFrontendController extends BaseController {
 		return Redirect::to('')
 		->with('message_type','success')
 		->with('message', 'User added successfully');
+	}
+
+	public function filter($id){
+		$users = User::whereHas('trainings', function($q) use ($id){
+		    $q->where('training_id', $id);
+		})->paginate(8);
+		$skills = Skill::get();
+
+		return View::make('home.index')
+			->with('users', $users)
+			->with('skills', $skills);
 	}
 
 }

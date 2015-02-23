@@ -13,8 +13,7 @@
 	"require-dev": {
 		"barryvdh/laravel-ide-helper": "~1.11",
     	"way/generators": "~2.0",
-    	"fzaninotto/faker": "v1.3.0",
-    	"barryvdh/laravel-debugbar": "1.8.*@dev"
+    	"fzaninotto/faker": "v1.3.0"
 	},
 	"autoload": {
 		"classmap": [

@@ -1,5 +1,7 @@
-@extends('layouts.admin')
+@extends('layouts.admin-new')
 @section('content')
+<div class="job_add_form">
+	<div class="job_form_center"> 
 {{ Form::open(array(
 		'route' => array('admin.user.update', $user->id),
 		'files'=>true,
@@ -34,31 +36,6 @@
 	{{ Form::file('file','',array('id'=>'','class'=>'')) }}
 </div>
 
-<div class="form-group">
-	<h4>skills</h4>
-	<?php
-		
-	?>
-	@foreach($skills as $skill)
-
-	{{$checked = false; $disabled='disabled'; $sklevel='';}}
-	@foreach($user->skills as $user_skill)
-	@if($skill->id==$user_skill->id)
-	<?php 
-		$checked = true; 
-		$disabled='';
-		$sklevel = $user_skill->pivot->level; 
-	 ?> 
-	@endif
-	@endforeach
-	<div class="col-md-4">
-		{{ Form::checkbox('skill[]',$skill->id,$checked,array('id' => $skill->id, 'class'=>'skcheckbox')) }}
-		{{ Form::label($skill->id,$skill->name , ['class'=>'control-label']) }}
-		{{ Form::input('text', 'level['.$skill->id.']', $sklevel, 
-		['class'=>'form-control','id' => 'for_'.$skill->id, $disabled] ) }}
-	</div>
-	@endforeach
-</div>
 
 <div class="form-group trlist">
 	<h4>ტრენინგები</h4>
@@ -84,14 +61,21 @@
 		['class'=>'form-control','id' => 'trfor_'.$training->id, $trdisabled] ) }}
 	</div>
 	@endforeach
+	<div class="clear"></div>
 </div>
 
 
 {{ Form::submit('Save', ['class'=>'btn btn-primary pull-right'])}}
 
 {{ Form::close(); }}
+</div>
+</div>
+
 
 <script type="text/javascript">
+
+	$('.job_form_center').height($(document).height());
+
 	$('.skcheckbox').change(function() {
 		var inpId = 'for_'+this.id;
 		if(this.checked) {

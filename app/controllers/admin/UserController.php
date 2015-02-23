@@ -40,19 +40,12 @@ class UserController extends BaseController {
 	public function store() {
 		$input = Input::all();
 
-		echo "got here";
-		// if($this->gateway->create($input)){
-		// 	if (isset($input['token'])) {
-		// 		$token=$input['token'];
-		// 		$code = Code::where('code', '=', $token)->firstOrFail();
-		// 		$code->valid=0;
-		// 		$code->save();
-		// 	}
-		// }
 		
-		// return Redirect::to('admin/user')
-		// ->with('message_type','success')
-		// ->with('message', 'User added successfully');
+		if($this->gateway->create($input)){
+			return Redirect::to('admin/user')
+			->with('message_type','success')
+			->with('message', 'User added successfully');
+		}
 	}
 
 	public function edit($id) {
@@ -94,6 +87,8 @@ class UserController extends BaseController {
 		}
 
 		$user->delete();
+		DB::table('jobs')->where('author', '=', $id)->delete();
+		DB::table('comments')->where('user_id', '=', $id)->delete();
 		return Redirect::to('admin/user')
 		->with('message_type','success')
 		->with('message', 'User deleted successfully');

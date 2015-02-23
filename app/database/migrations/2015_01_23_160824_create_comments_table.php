@@ -13,6 +13,7 @@ class CreateCommentsTable extends Migration {
 			$table->string('text');
 			$table->integer('user_id');
 			$table->integer('job_id');
+			$table->integer('replied_to');
 			$table->timestamps();
 		});
 	}

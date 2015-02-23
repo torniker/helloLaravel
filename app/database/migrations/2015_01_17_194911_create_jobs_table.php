@@ -23,6 +23,8 @@ class CreateJobsTable extends Migration {
 			$table->date('deadline');
 			$table->integer('price');
 			$table->integer('author');
+			$table->tinyInteger('open');
+			$table->integer('rating');
 			$table->timestamps();
 		});
 	}

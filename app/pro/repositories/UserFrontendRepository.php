@@ -36,8 +36,10 @@ class UserFrontendRepository {
 			$user->password=Hash::make($input['password']);
 		}
 		$user->save();
-		$hisphones = $input['phone'];
-		$this->update_phones($hisphones,$user,$id);
+		if(isset($input['phone'])){
+			$hisphones = $input['phone'];
+			$this->update_phones($hisphones,$user,$id);
+		}
 		return Redirect::to('dashboard');
 	}
 
@@ -80,50 +82,32 @@ class UserFrontendRepository {
 	}
 
 	public function create($input) {
-		//file_put_contents('./text.txt', $input['type']);
-		$user = new User;
-		$trainings = $input['trainings'];
-		$trlevels=$input['trlevel'];
-
-		if ($input['type']==3) {
-			$rule=array(
-				'company_name'=>'required',
-				'identification_code'=>'required'
-				);
-			$user->addRule($rule);
+		$token = $_GET['token'];
+		$code = DB::table('codes')->where('code', $token)->first();
+		$codeId = $code->id;
+		$codes = DB::table('code_training')->where('code_id', $codeId)->get();
+		$trainings = array();
+		$levels = array();
+		foreach ($codes as $code) {
+			$tr[$code->training_id] = ['level' => $code->level];
 		}
+
+		$user = new User;
 
 		$user->fill($input);
 		if (!empty($input['password'])) {
 			$user->password = Hash::make($input['password']);
 		}
+		$user->type=1;
+		
 		$user->save();
 		$user=$user->find($user->id);
-		$user->trainings()->attach($trainings);
 
-		foreach ($trainings as $training) {
-			$result = DB::table('training_user')
-			->where('user_id', $user->id)
-			->where('training_id', $training)
-			->get();
-
-			$trlevel = !empty($trlevels[$training])?$trlevels[$training]:0;
-
-			if (empty($result)) {
-				DB::table('training_user')->insert(
-					array(
-						'user_id' 	=> $user->id, 
-						'training_id' 	=> $training,
-						'level' 	=> $trlevel,
-						)
-					);
-			}elseif($result[0]->level!=$trlevel){
-				DB::table('training_user')
-				->where('user_id', $user->id)
-				->where('training_id', $training)
-				->update(array('level' => $trlevel));
-			}
+		if(!empty($tr)){
+			$user->trainings()->attach($tr);
 		}
+		$user->color = "#".strtoupper(dechex(rand(0x000000, 0xFFFFFF)));
+		$user->save();
 
 		return 1;
 	}

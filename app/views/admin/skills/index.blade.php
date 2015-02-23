@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.admin-new')
 @section('content')
 @if(Session::has('message'))
     <div class="alert alert-{{ Session::get('message_type') }}">

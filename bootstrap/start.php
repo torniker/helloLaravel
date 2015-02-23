@@ -68,4 +68,6 @@ require $framework.'/Illuminate/Foundation/start.php';
 |
 */
 
+include('tools.php');
+
 return $app;

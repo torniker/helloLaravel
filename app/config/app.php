@@ -124,7 +124,6 @@ return array(
 		'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
 		'Atticmedia\Anvard\AnvardServiceProvider',
 		'Way\Generators\GeneratorsServiceProvider',
-		'Barryvdh\Debugbar\ServiceProvider',
 		'pro\repositories\RepositoryServiceProvider',
 
 	),

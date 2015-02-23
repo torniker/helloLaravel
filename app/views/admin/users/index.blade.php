@@ -1,5 +1,7 @@
-@extends('layouts.admin')
+@extends('layouts.admin-new')
 @section('content')
+<div class="job_add_form">
+	<div class="job_form_center uss"> 
 @if(Session::has('message'))
     <div class="alert alert-{{ Session::get('message_type') }}">
         {{ Session::get('message') }}
@@ -20,7 +22,7 @@
 	@foreach($users as $user)
 	<tr>
 		<td>
-			<a href="{{ URL::to('admin/user/'.$user->id) }}">
+			<a href="{{ URL::to('admin/user/'.$user->id.'/edit') }}">
 				{{ $user->firstname }} {{ $user->lastname }}
 			</a>
 		</td>

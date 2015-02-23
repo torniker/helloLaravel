@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.admin-new')
 @section('content')
 {{ Form::open(array('route' => ['admin.skill.store'], 'method' => 'POST')) }}
 <div class="form-group">

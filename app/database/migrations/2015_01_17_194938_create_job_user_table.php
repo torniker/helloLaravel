@@ -13,7 +13,9 @@ class CreateJobUserTable extends Migration {
 			$table->integer('user_id');
 			$table->integer('job_id');
 			$table->integer('price');
-			$table->tinyInteger('type'); //0 - rejected, 1 - bid pending, 2 - approved
+			$table->tinyInteger('type'); 
+			$table->unique( array('user_id','job_id','type'));
+			//1 - bid pending, 2 - approved, 3 - completed, 0-failed
 			$table->timestamps();
 		});
 	}

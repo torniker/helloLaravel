@@ -19,6 +19,7 @@
 	<script src="{{ URL::asset('res/js/datepicker.js') }}"></script>
 	<script src="{{ URL::asset('res/js/jquery.elevatezoom.js') }}"></script>
 	<script src="{{ URL::asset('res/js/jscroll.js') }}"></script>
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 </head>
 <body>
 	<div class="container">

@@ -23,6 +23,7 @@
 	<script src="{{ URL::asset('res/js/jscroll.js') }}"></script>
 	<script src="{{ URL::asset('res/js/sweetalert/lib/sweet-alert.min.js') }}"></script>
 	<link href="{{ URL::asset('res/js/sweetalert/lib/sweet-alert.css') }}" rel="stylesheet">
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 </head>
 <body>
 	<div class="container">

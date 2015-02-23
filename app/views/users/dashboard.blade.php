@@ -103,14 +103,16 @@
 
 
 		<div class="container single_job" style="margin-top: 20px; margin-bottom: 20px;">
+			@if($job->author==$user->id || $user->type==4)
 			<div class="edit_delete">
 				<a href="jobs/edit/{{$job->id}}" class="jobedit btn btn-primary">რედაქტირება</a>
 				<a href="jobs/delete/{{$job->id}}" class="jobdelete btn btn-danger">წაშლა</a>
 			</div>
+			@endif
 
 			<div class="offer_wrapper" id="form_{{$job->id}}" style="background:none">
 				<div class="offer_form">
-					<div id="close_button"></div>
+					<div id="close_button" onclick="closeform()"></div>
 					@if($job->open)
 					<form method="POST" action="{{URL::to('jobs/apply')}}" class="off_form">
 						<div class="form-group">
@@ -181,7 +183,7 @@
 
 				<a class="well_job job_btn left {{$offer}} offerbtn {{$bck}}" style="background-color:#f0ad4e" href="{{URL::to('jobs/show/'.$job->id.'?author=1')}}">OFFERS</a>
 				@else
-				<div class="well_job job_btn left {{$offer}} offerbtn {{$bck}}" id="offer_{{$job->id}}">OFFER</div>
+				<div class="well_job job_btn left {{$offer}} offerbtn {{$bck}}" id="offer_{{$job->id}}" onclick="offer(this.id)">OFFER</div>
 				@endif
 				<a class="well_job job_btn srulad left" style="background-color:#f0ad4e" href="{{URL::to('jobs/show/'.$job->id.$get)}}">სრულად ნახვა</a>
 				<a class="well_job job_btn left mylink likes" id="likes-{{$job->id}}" style="background-color:#337ab7; color:white" href="{{URL::to('jobs/like/'.$job->id)}}"><i class="fa fa-thumbs-o-up fa-lg"></i> {{$job->rating}}</a>
@@ -205,23 +207,16 @@
 		});
 	});
 
-	$( ".offerbtn" ).click(function() {
-		var offerid = $(this).attr('id');
+	 function offer(offerid) {
 		offerid = offerid.substring(6);
 		var wrapid="form_"+offerid;
-
-
-
-		//$(".content").fadeTo( "slow", 0.1 );
-		$( "#"+wrapid ).fadeIn( "slow") 
+		$( "#"+wrapid ).fadeIn( "fast");
 	}
-	)
 
-	$( "#close_button" ).click(function() {
+	function closeform(){
 		$( ".offer_wrapper" ).hide();
-		$(".content").fadeTo( "slow", 1 );
+		$(".content").fadeTo( "fast", 1 );
 	}
-	)
 
 	$( ".likes" ).click(function() {
 		event.preventDefault();

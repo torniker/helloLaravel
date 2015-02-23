@@ -49,6 +49,7 @@ class TrainingController extends BaseController {
 		}
 
 		$training->delete();
+		DB::table('training_user')->where('training_id', '=', $id)->delete();
 		return Redirect::to('admin/trainings')
 			->with('message_type','success')
 			->with('message', 'User deleted successfully');

@@ -53,6 +53,7 @@ class SkillController extends BaseController {
 		}
 
 		$skill->delete();
+		DB::table('skill_user')->where('skill_id', '=', $id)->delete();
 		return Redirect::to('admin/skill')
 			->with('message_type','success')
 			->with('message', 'User deleted successfully');

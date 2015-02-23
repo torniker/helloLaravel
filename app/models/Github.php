@@ -70,11 +70,15 @@ class Github{
 					));
 				$user = $provider->get_user_info($token);
 				$uid = $user['uid'];
-				$uidUser = User::where('gitId', '=', $uid)->firstOrFail();
+				try{
+					$uidUser = User::where('gitId', '=', $uid)->firstOrFail();
+				}catch (Exception $e){
+					Session::flash('msg', 'ამ გიტჰაბზე არ არის მიბმული მომხმარებელი');
+					return Redirect::to(URL::to(''));
+				}
 				$dbid = $uidUser->id;
 				$curUser = User::find($dbid);
 				Auth::login($curUser);
-
 				return Redirect::to(URL::to('dashboard'));
 			}
 			catch (OAuth2_Exception $e)

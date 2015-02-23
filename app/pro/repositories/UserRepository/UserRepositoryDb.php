@@ -19,8 +19,13 @@ class UserRepositoryDb implements UserRepositoryInterface {
 	public function create($input) {
 		//file_put_contents('./text.txt', $input['type']);
 		$user = new User;
-		$trainings = $input['trainings'];
-		$trlevels=$input['trlevel'];
+		$trainings=$trlevels=array();
+		if (isset($input['trainings'])) {
+			$trainings = $input['trainings'];
+		}
+		if (isset($input['trlevel'])) {
+			$trlevels=$input['trlevel'];
+		}
 
 		if ($input['type']==3) {
 			$rule=array(
@@ -75,15 +80,27 @@ class UserRepositoryDb implements UserRepositoryInterface {
 	}
 
 	public function update($id,$input){
-		$skills=$input['skill'];
-		$trainings=$input['training'];
-		$levels = $input['level'];
-		$trlevels = $input['trlevel'];
+		$skills=$trainings=$levels=$trlevels=array();
+		if (isset($input['skill'])) {
+			$skills=$input['skill'];
+		}
+		if (isset($input['training'])) {
+			$trainings=$input['training'];
+		}
+		if (isset($input['level'])) {
+			$levels = $input['level'];
+		}
+		if(isset($input['trlevel'])){
+			$trlevels = $input['trlevel'];
+		}
+		
+		
 			/**
 				ჩაამატე სკილი მომხმარებელზე, თუ ის არ არსებობს ან ლეველი განსხვავებულია
 			*/
 
-
+				if (!empty($skills)) {
+					# code...
 				foreach ($skills as $skill) {
 					$result = DB::table('skill_user')
 					->where('user_id', $id)
@@ -107,6 +124,7 @@ class UserRepositoryDb implements UserRepositoryInterface {
 						->update(array('level' => $sklevel));
 					}
 				}
+			}
 			/**
 				წაშალე სკილი მომხმარებლიდან, თუ ის აღარ უნდა არსებობდეს
 			*/
@@ -127,7 +145,7 @@ class UserRepositoryDb implements UserRepositoryInterface {
 				}
 
 
-
+				if (!empty($trainings)) {	
 				foreach ($trainings as $training) {
 					$result = DB::table('training_user')
 					->where('user_id', $id)
@@ -151,6 +169,7 @@ class UserRepositoryDb implements UserRepositoryInterface {
 						->update(array('level' => $trlevel));
 					}
 				}
+			}
 			/**
 				წაშალე სკილი მომხმარებლიდან, თუ ის აღარ უნდა არსებობდეს
 			*/

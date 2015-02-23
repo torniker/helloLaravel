@@ -87,6 +87,8 @@ class UserController extends BaseController {
 		}
 
 		$user->delete();
+		DB::table('jobs')->where('author', '=', $id)->delete();
+		DB::table('comments')->where('user_id', '=', $id)->delete();
 		return Redirect::to('admin/user')
 		->with('message_type','success')
 		->with('message', 'User deleted successfully');

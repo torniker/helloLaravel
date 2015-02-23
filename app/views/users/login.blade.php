@@ -36,21 +36,44 @@ $oldUser = Session::get('oldUser');
 				</div>
 				<div class="form-group">
 					<div class="col-sm-10">
-					<button type="submit" class="btn btn-success sub-inp">შესვლა</button>
+						<button type="submit" class="btn btn-success sub-inp">შესვლა</button>
 					</div>
 				</div>
 			</form>
 		</div>
+		<div class="userpass" style="margin-top:100px">
+			<div class="form-group">
+				<div class="col-sm-3" style="margin-top:5px">
+					<label for="inputEmail3" class="col-sm-3 control-label">სტუდენტი:</label>
+				</div>
+				<div class="col-sm-9">
+					<input type="text" class="form-control nick-inp" id="username" 
+					name="username" placeholder="ნიკი" value="bauch.beau399">
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div class="userpass" style="margin-top:40px">
+			<div class="form-group">
+				<div class="col-sm-3" style="margin-top:5px">
+				<label for="inputEmail3" class="col-sm-3 control-label">ადმინი:</label>
+				</div>
+				<div class="col-sm-9">
+					<input type="text" class="form-control nick-inp" id="username" 
+					name="username" placeholder="ნიკი" value="ciara.gerlach31893">
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
 	</div>
-</div>
 
-<script type="text/javascript">
-	$(document).ready(function(){
-		$('input').iCheck({
-			checkboxClass: 'icheckbox_square-red',
-			radioClass: 'iradio_square-red',
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('input').iCheck({
+				checkboxClass: 'icheckbox_square-red',
+				radioClass: 'iradio_square-red',
     			increaseArea: '20%' // optional
     		});
-	});
-</script>
-@stop
+		});
+	</script>
+	@stop

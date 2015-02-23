@@ -84,7 +84,7 @@ class JobsController extends BaseController {
 			}
 		}
 
-		$comments=Comment::where('job_id', '=', $id)->get();
+		$comments=Comment::where('job_id', '=', $id)->where('replied_to', '=', 0)->get();
 		$usernames = array();
 		$allusers = User::get();
 		foreach ($allusers as $user) {
@@ -148,7 +148,7 @@ class JobsController extends BaseController {
 		$user=Auth::user();
 		$author =$user->id;
 		$jobs = Job::where('author', '=', $author)
-		->orderBy('id', 'DESC')->get();
+		->orderBy('id', 'DESC')->paginate(8);
 		return View::make('users.dashboard')
 		->with('user',$user)
 		->with('jobs',$jobs);
@@ -163,7 +163,7 @@ class JobsController extends BaseController {
 		})->orWhereHas('users', function($q) use ($author){
 			$q->where('jobs.author', $author);
 			$q->where('job_user.type', 3);})
-			->orderBy('id', 'DESC')->get();
+			->orderBy('id', 'DESC')->paginate(8);
 
 		return View::make('users.dashboard')
 		->with('user',$user)
@@ -179,7 +179,7 @@ class JobsController extends BaseController {
 		})->orWhereHas('users', function($q) use ($author){
 			$q->where('jobs.author', $author);
 			$q->where('job_user.type', 2);})
-			->orderBy('id', 'DESC')->get();
+			->orderBy('id', 'DESC')->paginate(8);
 
 		return View::make('users.dashboard')
 		->with('user',$user)
@@ -197,7 +197,7 @@ class JobsController extends BaseController {
 		})->orWhereHas('users', function($q) use ($author){
 			$q->where('jobs.author', $author);
 			$q->where('job_user.type', 0);})
-		->orderBy('id', 'DESC')->get();
+		->orderBy('id', 'DESC')->paginate(8);
 
 		return View::make('users.dashboard')
 		->with('user',$user)

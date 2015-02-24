@@ -22,4 +22,8 @@ class UserGateway {
 	public function create($input) {
 		return $this->userRepo->create($input);
 	}
+
+	public function update($id,$input) {
+		return $this->userRepo->update($id,$input);
+	}
 }

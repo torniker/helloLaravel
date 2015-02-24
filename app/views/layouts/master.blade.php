@@ -10,35 +10,58 @@
 	<title>Students</title>
 	<link href="{{ URL::asset('res/css/bootstrap.css') }}" rel="stylesheet">
 	<link href="{{ URL::asset('res/css/bootstrap-theme.css') }}" rel="stylesheet">
+	<link href="{{ URL::asset('res/css/global.css') }}" rel="stylesheet">
+	<link href="{{ URL::asset('res/css/fonts.css') }}" rel="stylesheet">
+	<link href="{{ URL::asset('res/pretty/skins/all.css') }}" rel="stylesheet">
+	<script src="{{ URL::asset('res/js/jquery.js') }}"></script>
+	<script src="{{ URL::asset('res/pretty/icheck.js') }}"></script>
+	<script src="{{ URL::asset('res/js/bootstrap.min.js') }}"></script>
+	<script src="{{ URL::asset('res/js/datepicker.js') }}"></script>
+	<link href="{{ URL::asset('res/css/sb-admin-2.css') }}" rel="stylesheet">
 </head>
 <body>
-	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#">Project name</a>
-			</div>
-			<div id="navbar" class="collapse navbar-collapse">
-				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">Home</a></li>
-					<li><a href="#about">About</a></li>
-					<li><a href="#contact">Contact</a></li>
+		<div class="navbar-default sidebar" role="navigation">
+			<div class="sidebar-nav navbar-collapse">
+				<ul class="nav" id="side-menu">
+					<li>
+						<a href="<?=URL::to('/')?>">
+							მთავარი
+						</a>
+					</li>
+					@if(!Auth::check())
+					<li>
+						<a href="{{URL::to('register')}}">რეგისტრაცია</a>
+					</li>
+					<li>
+						<a href="{{URL::to('login')}}">შესვლა</a>
+					</li>
+					@endif
+					@if(Auth::check())
+					<li>
+						<a href="{{URL::to('dashboard')}}">პროფილი</a>
+					</li>
+					<li>
+						<a href="{{URL::to('logout')}}">გამოსვლა</a>
+					</li>
+					@endif
+					<li>
+						<a href="{{URL::to('jobs')}}">პროექტები</a>
+					</li>
+					<li>
+						<a href="#">კონტაქტი</a>
+					</li>
+					<li>
+						<a href="#">ჩვენს შესახებ</a>
+					</li>
 				</ul>
-			</div><!--/.nav-collapse -->
+			</div>
+			<!-- /.sidebar-collapse -->
 		</div>
-	</nav>
-
-	<div class="container">
+		<!-- /.navbar-static-side -->
+	
+	<div class="content">
 		@yield('content')
 	</div><!-- /.container -->
-
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<script src="res/js/bootstrap.min.js"></script>
 
 </body>
 </html>

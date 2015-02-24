@@ -18,6 +18,7 @@ class CreatePhonesTable extends Migration {
 			$table->integer('user_id');
 			$table->string('phone');
 			$table->timestamps();
+			$table->unique( array('user_id','phone') );
 		});
 	}
 

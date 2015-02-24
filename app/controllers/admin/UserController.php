@@ -7,11 +7,17 @@ class UserController extends BaseController {
 	private $gateway;
 
 	public function __construct(UserGateway $gateway) {
+		$this->beforeFilter(function(){
+			if (!Auth::check()){
+				return Redirect::to('');
+			}elseif(Auth::user()->type!=4){
+				return Redirect::to('');
+			}
+		});
 		$this->gateway = $gateway;
 	}
 
-	public function index()
-	{
+	public function index(){
 		$users = $this->gateway->all();
 		return View::make('admin.users.index')->with('users', $users);
 	}
@@ -22,47 +28,56 @@ class UserController extends BaseController {
 	}
 
 	public function create() {
-		return View::make('admin.users.create');
+		$trainings = Training::get();
+		return View::make('admin.users.create')
+		->with(
+			[
+			'trainings'=>$trainings
+			]
+		);
 	}
 
 	public function store() {
 		$input = Input::all();
-		$this->gateway->create($input);
-		return Redirect::to('admin/user')
+
+		
+		if($this->gateway->create($input)){
+			return Redirect::to('admin/user')
 			->with('message_type','success')
 			->with('message', 'User added successfully');
+		}
 	}
 
 	public function edit($id) {
-		$user = User::with('phones')->with('skills')->find($id);
+		$user = User::with('phones')
+		->with('skills')
+		->with('trainings')
+		->find($id);
 		$skills = Skill::get();
+		$trainings = Training::get();
 
 		return View::make('admin.users.edit')->with(array(
 			'user'=> $user,
-			'skills'=> $skills
+			'skills'=> $skills,
+			'trainings'=> $trainings,
 			));
 	}
 
 	public function update($id) {
+		$input=Input::all();
 
-		print_r($_POST);
-		die();
-
-		$user = User::find($id);
-		if(is_null($user)) {
-			return Redirect::to('admin/user');
+		if ( null !== Input::file('file') ) {
+			$hashedfilename=str_random(30).'.'.Input::file('file')->guessClientExtension();
+			Input::file('file')->move('./public/uploads',$hashedfilename);
+			$user=User::find($id);
+			$user->avatar=$hashedfilename;
+			$user->save();
 		}
+		$this->gateway->update($id,$input);
 
-		$input = Input::all();
-
-		$user->fill($input);
-		if($pass = Input::get('password')) {
-			$user->password = Hash::make($pass);
-		}
-		$user->save();
 		return Redirect::to('admin/user')
-			->with('message_type','success')
-			->with('message', 'User updated successfully');
+		->with('message_type','success')
+		->with('message', 'User updated successfully');
 	}
 
 	public function destroy($id) {
@@ -72,9 +87,11 @@ class UserController extends BaseController {
 		}
 
 		$user->delete();
+		DB::table('jobs')->where('author', '=', $id)->delete();
+		DB::table('comments')->where('user_id', '=', $id)->delete();
 		return Redirect::to('admin/user')
-			->with('message_type','success')
-			->with('message', 'User deleted successfully');
+		->with('message_type','success')
+		->with('message', 'User deleted successfully');
 	}
 
 }

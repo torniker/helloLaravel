@@ -13,15 +13,27 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 	protected $table = 'users';
 	protected $hidden = array('password', 'remember_token');
-	protected $fillable = ['firstname', 'lastname', 'email','gender'];
+	protected $fillable = [
+	'username',
+	'firstname', 
+	'lastname', 
+	'email',
+	'gender',
+	'company_name',
+	'identification_code',
+	'type',
+	'mainprofile',
+	'facebook',
+	'github'
+	];
 	protected $throwValidationExceptions = true;
 	protected $rules = [
         'username'   => 'required',
         'firstname'  => 'required',
-        'lastname'   => 'required'
+        'lastname'   => 'required',
+        'email'   => 'required',
+        'password'   => 'required'
     ];
-
-	
 
 	public function phones()
 	{
@@ -30,7 +42,17 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 	public function skills()
 	{
-		return $this->belongsToMany('Skill');
+		return $this->belongsToMany('Skill')->withPivot('level');
+	}
+
+	public function jobs()
+	{
+		return $this->belongsToMany('Job')->withPivot('type')->withPivot('price');
+	}
+
+	public function trainings()
+	{
+		return $this->belongsToMany('Training')->withPivot('level');
 	}
 
 	public function getGender() {
@@ -38,6 +60,10 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 			return 'male';
 		}
 		return 'female';
+	}
+
+	public function addRule($rule){
+		$this->rules = array_merge($this->rules,$rule);
 	}
 
 

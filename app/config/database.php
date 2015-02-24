@@ -55,9 +55,9 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'hello_laravel',
-			'username'  => 'root',
-			'password'  => '',
+			'database'  => 'geolike2_pro2',
+			'username'  => 'geolike2_pro2',
+			'password'  => 'babaiagan1',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',

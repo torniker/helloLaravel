@@ -107,10 +107,13 @@
 			<?php 
 			$bck = "";
 			$offer='offer';
-			if($job->author==$user->id){
-				$bck = "isauth";
-				$offer='';
-			};
+			if(isset($user)){
+				if($job->author==$user->id){
+					$bck = "isauth";
+					$offer='';
+				};
+			}
+			
 			?>
 			@if(isset($user))
 			@if($job->author==$user->id)
@@ -259,6 +262,7 @@
 					</div>
 				</p>
 			</li>
+			@if(isset($user))
 			{{ Form::open(array('url' => 'comments/add', 'method' => 'POST', 
 			'class' => 'replyform')) }}
 
@@ -272,6 +276,7 @@
 			{{ Form::input('hidden', 'replied_to', $comment->id) }}
 
 			{{ Form::close(); }}
+			@endif
 
 			<?php 
 				$replies = Comment::where('replied_to', '=', $comment->id)->get(); 
